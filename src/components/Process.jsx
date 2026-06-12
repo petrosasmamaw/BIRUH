@@ -30,7 +30,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-20 sm:py-28 bg-background">
+    <div className="py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
@@ -70,6 +70,6 @@ export default function Process() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }

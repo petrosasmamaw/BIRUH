@@ -1,6 +1,4 @@
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { initHeroScene } from '../three/HeroScene'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -9,29 +7,12 @@ const fadeUp = (delay = 0) => ({
 })
 
 export default function Hero() {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    if (!canvasRef.current) return
-    const cleanup = initHeroScene(canvasRef.current)
-    return cleanup
-  }, [])
-
   const scrollTo = (id) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      {/* Golden glow — right side only, fades to white; polygon canvas unchanged */}
-      <div
-        className="absolute top-0 right-0 bottom-0 w-[58%] pointer-events-none hidden lg:block"
-        style={{
-          background: 'linear-gradient(270deg, rgba(255,255,255,0.4) 0%, rgba(255,252,247,0.15) 40%, transparent 100%)',
-        }}
-      />
-      <div className="hero-light-bloom" aria-hidden="true" />
-
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[calc(100vh-5rem)]">
           <div className="order-1 lg:order-1">
@@ -76,17 +57,12 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="order-2 lg:order-2 relative h-[40vh] lg:h-[70vh] z-10">
-            <canvas
-              ref={canvasRef}
-              className="w-full h-full relative z-10"
-              style={{ background: 'transparent' }}
-            />
-          </div>
+          {/* Spacer — 3D polygon flows here via ScrollFlowLayer */}
+          <div className="order-2 lg:order-2 relative h-[40vh] lg:h-[70vh] hidden sm:block" aria-hidden="true" />
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent z-10" />
     </section>
   )
 }

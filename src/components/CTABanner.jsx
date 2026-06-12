@@ -7,7 +7,7 @@ export default function CTABanner() {
   }
 
   return (
-    <section className="relative py-24 sm:py-32 bg-background overflow-hidden">
+    <div className="relative py-24 sm:py-32 overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
@@ -42,6 +42,6 @@ export default function CTABanner() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   )
 }

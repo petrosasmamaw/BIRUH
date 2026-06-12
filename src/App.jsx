@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -8,22 +9,48 @@ import Process from './components/Process'
 import Testimonials from './components/Testimonials'
 import CTABanner from './components/CTABanner'
 import Footer from './components/Footer'
+import ScrollFlowLayer from './components/ScrollFlowLayer'
 
 function App() {
+  const sectionRefs = useRef([])
+
+  const setRef = (index) => (el) => {
+    sectionRefs.current[index] = el
+  }
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <ScrollFlowLayer sectionRefs={sectionRefs} />
       <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <WhyBiruh />
-        <Products />
-        <WhoWeServe />
-        <Process />
-        <Testimonials />
-        <CTABanner />
+      <main className="relative z-10">
+        <div ref={setRef(0)} className="flow-section-bg">
+          <Hero />
+        </div>
+        <div ref={setRef(1)} id="services" className="flow-section-bg">
+          <Services />
+        </div>
+        <div ref={setRef(2)} className="flow-section-bg-alt">
+          <WhyBiruh />
+        </div>
+        <div ref={setRef(3)} id="products" className="flow-section-bg">
+          <Products />
+        </div>
+        <div ref={setRef(4)} className="flow-section-bg-alt">
+          <WhoWeServe />
+        </div>
+        <div ref={setRef(5)} id="process" className="flow-section-bg">
+          <Process />
+        </div>
+        <div ref={setRef(6)} className="flow-section-bg">
+          <Testimonials />
+        </div>
+        <div ref={setRef(7)} className="flow-section-bg">
+          <CTABanner />
+        </div>
+        <div ref={setRef(8)} id="contact" className="flow-section-bg-alt">
+          <Footer />
+        </div>
       </main>
-      <Footer />
     </div>
   )
 }
