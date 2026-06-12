@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
+
+const MOBILE_BREAKPOINT = 1024
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -10,6 +13,16 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= MOBILE_BREAKPOINT,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
+    const update = () => setIsDesktop(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -22,55 +35,58 @@ export default function Navbar() {
     el?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  return (
+  const nav = (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
+      initial={false}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
-        scrolled
-          ? 'bg-white/85 shadow-sm border-b border-gold/25'
-          : 'bg-white/70 lg:bg-transparent border-b border-border/50 lg:border-transparent'
-      }`}
+      className={`top-navbar ${scrolled ? 'top-navbar--scrolled' : ''}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 lg:h-16 flex items-center justify-between">
+      <div className="top-navbar__inner">
         <a
           href="#"
-          className="flex items-center gap-1.5 sm:gap-2"
+          className="flex items-center gap-1.5 sm:gap-2 min-w-0 shrink"
           onClick={(e) => {
             e.preventDefault()
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
         >
-          <span className="font-mono text-gold text-lg sm:text-xl font-bold">ብሩህ</span>
-          <span className="font-mono text-text-primary text-lg sm:text-xl tracking-widest">BIRUH</span>
+          <span className="font-mono text-gold text-base sm:text-xl font-bold">ብሩህ</span>
+          <span className="font-mono text-text-primary text-base sm:text-xl tracking-widest truncate">
+            BIRUH
+          </span>
         </a>
 
-        <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
+        {isDesktop ? (
+          <div className="flex items-center gap-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-text-secondary hover:text-gold transition-colors text-sm font-medium"
+              >
+                {link.label}
+              </button>
+            ))}
             <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-text-secondary hover:text-gold transition-colors text-sm font-medium"
+              onClick={() => handleNavClick('#contact')}
+              className="bg-gold text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm"
             >
-              {link.label}
+              Start a Project
             </button>
-          ))}
+          </div>
+        ) : (
           <button
             onClick={() => handleNavClick('#contact')}
-            className="bg-gold text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm"
+            className="shrink-0 bg-gold text-white font-semibold px-3 py-1.5 sm:px-4 rounded-full text-[11px] sm:text-xs hover:bg-gold-dark transition-colors shadow-sm whitespace-nowrap"
           >
-            Start a Project
+            Start Project
           </button>
-        </div>
-
-        <button
-          onClick={() => handleNavClick('#contact')}
-          className="lg:hidden bg-gold text-white font-semibold px-4 py-1.5 rounded-full text-xs hover:bg-gold-dark transition-colors shadow-sm"
-        >
-          Start Project
-        </button>
+        )}
       </div>
     </motion.nav>
   )
+
+  if (typeof document === 'undefined') return null
+
+  return createPortal(nav, document.body)
 }

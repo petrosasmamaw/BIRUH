@@ -259,6 +259,109 @@ h1, h2, h3, h4 {
   50% { opacity: 1; transform: scale(1.04); }
 }
 
+/* Top navbar — always fixed, portaled to body */
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(229, 221, 208, 0.8);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-navbar--scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 16px rgba(26, 21, 16, 0.06);
+  border-bottom-color: rgba(196, 122, 18, 0.25);
+}
+
+@media (min-width: 1024px) {
+  .top-navbar:not(.top-navbar--scrolled) {
+    background: rgba(255, 255, 255, 0.55);
+    border-bottom-color: transparent;
+  }
+}
+
+.top-navbar__inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .top-navbar__inner {
+    padding: 0 2rem;
+    height: 4rem;
+  }
+}
+
+/* Mobile bottom nav — portaled to body, always on small screens */
+.mobile-bottom-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -4px 20px rgba(26, 21, 16, 0.1);
+}
+
+.mobile-bottom-nav__inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.mobile-bottom-nav__item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 56px;
+  padding: 0.5rem 0.25rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-bottom-nav__indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2px;
+  background: var(--color-gold);
+  border-radius: 9999px;
+}
+
+@media (min-width: 1024px) {
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+}
+
 /* Mobile — centered flow, bottom-nav safe area */
 @media (max-width: 1023px) {
   .scroll-flow-layer--mobile .scroll-flow-glow-wrap {

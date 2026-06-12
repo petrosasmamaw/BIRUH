@@ -1,6 +1,10 @@
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import { Home, Layers, Package, GitBranch, Mail } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
+
+const MOBILE_BREAKPOINT = 1024
 
 const navItems = [
   { id: 'home', label: 'Home', href: '#', icon: Home },
@@ -12,6 +16,16 @@ const navItems = [
 
 export default function BottomNav() {
   const active = useActiveSection()
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth < MOBILE_BREAKPOINT,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
+    const update = () => setIsMobile(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   const handleClick = (href) => {
     if (href === '#') {
@@ -21,12 +35,11 @@ export default function BottomNav() {
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  return (
-    <nav
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-border bg-white/92 backdrop-blur-lg pb-[env(safe-area-inset-bottom)]"
-      aria-label="Mobile navigation"
-    >
-      <div className="flex items-stretch justify-around max-w-lg mx-auto">
+  if (!isMobile || typeof document === 'undefined') return null
+
+  return createPortal(
+    <nav className="mobile-bottom-nav" aria-label="Mobile navigation">
+      <div className="mobile-bottom-nav__inner">
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = active === item.id
@@ -35,13 +48,13 @@ export default function BottomNav() {
               key={item.id}
               type="button"
               onClick={() => handleClick(item.href)}
-              className="relative flex flex-1 flex-col items-center justify-center gap-0.5 py-2.5 px-1 min-h-[56px] transition-colors"
+              className="mobile-bottom-nav__item"
               aria-current={isActive ? 'page' : undefined}
             >
               {isActive && (
                 <motion.span
                   layoutId="bottom-nav-indicator"
-                  className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-gold rounded-full"
+                  className="mobile-bottom-nav__indicator"
                   transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
@@ -61,6 +74,7 @@ export default function BottomNav() {
           )
         })}
       </div>
-    </nav>
+    </nav>,
+    document.body,
   )
 }

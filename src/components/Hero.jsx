@@ -13,7 +13,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] lg:min-h-screen flex items-center overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-16 lg:pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-2 lg:pt-4">
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-4 items-center min-h-[calc(100dvh-5rem)] lg:min-h-[calc(100vh-5rem)]">
           <div className="order-1 w-full text-center lg:text-left">
             <motion.p

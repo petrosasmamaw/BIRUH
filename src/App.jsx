@@ -24,7 +24,7 @@ function App() {
       <ScrollFlowLayer sectionRefs={sectionRefs} />
       <Navbar />
       <BottomNav />
-      <main className="relative z-10 pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+      <main className="relative z-10 pt-14 lg:pt-16 max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))]">
         <div ref={setRef(0)} data-section="home" className="flow-section-bg">
           <Hero />
         </div>
