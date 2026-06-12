@@ -47,7 +47,7 @@ const products = [
 
 export default function Products() {
   return (
-    <div className="py-20 sm:py-28">
+    <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
@@ -66,7 +66,7 @@ export default function Products() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true, margin: '-50px' }}
-              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-auto snap-start bg-surface rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 shadow-card hover:shadow-card-hover border border-border"
+              className="flex-shrink-0 w-[min(85vw,300px)] sm:w-[300px] md:w-auto snap-center snap-always snap-start bg-surface rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 shadow-card hover:shadow-card-hover border border-border"
             >
               <div className="h-1.5" style={{ backgroundColor: product.accent }} />
               <div

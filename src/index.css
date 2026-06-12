@@ -259,6 +259,41 @@ h1, h2, h3, h4 {
   50% { opacity: 1; transform: scale(1.04); }
 }
 
+/* Mobile — centered flow, bottom-nav safe area */
+@media (max-width: 1023px) {
+  .scroll-flow-layer--mobile .scroll-flow-glow-wrap {
+    width: min(400px, 92vw);
+    height: min(400px, 92vw);
+  }
+
+  .scroll-flow-layer--mobile .scroll-flow-tech-frame {
+    width: min(360px, 94vw);
+    height: min(360px, 94vw);
+  }
+
+  .flow-section-bg {
+    background: linear-gradient(
+      180deg,
+      rgba(250, 246, 240, 0.45) 0%,
+      rgba(250, 246, 240, 0.9) 18%,
+      rgba(250, 246, 240, 0.94) 55%,
+      rgba(250, 246, 240, 0.9) 82%,
+      rgba(250, 246, 240, 0.45) 100%
+    );
+  }
+
+  .flow-section-bg-alt {
+    background: linear-gradient(
+      180deg,
+      rgba(245, 239, 230, 0.45) 0%,
+      rgba(245, 239, 230, 0.9) 18%,
+      rgba(245, 239, 230, 0.94) 55%,
+      rgba(245, 239, 230, 0.9) 82%,
+      rgba(245, 239, 230, 0.45) 100%
+    );
+  }
+}
+
 /* Section backgrounds — transparent edges so BIRUH gold flow shines through */
 .flow-section-bg {
   background: linear-gradient(

@@ -1,8 +1,8 @@
 export const scrollAnimationProps = {
-  initial: { opacity: 0, y: 40 },
+  initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' },
-  viewport: { once: true, margin: '-100px' },
+  transition: { duration: 0.55, ease: 'easeOut' },
+  viewport: { once: true, margin: '-60px' },
 }
 
 export const staggerContainer = {

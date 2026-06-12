@@ -100,7 +100,7 @@ function createBiruhLabel() {
   return { sprite, texture, mat, canvas, redraw: draw }
 }
 
-export function initFlowScene(canvas) {
+export function initFlowScene(canvas, { isMobile = false } = {}) {
   const scene = new THREE.Scene()
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
   camera.position.z = 6
@@ -138,6 +138,7 @@ export function initFlowScene(canvas) {
   disposables.push(brackets.geo, brackets.mat)
 
   const label = createBiruhLabel()
+  label.sprite.scale.set(isMobile ? 1.75 : 2.6, isMobile ? 0.88 : 1.3, 1)
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
@@ -146,7 +147,7 @@ export function initFlowScene(canvas) {
   keyLight.position.set(1, 2, 5)
   scene.add(keyLight)
 
-  const particleCount = 72
+  const particleCount = isMobile ? 28 : 72
   const positions = new Float32Array(particleCount * 3)
   for (let i = 0; i < particleCount; i++) {
     const i3 = i * 3
@@ -158,17 +159,18 @@ export function initFlowScene(canvas) {
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   const particleMat = new THREE.PointsMaterial({
     color: C.gold,
-    size: 0.028,
+    size: isMobile ? 0.04 : 0.028,
     transparent: true,
-    opacity: 0.35,
+    opacity: isMobile ? 0.45 : 0.35,
     sizeAttenuation: true,
   })
   const particles = new THREE.Points(particleGeo, particleMat)
   scene.add(particles)
   disposables.push(particleGeo, particleMat)
 
-  let target = { x: 2, y: 0, scale: 1.15 }
-  let current = { x: 2, y: 0, scale: 1.15 }
+  const mouseInfluence = isMobile ? 0.02 : 0.05
+  let target = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.78 : 1.15 }
+  let current = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.78 : 1.15 }
   let mouseX = 0
   let mouseY = 0
   let time = 0
@@ -199,8 +201,8 @@ export function initFlowScene(canvas) {
     flowGroup.scale.setScalar(current.scale)
 
     polyGroup.rotation.y += 0.003
-    polyGroup.rotation.x = Math.sin(time * 0.35) * 0.06 + mouseY * 0.05
-    polyGroup.rotation.y += mouseX * 0.04
+    polyGroup.rotation.x = Math.sin(time * 0.35) * 0.06 + mouseY * mouseInfluence
+    polyGroup.rotation.y += mouseX * (mouseInfluence * 0.8)
 
     mid.mesh.rotation.y -= 0.005
     core.mesh.rotation.x += 0.004

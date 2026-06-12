@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import Navbar from './components/Navbar'
+import BottomNav from './components/BottomNav'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import WhyBiruh from './components/WhyBiruh'
@@ -22,8 +23,9 @@ function App() {
     <div className="min-h-screen bg-background relative">
       <ScrollFlowLayer sectionRefs={sectionRefs} />
       <Navbar />
-      <main className="relative z-10">
-        <div ref={setRef(0)} className="flow-section-bg">
+      <BottomNav />
+      <main className="relative z-10 pb-[calc(4.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+        <div ref={setRef(0)} data-section="home" className="flow-section-bg">
           <Hero />
         </div>
         <div ref={setRef(1)} id="services" className="flow-section-bg">

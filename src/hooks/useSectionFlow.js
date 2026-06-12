@@ -9,7 +9,7 @@ function lerp(a, b, t) {
   return a + (b - a) * t
 }
 
-export const FLOW_WAYPOINTS = [
+export const FLOW_WAYPOINTS_DESKTOP = [
   { x: 1.85, y: 0, scale: 1.2, glowX: 72, glowY: 48, glowScale: 1.15 },
   { x: 0.4, y: 1.1, scale: 1.08, glowX: 54, glowY: 30, glowScale: 1.05 },
   { x: -1.75, y: 0.5, scale: 1.05, glowX: 26, glowY: 44, glowScale: 1.08 },
@@ -21,13 +21,25 @@ export const FLOW_WAYPOINTS = [
   { x: 0, y: 1.4, scale: 0.78, glowX: 50, glowY: 72, glowScale: 0.85 },
 ]
 
-export function interpolateFlow(phase) {
-  const max = FLOW_WAYPOINTS.length - 1
+export const FLOW_WAYPOINTS_MOBILE = [
+  { x: 0, y: 0.6, scale: 0.78, glowX: 50, glowY: 32, glowScale: 0.9 },
+  { x: 0.35, y: 0.4, scale: 0.72, glowX: 58, glowY: 38, glowScale: 0.85 },
+  { x: -0.3, y: 0.35, scale: 0.7, glowX: 42, glowY: 40, glowScale: 0.85 },
+  { x: 0.4, y: 0.2, scale: 0.72, glowX: 55, glowY: 42, glowScale: 0.88 },
+  { x: -0.35, y: 0.15, scale: 0.68, glowX: 45, glowY: 44, glowScale: 0.82 },
+  { x: 0, y: 0, scale: 0.66, glowX: 50, glowY: 46, glowScale: 0.8 },
+  { x: 0.3, y: 0.1, scale: 0.64, glowX: 54, glowY: 43, glowScale: 0.8 },
+  { x: 0, y: -0.1, scale: 0.62, glowX: 50, glowY: 48, glowScale: 0.85 },
+  { x: 0, y: 0.5, scale: 0.55, glowX: 50, glowY: 55, glowScale: 0.75 },
+]
+
+export function interpolateFlow(phase, waypoints = FLOW_WAYPOINTS_DESKTOP) {
+  const max = waypoints.length - 1
   const clamped = Math.max(0, Math.min(max, phase))
   const i = Math.floor(clamped)
   const frac = smoothstep(clamped - i)
-  const a = FLOW_WAYPOINTS[i]
-  const b = FLOW_WAYPOINTS[Math.min(i + 1, max)]
+  const a = waypoints[i]
+  const b = waypoints[Math.min(i + 1, max)]
 
   return {
     x: lerp(a.x, b.x, frac),
@@ -42,7 +54,7 @@ export function interpolateFlow(phase) {
 }
 
 export function useSectionFlow(sectionRefs) {
-  const [flow, setFlow] = useState(() => interpolateFlow(0))
+  const [flow, setFlow] = useState(() => interpolateFlow(0, FLOW_WAYPOINTS_DESKTOP))
 
   const computeFlow = useCallback(() => {
     const refs = sectionRefs.current.filter(Boolean)
@@ -67,7 +79,8 @@ export function useSectionFlow(sectionRefs) {
       }
     }
 
-    setFlow(interpolateFlow(phase))
+    const waypoints = window.innerWidth < 1024 ? FLOW_WAYPOINTS_MOBILE : FLOW_WAYPOINTS_DESKTOP
+    setFlow(interpolateFlow(phase, waypoints))
   }, [sectionRefs])
 
   useEffect(() => {

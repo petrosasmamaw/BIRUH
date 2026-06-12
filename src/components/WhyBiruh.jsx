@@ -50,7 +50,7 @@ const pillars = [
 
 export default function WhyBiruh() {
   return (
-    <div className="py-20 sm:py-28 relative overflow-hidden ethiopian-cross-bg">
+    <div className="py-14 sm:py-20 lg:py-28 relative overflow-hidden ethiopian-cross-bg">
       <div className="absolute inset-0 bg-surface-muted/92" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps}>

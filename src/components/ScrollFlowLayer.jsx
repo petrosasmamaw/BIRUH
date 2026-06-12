@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { initFlowScene } from '../three/FlowScene'
 import { useSectionFlow } from '../hooks/useSectionFlow'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function ScrollFlowLayer({ sectionRefs }) {
   const canvasRef = useRef(null)
@@ -8,18 +9,24 @@ export default function ScrollFlowLayer({ sectionRefs }) {
   const glowWrapRef = useRef(null)
   const frameRef = useRef(null)
   const flow = useSectionFlow(sectionRefs)
+  const isMobile = useIsMobile(1024)
 
   useEffect(() => {
     if (!canvasRef.current) return
-    sceneRef.current = initFlowScene(canvasRef.current)
+    sceneRef.current?.dispose()
+    sceneRef.current = initFlowScene(canvasRef.current, { isMobile })
     return () => sceneRef.current?.dispose()
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
     sceneRef.current?.setFlowTarget(flow.x, flow.y, flow.scale)
 
-    const scale = 0.88 + flow.glowScale * 0.48
-    const opacity = 0.65 + flow.scale * 0.25
+    const scale = isMobile
+      ? 0.75 + flow.glowScale * 0.35
+      : 0.88 + flow.glowScale * 0.48
+    const opacity = isMobile
+      ? 0.55 + flow.scale * 0.3
+      : 0.65 + flow.scale * 0.25
     const transform = `translate(-50%, -50%) scale(${scale})`
 
     if (glowWrapRef.current) {
@@ -32,12 +39,12 @@ export default function ScrollFlowLayer({ sectionRefs }) {
     if (frameRef.current) {
       frameRef.current.style.left = `${flow.glowX}%`
       frameRef.current.style.top = `${flow.glowY}%`
-      frameRef.current.style.transform = `${transform} rotate(${flow.phase * 12}deg)`
+      frameRef.current.style.transform = `${transform} rotate(${flow.phase * (isMobile ? 8 : 12)}deg)`
     }
-  }, [flow])
+  }, [flow, isMobile])
 
   return (
-    <div className="scroll-flow-layer" aria-hidden="true">
+    <div className={`scroll-flow-layer ${isMobile ? 'scroll-flow-layer--mobile' : ''}`} aria-hidden="true">
       <div ref={frameRef} className="scroll-flow-tech-frame">
         <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
           <polygon

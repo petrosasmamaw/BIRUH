@@ -36,6 +36,7 @@ const services = [
 ]
 
 const handleMouseMove = (e) => {
+  if (window.matchMedia('(hover: none)').matches) return
   const rect = e.currentTarget.getBoundingClientRect()
   const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20
   const y = -((e.clientY - rect.top) / rect.height - 0.5) * 20
@@ -48,7 +49,7 @@ const handleMouseLeave = (e) => {
 
 export default function Services() {
   return (
-    <div className="py-20 sm:py-28">
+    <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
@@ -64,7 +65,7 @@ export default function Services() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {services.map((service) => {
             const Icon = service.icon
