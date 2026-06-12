@@ -51,11 +51,11 @@ export default function Process() {
                 viewport={{ once: true, margin: '-50px' }}
                 className="relative"
               >
-                <div className="bg-surface rounded-lg p-6 relative overflow-hidden border border-white/5 hover:border-gold/20 transition-colors">
+                <div className="bg-surface rounded-xl p-6 relative overflow-hidden border border-border shadow-card hover:border-gold/35 hover:shadow-card-hover transition-all">
                   <span className="absolute -top-2 -right-1 font-mono text-6xl font-bold text-gold/10 select-none">
                     {step.number}
                   </span>
-                  <span className="font-mono text-gold-light text-sm font-bold mb-3 block">
+                  <span className="font-mono text-gold text-sm font-bold mb-3 block">
                     {step.number}
                   </span>
                   <h3 className="font-display text-xl font-bold text-text-primary mb-3">

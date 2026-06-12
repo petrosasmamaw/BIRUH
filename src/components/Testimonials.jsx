@@ -21,7 +21,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28 bg-surface">
+    <section className="py-20 sm:py-28 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
@@ -40,7 +40,7 @@ export default function Testimonials() {
             <motion.div
               key={t.author}
               variants={staggerItem}
-              className="bg-surface-elevated rounded-lg p-6 sm:p-8 border border-white/5 relative"
+              className="bg-surface rounded-xl p-6 sm:p-8 border border-border shadow-card relative"
             >
               <span className="font-display text-6xl text-gold/30 leading-none absolute top-4 left-5 select-none">
                 &ldquo;

@@ -31,7 +31,7 @@ const segments = [
 
 export default function WhoWeServe() {
   return (
-    <section className="py-20 sm:py-28 bg-surface">
+    <section className="py-20 sm:py-28 bg-surface-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
@@ -52,10 +52,10 @@ export default function WhoWeServe() {
               <motion.div
                 key={segment.title}
                 variants={staggerItem}
-                className="bg-surface-elevated border border-white/5 rounded-xl p-6 sm:p-8 hover:border-gold/30 transition-colors group"
+                className="bg-surface border border-border rounded-xl p-6 sm:p-8 shadow-card hover:border-gold/40 hover:shadow-card-hover transition-all group"
               >
                 <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
-                  <Icon className="text-gold-light" size={24} />
+                  <Icon className="text-gold" size={24} />
                 </div>
                 <h3 className="font-display text-xl font-bold text-text-primary mb-3">
                   {segment.title}

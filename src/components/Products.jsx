@@ -33,7 +33,7 @@ const products = [
     description: 'LLM-powered personalized learning platform',
     tags: ['React', 'Gemini API'],
     status: 'Beta',
-    statusColor: 'bg-gold/20 text-gold-light',
+    statusColor: 'bg-gold/15 text-gold-dark',
   },
   {
     name: 'Hospital Hub',
@@ -66,24 +66,24 @@ export default function Products() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true, margin: '-50px' }}
-              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-auto snap-start bg-surface-elevated rounded-lg overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 hover:shadow-[0_12px_40px_rgba(245,166,35,0.12)]"
+              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-auto snap-start bg-surface rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 shadow-card hover:shadow-card-hover border border-border"
             >
               <div className="h-1.5" style={{ backgroundColor: product.accent }} />
               <div
                 className="h-32 sm:h-36 flex items-center justify-center relative overflow-hidden"
                 style={{
-                  background: `linear-gradient(135deg, ${product.accent}15 0%, #161616 100%)`,
+                  background: `linear-gradient(135deg, ${product.accent}18 0%, #FFFCF7 100%)`,
                 }}
               >
                 <div
-                  className="w-16 h-24 rounded-lg border border-white/10 shadow-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300"
+                  className="w-16 h-24 rounded-lg border border-border shadow-md transform rotate-3 group-hover:rotate-0 transition-transform duration-300"
                   style={{
-                    background: `linear-gradient(180deg, ${product.accent}30 0%, #111 100%)`,
+                    background: `linear-gradient(180deg, ${product.accent}25 0%, #FFFFFF 100%)`,
                   }}
                 />
                 <div
-                  className="absolute w-20 h-28 rounded-lg border border-white/5 -right-2 top-6 transform -rotate-6 opacity-50"
-                  style={{ background: '#0A0A0A' }}
+                  className="absolute w-20 h-28 rounded-lg border border-border -right-2 top-6 transform -rotate-6 opacity-60"
+                  style={{ background: '#FAF6F0' }}
                 />
               </div>
               <div className="p-5">
@@ -100,13 +100,13 @@ export default function Products() {
                   {product.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="font-mono text-xs text-text-secondary bg-background px-2 py-1 rounded"
+                      className="font-mono text-xs text-text-secondary bg-surface-muted px-2 py-1 rounded border border-border"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span className="inline-flex items-center gap-1 text-gold-light text-sm font-medium group-hover:gap-2 transition-all">
+                <span className="inline-flex items-center gap-1 text-gold text-sm font-medium group-hover:gap-2 transition-all">
                   View Project <ArrowRight size={14} />
                 </span>
               </div>

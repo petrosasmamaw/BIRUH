@@ -26,17 +26,17 @@ export default function Hero() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 70% 50%, rgba(212,137,26,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 70% 60% at 70% 45%, rgba(240,168,48,0.22) 0%, rgba(196,122,18,0.06) 50%, transparent 75%)',
         }}
       />
-      <div className="light-ray-bloom opacity-80" />
+      <div className="light-ray-bloom opacity-90" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[calc(100vh-5rem)]">
           <div className="order-1 lg:order-1">
             <motion.p
               {...fadeUp(0.1)}
-              className="font-mono text-gold-light text-xs sm:text-sm uppercase tracking-widest mb-4"
+              className="font-mono text-gold text-xs sm:text-sm uppercase tracking-widest mb-4 font-medium"
             >
               Ethiopian Software Company · Bahir Dar
             </motion.p>
@@ -46,7 +46,7 @@ export default function Hero() {
             >
               Software That
               <br />
-              <span className="text-gold-light">Illuminates.</span>
+              <span className="text-gold">Illuminates.</span>
             </motion.h1>
             <motion.p
               {...fadeUp(0.4)}
@@ -62,13 +62,13 @@ export default function Hero() {
             >
               <button
                 onClick={() => scrollTo('#products')}
-                className="bg-gold-light text-black font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold transition-colors"
+                className="bg-gold text-white font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm"
               >
                 See Our Work
               </button>
               <button
                 onClick={() => scrollTo('#contact')}
-                className="border border-gold-light text-gold-light font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold-light/10 transition-colors"
+                className="border-2 border-gold text-gold-dark font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold/8 transition-colors"
               >
                 Start a Project
               </button>
@@ -85,7 +85,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
     </section>
   )
 }

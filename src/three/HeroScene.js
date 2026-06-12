@@ -16,9 +16,9 @@ export function initHeroScene(canvas) {
 
   const geo = new THREE.IcosahedronGeometry(1.6, 1)
   const wireMat = new THREE.MeshStandardMaterial({
-    color: 0xf5a623,
-    emissive: 0xa86a10,
-    emissiveIntensity: 0.4,
+    color: 0xc47a12,
+    emissive: 0x8f5509,
+    emissiveIntensity: 0.35,
     wireframe: true,
   })
   const orb = new THREE.Mesh(geo, wireMat)
@@ -26,17 +26,17 @@ export function initHeroScene(canvas) {
 
   const innerGeo = new THREE.IcosahedronGeometry(1.4, 1)
   const innerMat = new THREE.MeshStandardMaterial({
-    color: 0x1a0f00,
-    emissive: 0xd4891a,
-    emissiveIntensity: 0.08,
+    color: 0xfff8ee,
+    emissive: 0xc47a12,
+    emissiveIntensity: 0.15,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.75,
   })
   const innerOrb = new THREE.Mesh(innerGeo, innerMat)
   scene.add(innerOrb)
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.3))
-  const pointLight = new THREE.PointLight(0xf5a623, 2, 10)
+  scene.add(new THREE.AmbientLight(0xfff5e6, 0.6))
+  const pointLight = new THREE.PointLight(0xf0a830, 2.5, 10)
   pointLight.position.set(3, 3, 3)
   scene.add(pointLight)
 
@@ -48,10 +48,10 @@ export function initHeroScene(canvas) {
   const particleGeo = new THREE.BufferGeometry()
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   const particleMat = new THREE.PointsMaterial({
-    color: 0xf5a623,
-    size: 0.03,
+    color: 0xc47a12,
+    size: 0.035,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.55,
   })
   const particles = new THREE.Points(particleGeo, particleMat)
   scene.add(particles)

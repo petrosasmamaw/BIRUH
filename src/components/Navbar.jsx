@@ -38,14 +38,14 @@ export default function Navbar() {
         transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
           scrolled
-            ? 'bg-black/80 border-b border-gold/20'
+            ? 'bg-white/85 shadow-sm border-b border-gold/25'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
-            <span className="font-mono text-gold-light text-xl font-bold">ብሩህ</span>
-            <span className="font-mono text-white text-xl tracking-widest">BIRUH</span>
+            <span className="font-mono text-gold text-xl font-bold">ብሩህ</span>
+            <span className="font-mono text-text-primary text-xl tracking-widest">BIRUH</span>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -53,14 +53,14 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-text-secondary hover:text-gold-light transition-colors text-sm font-medium"
+                className="text-text-secondary hover:text-gold transition-colors text-sm font-medium"
               >
                 {link.label}
               </button>
             ))}
             <button
               onClick={() => handleNavClick('#contact')}
-              className="bg-gold-light text-black font-semibold px-5 py-2 rounded-full text-sm hover:bg-gold transition-colors"
+              className="bg-gold text-white font-semibold px-5 py-2 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm"
             >
               Start a Project
             </button>
@@ -83,7 +83,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 z-50 md:hidden"
+              className="fixed inset-0 bg-text-primary/20 z-50 md:hidden"
               onClick={() => setMenuOpen(false)}
             />
             <motion.div
@@ -91,12 +91,12 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-surface z-50 md:hidden flex flex-col p-6 border-l border-gold/20"
+              className="fixed top-0 right-0 bottom-0 w-72 bg-white z-50 md:hidden flex flex-col p-6 border-l border-border shadow-2xl"
             >
               <div className="flex justify-between items-center mb-8">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-gold-light text-lg font-bold">ብሩህ</span>
-                  <span className="font-mono text-white text-lg tracking-widest">BIRUH</span>
+                  <span className="font-mono text-gold text-lg font-bold">ብሩህ</span>
+                  <span className="font-mono text-text-primary text-lg tracking-widest">BIRUH</span>
                 </div>
                 <button onClick={() => setMenuOpen(false)} aria-label="Close menu">
                   <X size={24} className="text-text-primary" />
@@ -107,14 +107,14 @@ export default function Navbar() {
                   <button
                     key={link.href}
                     onClick={() => handleNavClick(link.href)}
-                    className="text-text-primary text-lg text-left hover:text-gold-light transition-colors"
+                    className="text-text-primary text-lg text-left hover:text-gold transition-colors"
                   >
                     {link.label}
                   </button>
                 ))}
                 <button
                   onClick={() => handleNavClick('#contact')}
-                  className="bg-gold-light text-black font-semibold px-5 py-3 rounded-full text-sm mt-4"
+                  className="bg-gold text-white font-semibold px-5 py-3 rounded-full text-sm mt-4"
                 >
                   Start a Project
                 </button>

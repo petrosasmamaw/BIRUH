@@ -24,13 +24,13 @@ const connectLinks = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-surface border-t border-gold/10">
+    <footer id="contact" className="bg-surface-muted border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-mono text-gold-light text-xl font-bold">ብሩህ</span>
-              <span className="font-mono text-white text-xl tracking-widest">BIRUH</span>
+              <span className="font-mono text-gold text-xl font-bold">ብሩህ</span>
+              <span className="font-mono text-text-primary text-xl tracking-widest">BIRUH</span>
             </div>
             <p className="text-text-secondary text-sm mb-4 italic">
               &ldquo;Software that illuminates.&rdquo;
@@ -38,17 +38,17 @@ export default function Footer() {
             <p className="text-text-secondary text-sm mb-1">Bahir Dar, Ethiopia</p>
             <a
               href="mailto:asmamawpetros@gmail.com"
-              className="text-gold-light text-sm hover:underline block mb-1"
+              className="text-gold text-sm hover:underline block mb-1"
             >
               asmamawpetros@gmail.com
             </a>
-            <a href="tel:+25189886956" className="text-text-secondary text-sm hover:text-gold-light transition-colors">
+            <a href="tel:+25189886956" className="text-text-secondary text-sm hover:text-gold transition-colors">
               +251 89886956
             </a>
           </div>
 
           <div>
-            <h4 className="font-mono text-gold-light text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
               Services
             </h4>
             <ul className="space-y-2">
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-gold-light text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
               Products
             </h4>
             <ul className="space-y-2">
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-gold-light text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
               Connect
             </h4>
             <ul className="space-y-2">
@@ -88,7 +88,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-text-secondary text-sm hover:text-gold-light transition-colors"
+                    className="text-text-secondary text-sm hover:text-gold transition-colors"
                   >
                     {link.label}
                   </a>
@@ -99,7 +99,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/5 py-6 text-center">
+      <div className="border-t border-border py-6 text-center">
         <p className="font-mono text-gold text-xs">
           © 2025 BIRUH · Made in Ethiopia 🇪🇹
         </p>

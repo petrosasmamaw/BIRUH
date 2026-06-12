@@ -18,7 +18,7 @@ function CountUp({ value, suffix = '' }) {
   }, [isInView, value])
 
   return (
-    <span ref={ref} className="font-display text-5xl sm:text-6xl font-bold text-gold-light">
+    <span ref={ref} className="font-display text-5xl sm:text-6xl font-bold text-gold">
       {count}{suffix}
     </span>
   )
@@ -50,8 +50,8 @@ const pillars = [
 
 export default function WhyBiruh() {
   return (
-    <section className="py-20 sm:py-28 bg-surface relative overflow-hidden ethiopian-cross-bg">
-      <div className="absolute inset-0 bg-surface/95" />
+    <section className="py-20 sm:py-28 bg-surface-muted relative overflow-hidden ethiopian-cross-bg">
+      <div className="absolute inset-0 bg-surface-muted/92" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -72,7 +72,7 @@ export default function WhyBiruh() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  className="border-l-2 border-gold/40 pl-6"
+                  className="border-l-2 border-gold/50 pl-6 bg-white/60 rounded-r-lg py-2"
                 >
                   <h3 className="font-display text-xl sm:text-2xl font-bold text-text-primary mb-2">
                     {pillar.title}

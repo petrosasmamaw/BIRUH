@@ -74,10 +74,10 @@ export default function Services() {
                 variants={staggerItem}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="bg-surface border-t-2 border-gold rounded-lg p-5 sm:p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(245,166,35,0.15)] hover:border-gold-light"
+                className="bg-surface border border-border border-t-2 border-t-gold rounded-xl p-5 sm:p-6 shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-gold/40"
                 style={{ transition: 'transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease' }}
               >
-                <Icon className="text-gold-light mb-4" size={28} />
+                <Icon className="text-gold mb-4" size={28} />
                 <h3 className="text-text-primary font-semibold text-sm sm:text-base mb-2">
                   {service.title}
                 </h3>

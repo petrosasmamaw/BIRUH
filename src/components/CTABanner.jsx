@@ -11,10 +11,10 @@ export default function CTABanner() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, rgba(212,137,26,0.15) 0%, transparent 60%)',
+          background: 'linear-gradient(135deg, rgba(240,168,48,0.2) 0%, rgba(250,246,240,0) 60%)',
         }}
       />
-      <div className="light-ray-bloom opacity-40" />
+      <div className="light-ray-bloom opacity-60" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div {...scrollAnimationProps}>
@@ -29,13 +29,13 @@ export default function CTABanner() {
           <div className="flex flex-wrap justify-center gap-4">
             <button
               onClick={() => scrollTo('#contact')}
-              className="bg-gold-light text-black font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold transition-colors inline-flex items-center gap-2"
+              className="bg-gold text-white font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm inline-flex items-center gap-2"
             >
               Start a Project →
             </button>
             <button
               onClick={() => scrollTo('#products')}
-              className="border border-gold-light text-gold-light font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold-light/10 transition-colors"
+              className="border-2 border-gold text-gold-dark font-semibold px-6 py-3 rounded-full text-sm hover:bg-gold/8 transition-colors"
             >
               View Our Work
             </button>
