@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+:root {
+  --color-gold-light: #F5A623;
+  --color-gold: #D4891A;
+  --color-gold-dark: #A86A10;
+  --color-bg: #0A0A0A;
+  --color-surface: #111111;
+  --color-surface-elevated: #161616;
+  --color-text-primary: #F0EDE6;
+  --color-text-secondary: #9A9080;
+  --color-success: #2DBE6C;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Golden light-ray bloom */
+.light-ray-bloom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.light-ray-bloom::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background:
+    conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(245, 166, 35, 0.08) 10deg,
+      transparent 20deg,
+      rgba(212, 137, 26, 0.12) 40deg,
+      transparent 50deg,
+      rgba(245, 166, 35, 0.06) 70deg,
+      transparent 80deg,
+      rgba(212, 137, 26, 0.1) 100deg,
+      transparent 110deg,
+      rgba(245, 166, 35, 0.07) 140deg,
+      transparent 150deg,
+      rgba(212, 137, 26, 0.09) 180deg,
+      transparent 190deg,
+      rgba(245, 166, 35, 0.08) 220deg,
+      transparent 230deg,
+      rgba(212, 137, 26, 0.11) 260deg,
+      transparent 270deg,
+      rgba(245, 166, 35, 0.06) 300deg,
+      transparent 310deg,
+      rgba(212, 137, 26, 0.08) 340deg,
+      transparent 360deg
+    );
+  mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 0%, transparent 70%);
+}
+
+.light-ray-bloom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.25) 0%, rgba(212, 137, 26, 0.08) 40%, transparent 70%);
+  filter: blur(20px);
+}
+
+/* Ethiopian cross watermark */
+.ethiopian-cross-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23D4891A' stroke-width='1' opacity='0.15'%3E%3Crect x='35' y='10' width='10' height='60' rx='1'/%3E%3Crect x='10' y='35' width='60' height='10' rx='1'/%3E%3Crect x='22' y='22' width='36' height='36' rx='1' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
