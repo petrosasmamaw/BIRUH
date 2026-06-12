@@ -23,13 +23,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      {/* Golden glow — right side only, fades to white; polygon canvas unchanged */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute top-0 right-0 bottom-0 w-[58%] pointer-events-none hidden lg:block"
         style={{
-          background: 'radial-gradient(ellipse 70% 60% at 70% 45%, rgba(240,168,48,0.22) 0%, rgba(196,122,18,0.06) 50%, transparent 75%)',
+          background: 'linear-gradient(270deg, rgba(255,255,255,0.4) 0%, rgba(255,252,247,0.15) 40%, transparent 100%)',
         }}
       />
-      <div className="light-ray-bloom opacity-90" />
+      <div className="hero-light-bloom" aria-hidden="true" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-4 items-center min-h-[calc(100vh-5rem)]">
@@ -75,10 +76,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="order-2 lg:order-2 relative h-[40vh] lg:h-[70vh]">
+          <div className="order-2 lg:order-2 relative h-[40vh] lg:h-[70vh] z-10">
             <canvas
               ref={canvasRef}
-              className="w-full h-full"
+              className="w-full h-full relative z-10"
               style={{ background: 'transparent' }}
             />
           </div>
