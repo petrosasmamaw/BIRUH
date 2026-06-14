@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import Navbar from './components/Navbar'
 import BottomNav from './components/BottomNav'
 import Hero from './components/Hero'
+import MarqueeStrip from './components/MarqueeStrip'
 import Services from './components/Services'
 import WhyBiruh from './components/WhyBiruh'
 import Products from './components/Products'
@@ -24,10 +25,11 @@ function App() {
       <ScrollFlowLayer sectionRefs={sectionRefs} />
       <Navbar />
       <BottomNav />
-      <main className="relative z-10 pt-14 lg:pt-16 max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))]">
+      <main className="relative z-10 pt-[4.25rem] lg:pt-[5.25rem] max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))]">
         <div ref={setRef(0)} data-section="home" className="flow-section-bg">
           <Hero />
         </div>
+        <MarqueeStrip />
         <div ref={setRef(1)} id="services" className="flow-section-bg">
           <Services />
         </div>

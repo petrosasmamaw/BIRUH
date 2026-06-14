@@ -22,11 +22,11 @@ export default function ScrollFlowLayer({ sectionRefs }) {
     sceneRef.current?.setFlowTarget(flow.x, flow.y, flow.scale)
 
     const scale = isMobile
-      ? 0.75 + flow.glowScale * 0.35
-      : 0.88 + flow.glowScale * 0.48
+      ? 0.5 + flow.glowScale * 0.22
+      : 0.52 + flow.glowScale * 0.28
     const opacity = isMobile
-      ? 0.35 + flow.scale * 0.2
-      : 0.4 + flow.scale * 0.18
+      ? 0.28 + flow.scale * 0.18
+      : 0.32 + flow.scale * 0.16
     const transform = `translate(-50%, -50%) scale(${scale})`
 
     if (glowWrapRef.current) {
