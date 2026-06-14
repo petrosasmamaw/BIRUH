@@ -40,10 +40,10 @@ export default function Navbar() {
     <motion.nav
       initial={false}
       animate={{ y: 0, opacity: 1 }}
-      className={`top-navbar top-navbar--floating ${scrolled ? 'top-navbar--scrolled' : ''}`}
+      className={`top-navbar top-navbar--dock ${scrolled ? 'top-navbar--scrolled' : ''}`}
       aria-label="Main navigation"
     >
-      <div className="top-navbar__pill">
+      <div className="top-navbar__dock">
         <a
           href="#"
           className="top-navbar__brand"
@@ -52,6 +52,7 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
         >
+          <span className="top-navbar__logo-mark" aria-hidden="true" />
           <span className="font-mono text-gold text-base sm:text-lg font-bold">ብሩህ</span>
           <span className="font-mono text-text-primary text-base sm:text-lg tracking-widest">
             BIRUH
