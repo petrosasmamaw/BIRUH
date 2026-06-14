@@ -8,11 +8,11 @@ const serviceLinks = [
 ]
 
 const productLinks = [
-  'Whaatachi',
-  'yebuna.com',
-  'Biruh LMS',
-  'Qandil AI',
-  'Hospital Hub',
+  { label: 'Whaatachi', href: null },
+  { label: 'yebuna.com', href: null },
+  { label: 'Biruh LMS', href: 'https://lms-three-lake-48.vercel.app' },
+  { label: 'Qandil AI', href: null },
+  { label: 'Hospital Hub', href: null },
 ]
 
 const connectLinks = [
@@ -68,10 +68,21 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               {productLinks.map((link) => (
-                <li key={link}>
-                  <span className="text-text-secondary text-sm hover:text-text-primary transition-colors cursor-pointer">
-                    {link}
-                  </span>
+                <li key={link.label}>
+                  {link.href ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-secondary text-sm hover:text-gold transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <span className="text-text-secondary text-sm hover:text-text-primary transition-colors cursor-pointer">
+                      {link.label}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
