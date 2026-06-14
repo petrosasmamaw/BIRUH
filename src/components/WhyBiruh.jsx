@@ -25,9 +25,9 @@ function CountUp({ value, suffix = '' }) {
 }
 
 const stats = [
-  { value: 5, suffix: '+', label: 'Years building in Ethiopia' },
-  { value: 20, suffix: '+', label: 'Products delivered' },
-  { value: 100, suffix: '%', label: 'Local understanding' },
+  { value: 5, suffix: '+', context: 'Years', label: 'building in Ethiopia' },
+  { value: 8, suffix: '', context: 'Products', label: 'in our portfolio' },
+  { value: 3, suffix: '', context: 'Sectors', label: 'education · health · enterprise' },
 ]
 
 const pillars = [
@@ -56,28 +56,27 @@ export default function WhyBiruh() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="space-y-10">
               {stats.map((stat) => (
-                <div key={stat.label}>
+                <div key={stat.context}>
                   <CountUp value={stat.value} suffix={stat.suffix} />
-                  <p className="text-text-secondary mt-2 text-sm sm:text-base">{stat.label}</p>
+                  <p className="font-mono text-xs uppercase tracking-widest text-gold mt-2">
+                    {stat.context}
+                  </p>
+                  <p className="text-text-secondary mt-1 text-sm sm:text-base">{stat.label}</p>
                 </div>
               ))}
             </div>
 
             <div className="space-y-8">
-              {pillars.map((pillar, i) => (
-                <motion.div
+              {pillars.map((pillar) => (
+                <div
                   key={pillar.title}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.15 }}
-                  viewport={{ once: true, margin: '-50px' }}
                   className="glass-card border-l-2 border-gold/50 pl-6 rounded-r-xl py-3"
                 >
                   <h3 className="font-display text-xl sm:text-2xl font-bold text-text-primary mb-2">
                     {pillar.title}
                   </h3>
                   <p className="text-text-secondary leading-relaxed">{pillar.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

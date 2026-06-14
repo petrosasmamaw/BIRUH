@@ -10,6 +10,7 @@ export default function CTABanner() {
     <div className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div {...scrollAnimationProps} className="glass-panel rounded-2xl p-8 sm:p-12">
+          <p className="font-mono text-gold text-xs uppercase tracking-widest mb-3">Get Started</p>
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4 leading-tight">
             Ready to illuminate
             <br />

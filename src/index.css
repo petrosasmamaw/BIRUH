@@ -232,12 +232,12 @@ h1, h2, h3, h4 {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 252, 247, 0.75) 0%,
-    rgba(240, 168, 48, 0.22) 38%,
-    rgba(196, 122, 18, 0.1) 58%,
-    transparent 74%
+    rgba(255, 253, 248, 0.55) 0%,
+    rgba(245, 232, 210, 0.18) 35%,
+    rgba(232, 201, 146, 0.08) 55%,
+    transparent 72%
   );
-  filter: blur(20px);
+  filter: blur(24px);
 }
 
 .scroll-flow-glow-core {
@@ -246,17 +246,17 @@ h1, h2, h3, h4 {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 248, 235, 0.5) 45%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 248, 235, 0.35) 45%,
     transparent 75%
   );
-  filter: blur(10px);
-  animation: scroll-flow-core-pulse 4s ease-in-out infinite;
+  filter: blur(14px);
+  animation: scroll-flow-core-pulse 5s ease-in-out infinite;
 }
 
 @keyframes scroll-flow-core-pulse {
-  0%, 100% { opacity: 0.85; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.04); }
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.03); }
 }
 
 /* Top navbar — always fixed, portaled to body */
@@ -408,6 +408,19 @@ h1, h2, h3, h4 {
   border: 1px solid rgba(196, 122, 18, 0.15);
 }
 
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 122, 18, 0.12);
+  box-shadow: 0 2px 16px rgba(196, 122, 18, 0.05);
+}
+
+.footer-minimal {
+  background: rgba(255, 252, 247, 0.92);
+  border-top: 1px solid rgba(229, 221, 208, 0.9);
+}
+
 .flow-section-bg,
 .flow-section-bg-alt {
   background: transparent;
@@ -417,6 +430,113 @@ h1, h2, h3, h4 {
 
 .flow-section-bg-alt {
   background: rgba(245, 239, 230, 0.08);
+}
+
+/* Infinite marquee */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left var(--marquee-duration, 35s) linear infinite;
+}
+
+.marquee[data-direction='right'] .marquee__track {
+  animation-name: marquee-right;
+}
+
+.marquee--pause-hover:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-right: 1rem;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.hero-marquee--products .hero-marquee__product {
+  flex-shrink: 0;
+  width: 88px;
+  height: 56px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(196, 122, 18, 0.18);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 12px rgba(196, 122, 18, 0.08);
+}
+
+.hero-marquee--products .hero-marquee__product img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hero-marquee--tech .marquee__group {
+  gap: 0.75rem;
+}
+
+.hero-marquee__tech {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.4rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(196, 122, 18, 0.14);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.hero-marquee__tech-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.hero-marquee__tech-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(196, 122, 18, 0.45);
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-marquee--products .hero-marquee__product {
+    width: 104px;
+    height: 64px;
+  }
 }
 
 /* Ethiopian cross watermark */
@@ -433,6 +553,10 @@ h1, h2, h3, h4 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
   }
 
   .scroll-flow-layer {

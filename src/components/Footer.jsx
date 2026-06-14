@@ -1,3 +1,5 @@
+import { socialLinks } from '../data/siteContent'
+
 const serviceLinks = [
   'Custom Software',
   'AI Solutions',
@@ -18,17 +20,10 @@ const productLinks = [
   { label: 'Food Delivery', href: null },
 ]
 
-const connectLinks = [
-  { label: 'GitHub', href: 'https://github.com' },
-  { label: 'LinkedIn', href: 'https://linkedin.com' },
-  { label: 'Upwork (5★ rated)', href: 'https://upwork.com' },
-  { label: 'Telegram', href: 'https://t.me' },
-]
-
 export default function Footer() {
   return (
-    <footer className="border-t border-gold/15 glass-panel rounded-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 pb-6 sm:pb-16">
+    <footer className="footer-minimal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -48,6 +43,19 @@ export default function Footer() {
             <a href="tel:+25189886956" className="text-text-secondary text-sm hover:text-gold transition-colors">
               +251 89886956
             </a>
+            <div className="flex flex-wrap gap-3 mt-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-text-secondary hover:text-gold transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
@@ -57,9 +65,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
                 <li key={link}>
-                  <span className="text-text-secondary text-sm hover:text-text-primary transition-colors cursor-pointer">
-                    {link}
-                  </span>
+                  <span className="text-text-secondary text-sm">{link}</span>
                 </li>
               ))}
             </ul>
@@ -82,9 +88,7 @@ export default function Footer() {
                       {link.label}
                     </a>
                   ) : (
-                    <span className="text-text-secondary text-sm hover:text-text-primary transition-colors cursor-pointer">
-                      {link.label}
-                    </span>
+                    <span className="text-text-secondary text-sm">{link.label}</span>
                   )}
                 </li>
               ))}
@@ -93,27 +97,24 @@ export default function Footer() {
 
           <div>
             <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
-              Connect
+              Contact
             </h4>
-            <ul className="space-y-2">
-              {connectLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-text-secondary text-sm hover:text-gold transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="text-text-secondary text-sm mb-3">
+              Reach us on WhatsApp, Telegram, or email — we reply fast.
+            </p>
+            <a
+              href={socialLinks[0].href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-gold text-white text-sm font-semibold hover:bg-gold-dark transition-colors"
+            >
+              Message on WhatsApp
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-border py-6 text-center">
+      <div className="border-t border-border py-5 text-center">
         <p className="font-mono text-gold text-xs">
           © 2025 BIRUH · Made in Ethiopia 🇪🇹
         </p>

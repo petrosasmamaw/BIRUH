@@ -1,10 +1,11 @@
 import * as THREE from 'three'
 
 const C = {
-  gold: 0xc47a12,
-  goldLight: 0xf0a830,
-  goldDark: 0x8f5509,
-  cream: 0xfff8ee,
+  gold: 0xe8c992,
+  goldLight: 0xf5e0b8,
+  goldSoft: 0xfaf3e4,
+  goldMuted: 0xd4b896,
+  cream: 0xfffdf8,
 }
 
 function createEdgePoly(geometry, color, opacity = 1) {
@@ -44,7 +45,7 @@ function createHudBrackets(size, arm, color) {
   ])
   const geo = new THREE.BufferGeometry()
   geo.setAttribute('position', new THREE.BufferAttribute(verts, 3))
-  const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.9 })
+  const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.45 })
   return { mesh: new THREE.LineSegments(geo, mat), geo, mat }
 }
 
@@ -57,29 +58,29 @@ function createBiruhLabel() {
   const draw = () => {
     ctx.clearRect(0, 0, 640, 320)
 
-    ctx.fillStyle = 'rgba(255, 252, 247, 0.94)'
+    ctx.fillStyle = 'rgba(255, 253, 248, 0.72)'
     ctx.fillRect(148, 58, 344, 204)
 
-    ctx.strokeStyle = '#C47A12'
-    ctx.lineWidth = 2.5
+    ctx.strokeStyle = 'rgba(212, 184, 150, 0.55)'
+    ctx.lineWidth = 1.5
     ctx.strokeRect(148, 58, 344, 204)
 
-    ctx.strokeStyle = 'rgba(240, 168, 48, 0.5)'
+    ctx.strokeStyle = 'rgba(245, 224, 184, 0.4)'
     ctx.lineWidth = 1
     ctx.strokeRect(156, 66, 328, 188)
 
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
 
-    ctx.fillStyle = '#8F5509'
+    ctx.fillStyle = 'rgba(180, 148, 100, 0.85)'
     ctx.font = '700 52px "Space Mono", ui-monospace, monospace'
     ctx.fillText('ብሩህ', 320, 128)
 
-    ctx.fillStyle = '#C47A12'
+    ctx.fillStyle = 'rgba(196, 160, 110, 0.9)'
     ctx.font = '700 58px "Space Mono", ui-monospace, monospace'
     ctx.fillText('B I R U H', 320, 200)
 
-    ctx.fillStyle = '#F0A830'
+    ctx.fillStyle = 'rgba(212, 184, 150, 0.75)'
     ctx.font = '400 18px "Space Mono", ui-monospace, monospace'
     ctx.fillText('SOFTWARE', 320, 238)
   }
@@ -116,20 +117,20 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   const polyGroup = new THREE.Group()
   flowGroup.add(polyGroup)
 
-  const outer = createEdgePoly(new THREE.IcosahedronGeometry(1.85, 0), C.gold, 0.95)
+  const outer = createEdgePoly(new THREE.IcosahedronGeometry(1.85, 0), C.goldMuted, 0.5)
   polyGroup.add(outer.mesh)
   disposables.push(outer.edges, outer.mat)
 
-  const mid = createEdgePoly(new THREE.IcosahedronGeometry(1.45, 0), C.goldLight, 0.7)
+  const mid = createEdgePoly(new THREE.IcosahedronGeometry(1.45, 0), C.gold, 0.38)
   polyGroup.add(mid.mesh)
   disposables.push(mid.edges, mid.mat)
 
-  const core = createEdgePoly(new THREE.OctahedronGeometry(0.95, 0), C.goldDark, 1)
+  const core = createEdgePoly(new THREE.OctahedronGeometry(0.95, 0), C.goldLight, 0.55)
   polyGroup.add(core.mesh)
   disposables.push(core.edges, core.mat)
 
-  const hexOuter = createHexRing(2.55, C.gold, 0.55)
-  const hexInner = createHexRing(2.15, C.goldLight, 0.4)
+  const hexOuter = createHexRing(2.55, C.gold, 0.22)
+  const hexInner = createHexRing(2.15, C.goldLight, 0.16)
   flowGroup.add(hexOuter.mesh, hexInner.mesh)
   disposables.push(hexOuter.geo, hexOuter.mat, hexInner.geo, hexInner.mat)
 
@@ -142,10 +143,13 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
-  scene.add(new THREE.AmbientLight(0xfff8ee, 0.9))
-  const keyLight = new THREE.PointLight(0xf0a830, 2.2, 16)
+  scene.add(new THREE.AmbientLight(0xfffdf8, 1))
+  const keyLight = new THREE.PointLight(0xf5e8d0, 1.1, 18)
   keyLight.position.set(1, 2, 5)
   scene.add(keyLight)
+  const fillLight = new THREE.PointLight(0xfff8ee, 0.6, 14)
+  fillLight.position.set(-2, -1, 4)
+  scene.add(fillLight)
 
   const particleCount = isMobile ? 28 : 72
   const positions = new Float32Array(particleCount * 3)
@@ -158,10 +162,10 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   const particleGeo = new THREE.BufferGeometry()
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   const particleMat = new THREE.PointsMaterial({
-    color: C.gold,
-    size: isMobile ? 0.04 : 0.028,
+    color: C.goldLight,
+    size: isMobile ? 0.035 : 0.024,
     transparent: true,
-    opacity: isMobile ? 0.45 : 0.35,
+    opacity: isMobile ? 0.28 : 0.2,
     sizeAttenuation: true,
   })
   const particles = new THREE.Points(particleGeo, particleMat)

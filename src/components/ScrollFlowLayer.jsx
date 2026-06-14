@@ -25,8 +25,8 @@ export default function ScrollFlowLayer({ sectionRefs }) {
       ? 0.75 + flow.glowScale * 0.35
       : 0.88 + flow.glowScale * 0.48
     const opacity = isMobile
-      ? 0.55 + flow.scale * 0.3
-      : 0.65 + flow.scale * 0.25
+      ? 0.35 + flow.scale * 0.2
+      : 0.4 + flow.scale * 0.18
     const transform = `translate(-50%, -50%) scale(${scale})`
 
     if (glowWrapRef.current) {
@@ -49,12 +49,12 @@ export default function ScrollFlowLayer({ sectionRefs }) {
         <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
           <polygon
             points="100,6 186,54 186,146 100,194 14,146 14,54"
-            stroke="rgba(196,122,18,0.45)"
-            strokeWidth="1.2"
+            stroke="rgba(212, 184, 150, 0.28)"
+            strokeWidth="1"
           />
           <polygon
             points="100,22 168,58 168,142 100,178 32,142 32,58"
-            stroke="rgba(240,168,48,0.28)"
+            stroke="rgba(245, 224, 184, 0.2)"
             strokeWidth="0.8"
             strokeDasharray="4 6"
           />

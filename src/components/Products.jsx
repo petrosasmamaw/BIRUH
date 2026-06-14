@@ -6,7 +6,6 @@ import { scrollAnimationProps } from '../hooks/useScrollAnimation'
 const products = [
   {
     name: 'Qandil AI',
-    accent: '#5B7FFF',
     description:
       'LLM-powered personalized learning platform with adaptive study paths, AI tutoring, and generative content for Ethiopian students.',
     tags: [
@@ -21,11 +20,9 @@ const products = [
     ],
     images: ['/qandliai1.png'],
     status: 'Beta',
-    statusColor: 'bg-gold/15 text-gold-dark',
   },
   {
     name: 'Biruh LMS',
-    accent: '#2DBE6C',
     description:
       'Full learning platform for Ethiopian schools — courses, exams, video lessons, Chapa payments, AI-generated content, QR attendance, and Cloudinary media hosting.',
     tags: [
@@ -45,69 +42,62 @@ const products = [
     images: ['/lms1.png', '/lms2.png', '/lms3.png', '/lms4.png'],
     url: 'https://lms-three-lake-48.vercel.app',
     status: 'Live',
-    statusColor: 'bg-success/20 text-success',
   },
   {
     name: 'Electric ERP',
-    accent: '#F59E0B',
     description:
       'Enterprise resource planning for Ethiopian electric utilities — billing, inventory, HR, and operations in one system.',
     tags: ['React', 'Express', 'Node.js', 'PostgreSQL', 'Redux Toolkit', 'Tailwind'],
     images: ['/electric%20erp.jpg'],
     status: 'Delivered',
-    statusColor: 'bg-text-secondary/20 text-text-secondary',
   },
   {
     name: 'Hospital Hub',
-    accent: '#A78BFA',
     description:
       'Hospital management ecosystem — admin, staff, and patient portals with records, scheduling, and media uploads.',
     tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
     images: ['/hospitalAdmin.png'],
     status: 'Delivered',
-    statusColor: 'bg-text-secondary/20 text-text-secondary',
   },
   {
     name: 'Room Reservation',
-    accent: '#06B6D4',
     description:
       'Smart room and venue booking system — availability, scheduling, payments, and admin dashboard for hotels and offices.',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Redux Toolkit'],
     images: ['/room.png'],
     status: 'Live',
-    statusColor: 'bg-success/20 text-success',
   },
   {
     name: 'Café Menu & Management',
-    accent: '#F5A623',
     description:
       'Digital QR menus, order tracking, and café management built for Ethiopian restaurants and coffee shops.',
     tags: ['React', 'Supabase', 'QR Code', 'Tailwind'],
     images: ['/cafe%20menu.png'],
     status: 'Live',
-    statusColor: 'bg-success/20 text-success',
   },
   {
     name: 'Perfume Shop',
-    accent: '#EC4899',
     description:
       'Online perfume store with product catalog, cart, checkout, and admin inventory — built for Ethiopian retail.',
     tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
     images: ['/perfume%20shop.jpg'],
     status: 'Live',
-    statusColor: 'bg-success/20 text-success',
   },
   {
     name: 'Food Delivery',
-    accent: '#EF4444',
     description:
       'Food ordering and delivery platform — browse restaurants, place orders, track delivery, and manage vendors.',
     tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Chapa Payments'],
     images: ['/food%20delivery.jpg'],
     status: 'Live',
-    statusColor: 'bg-success/20 text-success',
   },
 ]
+
+const statusStyles = {
+  Live: 'bg-success/15 text-success',
+  Beta: 'bg-gold/15 text-gold-dark',
+  Delivered: 'bg-text-secondary/15 text-text-secondary',
+}
 
 function ProductPreview({ product }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -118,7 +108,7 @@ function ProductPreview({ product }) {
         <img
           src={product.images[activeIndex]}
           alt={`${product.name} screenshot ${activeIndex + 1}`}
-          className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300"
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
         <div className="absolute inset-x-0 bottom-0 flex gap-1 p-2 bg-gradient-to-t from-black/40 to-transparent">
           {product.images.length > 1 &&
@@ -143,22 +133,11 @@ function ProductPreview({ product }) {
   }
 
   return (
-    <>
-      <div
-        className="w-16 h-24 rounded-lg border border-border shadow-md transform rotate-3 group-hover:rotate-0 transition-transform duration-300"
-        style={{
-          background: `linear-gradient(180deg, ${product.accent}25 0%, #FFFFFF 100%)`,
-        }}
-      />
-      <div
-        className="absolute w-20 h-28 rounded-lg border border-border -right-2 top-6 transform -rotate-6 opacity-60"
-        style={{ background: '#FAF6F0' }}
-      />
-    </>
+    <div className="w-16 h-24 rounded-lg border border-gold/20 bg-gradient-to-b from-gold/10 to-white shadow-sm" />
   )
 }
 
-function ProductCard({ product, index }) {
+function ProductCard({ product }) {
   const Wrapper = product.url ? 'a' : 'div'
   const wrapperProps = product.url
     ? {
@@ -169,68 +148,55 @@ function ProductCard({ product, index }) {
     : {}
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: '-50px' }}
-      className="flex-shrink-0 w-[min(85vw,300px)] sm:w-[300px] md:w-auto snap-center snap-always snap-start"
+    <Wrapper
+      {...wrapperProps}
+      className="block glass-card-light rounded-xl overflow-hidden cursor-pointer group border border-gold/15 h-full"
     >
-      <Wrapper
-        {...wrapperProps}
-        className="block glass-card rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 hover:border-gold/35 border border-border h-full"
+      <div className="h-1 bg-gold/35" />
+      <div
+        className={`h-32 sm:h-36 relative overflow-hidden ${
+          product.images?.length ? '' : 'flex items-center justify-center bg-surface-elevated'
+        }`}
       >
-        <div className="h-1.5" style={{ backgroundColor: product.accent }} />
-        <div
-          className={`h-32 sm:h-36 relative overflow-hidden ${
-            product.images?.length ? '' : 'flex items-center justify-center'
-          }`}
-          style={
-            product.images?.length
-              ? undefined
-              : {
-                  background: `linear-gradient(135deg, ${product.accent}18 0%, #FFFCF7 100%)`,
-                }
-          }
-        >
-          <ProductPreview product={product} />
-        </div>
-        <div className="p-5">
-          <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="font-semibold text-text-primary text-lg">{product.name}</h3>
-            <span
-              className={`font-mono text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${product.statusColor}`}
-            >
-              {product.status}
-            </span>
-          </div>
-          <p className="text-text-secondary text-sm mb-4 leading-relaxed">
-            {product.description}
-          </p>
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {product.tags.map((tag) => (
-              <span
-                key={tag}
-                      className="font-mono text-[10px] sm:text-xs text-text-secondary glass-tag px-2 py-1 rounded"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className="inline-flex items-center gap-1 text-gold text-sm font-medium group-hover:gap-2 transition-all">
-            {product.url ? (
-              <>
-                View Live <ExternalLink size={14} />
-              </>
-            ) : (
-              <>
-                View Project <ArrowRight size={14} />
-              </>
-            )}
+        <ProductPreview product={product} />
+      </div>
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <h3 className="font-semibold text-text-primary text-lg">{product.name}</h3>
+          <span
+            className={`font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap ${
+              statusStyles[product.status] || statusStyles.Delivered
+            }`}
+          >
+            {product.status}
           </span>
         </div>
-      </Wrapper>
-    </motion.div>
+        <p className="text-text-secondary text-sm mb-4 leading-relaxed">
+          {product.description}
+        </p>
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {product.tags.map((tag) => (
+            <span
+              key={tag}
+              className="font-mono text-[10px] sm:text-xs text-text-secondary glass-tag px-2 py-1 rounded"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <span className="inline-flex items-center gap-1 text-gold text-sm font-medium">
+          {product.url ? (
+            <>
+              View Live <ExternalLink size={14} />
+            </>
+          ) : (
+            <>
+              View Project <ArrowRight size={14} />
+            </>
+          )}
+        </span>
+      </div>
+    </Wrapper>
   )
 }
 
@@ -239,6 +205,7 @@ export default function Products() {
     <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
+          <p className="font-mono text-gold text-xs uppercase tracking-widest mb-3">Portfolio</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             Products We&apos;ve Built
           </h2>
@@ -247,11 +214,19 @@ export default function Products() {
           </p>
         </motion.div>
 
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory">
-          {products.map((product, i) => (
-            <ProductCard key={product.name} product={product} index={i} />
+        <motion.div
+          {...scrollAnimationProps}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory"
+        >
+          {products.map((product) => (
+            <div
+              key={product.name}
+              className="flex-shrink-0 w-[min(85vw,300px)] sm:w-[300px] md:w-auto snap-center snap-always snap-start"
+            >
+              <ProductCard product={product} />
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   )
