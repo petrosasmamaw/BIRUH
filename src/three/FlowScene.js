@@ -138,7 +138,7 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   disposables.push(brackets.geo, brackets.mat)
 
   const label = createBiruhLabel()
-  label.sprite.scale.set(isMobile ? 1.75 : 2.6, isMobile ? 0.88 : 1.3, 1)
+  label.sprite.scale.set(isMobile ? 1.2 : 1.75, isMobile ? 0.6 : 0.88, 1)
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
@@ -169,8 +169,8 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   disposables.push(particleGeo, particleMat)
 
   const mouseInfluence = isMobile ? 0.02 : 0.05
-  let target = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.78 : 1.15 }
-  let current = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.78 : 1.15 }
+  let target = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.44 : 0.62 }
+  let current = { x: isMobile ? 0 : 2, y: 0, scale: isMobile ? 0.44 : 0.62 }
   let mouseX = 0
   let mouseY = 0
   let time = 0

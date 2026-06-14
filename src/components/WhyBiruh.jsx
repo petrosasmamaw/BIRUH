@@ -51,9 +51,8 @@ const pillars = [
 export default function WhyBiruh() {
   return (
     <div className="py-14 sm:py-20 lg:py-28 relative overflow-hidden ethiopian-cross-bg">
-      <div className="absolute inset-0 bg-surface-muted/92" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps}>
+        <motion.div {...scrollAnimationProps} className="glass-panel rounded-2xl p-6 sm:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div className="space-y-10">
               {stats.map((stat) => (
@@ -72,7 +71,7 @@ export default function WhyBiruh() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  className="border-l-2 border-gold/50 pl-6 bg-white/60 rounded-r-lg py-2"
+                  className="glass-card border-l-2 border-gold/50 pl-6 rounded-r-xl py-3"
                 >
                   <h3 className="font-display text-xl sm:text-2xl font-bold text-text-primary mb-2">
                     {pillar.title}

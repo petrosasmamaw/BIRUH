@@ -8,11 +8,14 @@ const serviceLinks = [
 ]
 
 const productLinks = [
-  { label: 'Whaatachi', href: null },
-  { label: 'yebuna.com', href: null },
-  { label: 'Biruh LMS', href: 'https://lms-three-lake-48.vercel.app' },
   { label: 'Qandil AI', href: null },
+  { label: 'Biruh LMS', href: 'https://lms-three-lake-48.vercel.app' },
+  { label: 'Electric ERP', href: null },
   { label: 'Hospital Hub', href: null },
+  { label: 'Room Reservation', href: null },
+  { label: 'Café Menu & Management', href: null },
+  { label: 'Perfume Shop', href: null },
+  { label: 'Food Delivery', href: null },
 ]
 
 const connectLinks = [
@@ -24,7 +27,7 @@ const connectLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-gold/15 glass-panel rounded-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 pb-6 sm:pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>

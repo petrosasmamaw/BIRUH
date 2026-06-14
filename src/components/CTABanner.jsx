@@ -8,15 +8,8 @@ export default function CTABanner() {
 
   return (
     <div className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, rgba(240,168,48,0.2) 0%, rgba(250,246,240,0) 60%)',
-        }}
-      />
-
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div {...scrollAnimationProps}>
+        <motion.div {...scrollAnimationProps} className="glass-panel rounded-2xl p-8 sm:p-12">
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4 leading-tight">
             Ready to illuminate
             <br />

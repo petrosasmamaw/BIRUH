@@ -10,27 +10,27 @@ function lerp(a, b, t) {
 }
 
 export const FLOW_WAYPOINTS_DESKTOP = [
-  { x: 1.85, y: 0, scale: 1.2, glowX: 72, glowY: 48, glowScale: 1.15 },
-  { x: 0.4, y: 1.1, scale: 1.08, glowX: 54, glowY: 30, glowScale: 1.05 },
-  { x: -1.75, y: 0.5, scale: 1.05, glowX: 26, glowY: 44, glowScale: 1.08 },
-  { x: 1.7, y: -0.35, scale: 1.08, glowX: 70, glowY: 54, glowScale: 1.05 },
-  { x: -1.55, y: -0.5, scale: 1.02, glowX: 24, glowY: 58, glowScale: 1.02 },
-  { x: 0, y: -1.0, scale: 0.98, glowX: 50, glowY: 66, glowScale: 1 },
-  { x: 1.35, y: 0.25, scale: 0.95, glowX: 64, glowY: 46, glowScale: 0.98 },
-  { x: 0, y: 0, scale: 0.92, glowX: 50, glowY: 50, glowScale: 1.1 },
-  { x: 0, y: 1.4, scale: 0.78, glowX: 50, glowY: 72, glowScale: 0.85 },
+  { x: 1.85, y: 0, scale: 0.62, glowX: 72, glowY: 48, glowScale: 0.72 },
+  { x: 0.4, y: 1.1, scale: 0.58, glowX: 54, glowY: 30, glowScale: 0.68 },
+  { x: -1.75, y: 0.5, scale: 0.56, glowX: 26, glowY: 44, glowScale: 0.7 },
+  { x: 1.7, y: -0.35, scale: 0.58, glowX: 70, glowY: 54, glowScale: 0.68 },
+  { x: -1.55, y: -0.5, scale: 0.54, glowX: 24, glowY: 58, glowScale: 0.65 },
+  { x: 0, y: -1.0, scale: 0.52, glowX: 50, glowY: 66, glowScale: 0.64 },
+  { x: 1.35, y: 0.25, scale: 0.5, glowX: 64, glowY: 46, glowScale: 0.62 },
+  { x: 0, y: 0, scale: 0.48, glowX: 50, glowY: 50, glowScale: 0.68 },
+  { x: 0, y: 1.4, scale: 0.42, glowX: 50, glowY: 72, glowScale: 0.58 },
 ]
 
 export const FLOW_WAYPOINTS_MOBILE = [
-  { x: 0, y: 0.6, scale: 0.78, glowX: 50, glowY: 32, glowScale: 0.9 },
-  { x: 0.35, y: 0.4, scale: 0.72, glowX: 58, glowY: 38, glowScale: 0.85 },
-  { x: -0.3, y: 0.35, scale: 0.7, glowX: 42, glowY: 40, glowScale: 0.85 },
-  { x: 0.4, y: 0.2, scale: 0.72, glowX: 55, glowY: 42, glowScale: 0.88 },
-  { x: -0.35, y: 0.15, scale: 0.68, glowX: 45, glowY: 44, glowScale: 0.82 },
-  { x: 0, y: 0, scale: 0.66, glowX: 50, glowY: 46, glowScale: 0.8 },
-  { x: 0.3, y: 0.1, scale: 0.64, glowX: 54, glowY: 43, glowScale: 0.8 },
-  { x: 0, y: -0.1, scale: 0.62, glowX: 50, glowY: 48, glowScale: 0.85 },
-  { x: 0, y: 0.5, scale: 0.55, glowX: 50, glowY: 55, glowScale: 0.75 },
+  { x: 0, y: 0.6, scale: 0.44, glowX: 50, glowY: 32, glowScale: 0.58 },
+  { x: 0.35, y: 0.4, scale: 0.42, glowX: 58, glowY: 38, glowScale: 0.55 },
+  { x: -0.3, y: 0.35, scale: 0.4, glowX: 42, glowY: 40, glowScale: 0.55 },
+  { x: 0.4, y: 0.2, scale: 0.42, glowX: 55, glowY: 42, glowScale: 0.56 },
+  { x: -0.35, y: 0.15, scale: 0.38, glowX: 45, glowY: 44, glowScale: 0.52 },
+  { x: 0, y: 0, scale: 0.38, glowX: 50, glowY: 46, glowScale: 0.52 },
+  { x: 0.3, y: 0.1, scale: 0.36, glowX: 54, glowY: 43, glowScale: 0.5 },
+  { x: 0, y: -0.1, scale: 0.35, glowX: 50, glowY: 48, glowScale: 0.54 },
+  { x: 0, y: 0.5, scale: 0.32, glowX: 50, glowY: 55, glowScale: 0.48 },
 ]
 
 export function interpolateFlow(phase, waypoints = FLOW_WAYPOINTS_DESKTOP) {

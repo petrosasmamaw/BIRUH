@@ -5,20 +5,23 @@ import { scrollAnimationProps } from '../hooks/useScrollAnimation'
 
 const products = [
   {
-    name: 'Whaatachi',
-    accent: '#E91E8C',
-    description: 'Ethiopian dating & relationship app with smart matching',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    status: 'Live',
-    statusColor: 'bg-success/20 text-success',
-  },
-  {
-    name: 'yebuna.com',
-    accent: '#F5A623',
-    description: 'QR-based digital café menu platform for Ethiopian restaurants',
-    tags: ['React', 'Supabase'],
-    status: 'Live',
-    statusColor: 'bg-success/20 text-success',
+    name: 'Qandil AI',
+    accent: '#5B7FFF',
+    description:
+      'LLM-powered personalized learning platform with adaptive study paths, AI tutoring, and generative content for Ethiopian students.',
+    tags: [
+      'React',
+      'Express',
+      'Node.js',
+      'MongoDB',
+      'AI Integration',
+      'Generative AI',
+      'Redux Toolkit',
+      'Tailwind',
+    ],
+    images: ['/qandliai1.png'],
+    status: 'Beta',
+    statusColor: 'bg-gold/15 text-gold-dark',
   },
   {
     name: 'Biruh LMS',
@@ -45,20 +48,64 @@ const products = [
     statusColor: 'bg-success/20 text-success',
   },
   {
-    name: 'Qandil AI',
-    accent: '#5B7FFF',
-    description: 'LLM-powered personalized learning platform',
-    tags: ['React', 'Gemini API'],
-    status: 'Beta',
-    statusColor: 'bg-gold/15 text-gold-dark',
+    name: 'Electric ERP',
+    accent: '#F59E0B',
+    description:
+      'Enterprise resource planning for Ethiopian electric utilities — billing, inventory, HR, and operations in one system.',
+    tags: ['React', 'Express', 'Node.js', 'PostgreSQL', 'Redux Toolkit', 'Tailwind'],
+    images: ['/electric%20erp.jpg'],
+    status: 'Delivered',
+    statusColor: 'bg-text-secondary/20 text-text-secondary',
   },
   {
     name: 'Hospital Hub',
     accent: '#A78BFA',
-    description: 'Hospital management ecosystem — 3 portals for staff, patients, admin',
-    tags: ['MERN Stack'],
+    description:
+      'Hospital management ecosystem — admin, staff, and patient portals with records, scheduling, and media uploads.',
+    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
+    images: ['/hospitalAdmin.png'],
     status: 'Delivered',
     statusColor: 'bg-text-secondary/20 text-text-secondary',
+  },
+  {
+    name: 'Room Reservation',
+    accent: '#06B6D4',
+    description:
+      'Smart room and venue booking system — availability, scheduling, payments, and admin dashboard for hotels and offices.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Redux Toolkit'],
+    images: ['/room.png'],
+    status: 'Live',
+    statusColor: 'bg-success/20 text-success',
+  },
+  {
+    name: 'Café Menu & Management',
+    accent: '#F5A623',
+    description:
+      'Digital QR menus, order tracking, and café management built for Ethiopian restaurants and coffee shops.',
+    tags: ['React', 'Supabase', 'QR Code', 'Tailwind'],
+    images: ['/cafe%20menu.png'],
+    status: 'Live',
+    statusColor: 'bg-success/20 text-success',
+  },
+  {
+    name: 'Perfume Shop',
+    accent: '#EC4899',
+    description:
+      'Online perfume store with product catalog, cart, checkout, and admin inventory — built for Ethiopian retail.',
+    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
+    images: ['/perfume%20shop.jpg'],
+    status: 'Live',
+    statusColor: 'bg-success/20 text-success',
+  },
+  {
+    name: 'Food Delivery',
+    accent: '#EF4444',
+    description:
+      'Food ordering and delivery platform — browse restaurants, place orders, track delivery, and manage vendors.',
+    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Chapa Payments'],
+    images: ['/food%20delivery.jpg'],
+    status: 'Live',
+    statusColor: 'bg-success/20 text-success',
   },
 ]
 
@@ -74,21 +121,22 @@ function ProductPreview({ product }) {
           className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-300"
         />
         <div className="absolute inset-x-0 bottom-0 flex gap-1 p-2 bg-gradient-to-t from-black/40 to-transparent">
-          {product.images.map((src, idx) => (
-            <button
-              key={src}
-              type="button"
-              onClick={(e) => {
-                e.preventDefault()
-                e.stopPropagation()
-                setActiveIndex(idx)
-              }}
-              className={`flex-1 h-1 rounded-full transition-colors ${
-                idx === activeIndex ? 'bg-white' : 'bg-white/40'
-              }`}
-              aria-label={`Show screenshot ${idx + 1}`}
-            />
-          ))}
+          {product.images.length > 1 &&
+            product.images.map((src, idx) => (
+              <button
+                key={src}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setActiveIndex(idx)
+                }}
+                className={`flex-1 h-1 rounded-full transition-colors ${
+                  idx === activeIndex ? 'bg-white' : 'bg-white/40'
+                }`}
+                aria-label={`Show screenshot ${idx + 1}`}
+              />
+            ))}
         </div>
       </div>
     )
@@ -130,7 +178,7 @@ function ProductCard({ product, index }) {
     >
       <Wrapper
         {...wrapperProps}
-        className="block bg-surface rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 shadow-card hover:shadow-card-hover border border-border h-full"
+        className="block glass-card rounded-xl overflow-hidden cursor-pointer group hover:-translate-y-1 transition-transform duration-300 hover:border-gold/35 border border-border h-full"
       >
         <div className="h-1.5" style={{ backgroundColor: product.accent }} />
         <div
@@ -163,7 +211,7 @@ function ProductCard({ product, index }) {
             {product.tags.map((tag) => (
               <span
                 key={tag}
-                className="font-mono text-[10px] sm:text-xs text-text-secondary bg-surface-muted px-2 py-1 rounded border border-border"
+                      className="font-mono text-[10px] sm:text-xs text-text-secondary glass-tag px-2 py-1 rounded"
               >
                 {tag}
               </span>
@@ -190,7 +238,7 @@ export default function Products() {
   return (
     <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-14">
+        <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             Products We&apos;ve Built
           </h2>

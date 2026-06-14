@@ -51,7 +51,7 @@ export default function Services() {
   return (
     <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-14">
+        <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             What We Build
           </h2>
@@ -75,7 +75,7 @@ export default function Services() {
                 variants={staggerItem}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="bg-surface border border-border border-t-2 border-t-gold rounded-xl p-5 sm:p-6 shadow-card transition-all duration-300 hover:shadow-card-hover hover:border-gold/40"
+                className="glass-card border-t-2 border-t-gold rounded-xl p-5 sm:p-6 transition-all duration-300 hover:border-gold/40 hover:shadow-[0_8px_32px_rgba(196,122,18,0.12)]"
                 style={{ transition: 'transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease' }}
               >
                 <Icon className="text-gold mb-4" size={28} />

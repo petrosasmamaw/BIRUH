@@ -207,8 +207,8 @@ h1, h2, h3, h4 {
 
 .scroll-flow-glow-wrap {
   position: absolute;
-  width: min(640px, 62vw);
-  height: min(640px, 62vw);
+  width: min(420px, 42vw);
+  height: min(420px, 42vw);
   left: 72%;
   top: 48%;
   transform: translate(-50%, -50%);
@@ -217,8 +217,8 @@ h1, h2, h3, h4 {
 
 .scroll-flow-tech-frame {
   position: absolute;
-  width: min(580px, 58vw);
-  height: min(580px, 58vw);
+  width: min(380px, 38vw);
+  height: min(380px, 38vw);
   left: 72%;
   top: 48%;
   transform: translate(-50%, -50%);
@@ -374,50 +374,49 @@ h1, h2, h3, h4 {
     height: min(360px, 94vw);
   }
 
-  .flow-section-bg {
-    background: linear-gradient(
-      180deg,
-      rgba(250, 246, 240, 0.45) 0%,
-      rgba(250, 246, 240, 0.9) 18%,
-      rgba(250, 246, 240, 0.94) 55%,
-      rgba(250, 246, 240, 0.9) 82%,
-      rgba(250, 246, 240, 0.45) 100%
-    );
+  .flow-section-bg,
+  .flow-section-bg-alt {
+    background: transparent;
   }
 
   .flow-section-bg-alt {
-    background: linear-gradient(
-      180deg,
-      rgba(245, 239, 230, 0.45) 0%,
-      rgba(245, 239, 230, 0.9) 18%,
-      rgba(245, 239, 230, 0.94) 55%,
-      rgba(245, 239, 230, 0.9) 82%,
-      rgba(245, 239, 230, 0.45) 100%
-    );
+    background: rgba(245, 239, 230, 0.06);
   }
 }
 
-/* Section backgrounds — transparent edges so BIRUH gold flow shines through */
-.flow-section-bg {
-  background: linear-gradient(
-    90deg,
-    rgba(250, 246, 240, 0.38) 0%,
-    rgba(250, 246, 240, 0.82) 14%,
-    rgba(250, 246, 240, 0.9) 50%,
-    rgba(250, 246, 240, 0.82) 86%,
-    rgba(250, 246, 240, 0.38) 100%
-  );
+/* Glass morphism — see polygon flow through content */
+.glass-panel {
+  background: rgba(255, 252, 247, 0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(196, 122, 18, 0.22);
+  box-shadow: 0 8px 32px rgba(196, 122, 18, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(196, 122, 18, 0.2);
+  box-shadow: 0 4px 24px rgba(196, 122, 18, 0.06);
+}
+
+.glass-tag {
+  background: rgba(255, 252, 247, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 122, 18, 0.15);
+}
+
+.flow-section-bg,
+.flow-section-bg-alt {
+  background: transparent;
+  border-top: 1px solid rgba(196, 122, 18, 0.1);
+  border-bottom: 1px solid rgba(196, 122, 18, 0.1);
 }
 
 .flow-section-bg-alt {
-  background: linear-gradient(
-    90deg,
-    rgba(245, 239, 230, 0.38) 0%,
-    rgba(245, 239, 230, 0.82) 14%,
-    rgba(245, 239, 230, 0.9) 50%,
-    rgba(245, 239, 230, 0.82) 86%,
-    rgba(245, 239, 230, 0.38) 100%
-  );
+  background: rgba(245, 239, 230, 0.08);
 }
 
 /* Ethiopian cross watermark */
