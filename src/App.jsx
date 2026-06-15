@@ -4,7 +4,7 @@ import BottomNav from './components/BottomNav'
 import Hero from './components/Hero'
 import MarqueeStrip from './components/MarqueeStrip'
 import Services from './components/Services'
-import WhyBiruh from './components/WhyBiruh'
+import WhyZihon from './components/WhyZihon'
 import Products from './components/Products'
 import WhoWeServe from './components/WhoWeServe'
 import Process from './components/Process'
@@ -34,7 +34,7 @@ function App() {
           <Services />
         </div>
         <div ref={setRef(2)} className="flow-section-bg-alt">
-          <WhyBiruh />
+          <WhyZihon />
         </div>
         <div ref={setRef(3)} id="products" className="flow-section-bg">
           <Products />

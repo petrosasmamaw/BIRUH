@@ -50,7 +50,7 @@ function createHudBrackets(size, arm, color) {
   return { mesh: new THREE.LineSegments(geo, mat), geo, mat }
 }
 
-function createBiruhLabel() {
+function createBrandLabel() {
   const canvas = document.createElement('canvas')
   canvas.width = 800
   canvas.height = 400
@@ -71,12 +71,12 @@ function createBiruhLabel() {
     ctx.textBaseline = 'middle'
 
     ctx.fillStyle = '#F5E0B8'
-    ctx.font = '700 52px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('ብሩህ', 400, 148)
+    ctx.font = '700 48px "Space Mono", ui-monospace, monospace'
+    ctx.fillText('Z I H O N', 400, 148)
 
     ctx.fillStyle = '#E8C992'
-    ctx.font = '700 58px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('B I R U H', 400, 218)
+    ctx.font = '700 54px "Space Mono", ui-monospace, monospace'
+    ctx.fillText('T E C H', 400, 218)
 
     ctx.fillStyle = 'rgba(245, 224, 184, 0.88)'
     ctx.font = '600 20px "Space Mono", ui-monospace, monospace'
@@ -137,7 +137,7 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   flowGroup.add(brackets.mesh)
   disposables.push(brackets.geo, brackets.mat)
 
-  const label = createBiruhLabel()
+  const label = createBrandLabel()
   label.sprite.scale.set(isMobile ? 1.3 : 1.8, isMobile ? 0.65 : 0.9, 1)
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)

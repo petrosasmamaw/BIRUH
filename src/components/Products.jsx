@@ -22,7 +22,7 @@ const products = [
     status: 'Beta',
   },
   {
-    name: 'Biruh LMS',
+    name: 'Zihon LMS',
     description:
       'Full learning platform for Ethiopian schools — courses, exams, video lessons, Chapa payments, AI-generated content, QR attendance, and Cloudinary media hosting.',
     tags: [

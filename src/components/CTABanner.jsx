@@ -12,7 +12,7 @@ export default function CTABanner() {
         <motion.div {...scrollAnimationProps} className="glass-panel rounded-2xl p-8 sm:p-12">
           <p className="font-mono text-gold text-xs uppercase tracking-widest mb-3">Get Started</p>
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4 leading-tight">
-            Ready to illuminate
+            Ready to innovate
             <br />
             your business?
           </h2>

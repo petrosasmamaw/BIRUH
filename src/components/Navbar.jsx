@@ -53,9 +53,8 @@ export default function Navbar() {
           }}
         >
           <span className="top-navbar__logo-mark" aria-hidden="true" />
-          <span className="font-mono text-gold text-base sm:text-lg font-bold">ብሩህ</span>
-          <span className="font-mono text-text-primary text-base sm:text-lg tracking-widest">
-            BIRUH
+          <span className="font-mono text-text-primary text-base sm:text-lg tracking-wide font-bold">
+            Zihon Tech
           </span>
         </a>
 

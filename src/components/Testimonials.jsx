@@ -4,7 +4,7 @@ import { scrollAnimationProps, staggerContainer, staggerItem } from '../hooks/us
 const testimonials = [
   {
     quote:
-      'Biruh built our entire café menu system in 2 weeks. Our customers love the QR code experience.',
+      'Zihon Tech built our entire café menu system in 2 weeks. Our customers love the QR code experience.',
     author: 'Café Owner, Bahir Dar',
   },
   {

@@ -35,7 +35,7 @@ export default function Hero() {
             >
               Software That
               <br />
-              <span className="text-gold">Illuminates.</span>
+              <span className="text-gold">Innovates.</span>
             </motion.h1>
             <motion.p
               {...fadeUp(0.4)}

@@ -2,7 +2,7 @@ export const heroProofLine = '8 products shipped · LMS live · AI in production
 
 export const productMarqueeImages = [
   { src: '/qandliai1.png', alt: 'Qandil AI' },
-  { src: '/lms1.png', alt: 'Biruh LMS' },
+  { src: '/lms1.png', alt: 'Zihon LMS' },
   { src: '/electric%20erp.jpg', alt: 'Electric ERP' },
   { src: '/hospitalAdmin.png', alt: 'Hospital Hub' },
   { src: '/room.png', alt: 'Room Reservation' },
@@ -38,12 +38,12 @@ export const socialLinks = [
   },
   {
     name: 'Telegram',
-    href: 'https://t.me/BiruhSoftware',
+    href: 'https://t.me/ZihonTech',
     label: 'Message on Telegram',
   },
   {
     name: 'Instagram',
-    href: 'https://instagram.com/biruh.software',
+    href: 'https://instagram.com/zihon.tech',
     label: 'Follow on Instagram',
   },
 ]
