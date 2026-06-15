@@ -52,7 +52,15 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
         >
-          <span className="top-navbar__logo-mark" aria-hidden="true" />
+          <img
+            src="/zihontech.png"
+            alt=""
+            className="top-navbar__logo-mark"
+            width={32}
+            height={32}
+            loading="eager"
+            decoding="async"
+          />
           <span className="font-mono text-text-primary text-base sm:text-lg tracking-wide font-bold">
             Zihon Tech
           </span>

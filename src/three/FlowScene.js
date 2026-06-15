@@ -50,54 +50,34 @@ function createHudBrackets(size, arm, color) {
   return { mesh: new THREE.LineSegments(geo, mat), geo, mat }
 }
 
-function createBrandLabel() {
-  const canvas = document.createElement('canvas')
-  canvas.width = 800
-  canvas.height = 400
-  const ctx = canvas.getContext('2d')
+const BRAND_IMAGE = '/zihontechcenter.png'
+// Original asset: 1254 × 631 px (used until texture loads)
+const BRAND_ASPECT = 1254 / 631
 
-  const draw = () => {
-    ctx.clearRect(0, 0, 800, 400)
+function applyBrandSpriteScale(sprite, width, aspect = BRAND_ASPECT) {
+  sprite.scale.set(width, width / aspect, 1)
+}
 
-    ctx.strokeStyle = 'rgba(245, 224, 184, 0.42)'
-    ctx.lineWidth = 1.5
-    ctx.strokeRect(180, 72, 440, 256)
+function createBrandLabel(isMobile) {
+  const width = isMobile ? 1.95 : 2.7
 
-    ctx.strokeStyle = 'rgba(232, 201, 146, 0.28)'
-    ctx.lineWidth = 1
-    ctx.strokeRect(192, 84, 416, 232)
-
-    ctx.textAlign = 'center'
-    ctx.textBaseline = 'middle'
-
-    ctx.fillStyle = '#F5E0B8'
-    ctx.font = '700 48px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('Z I H O N', 400, 148)
-
-    ctx.fillStyle = '#E8C992'
-    ctx.font = '700 54px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('T E C H', 400, 218)
-
-    ctx.fillStyle = 'rgba(245, 224, 184, 0.88)'
-    ctx.font = '600 20px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('SOFTWARE', 400, 278)
-  }
-
-  draw()
-  document.fonts?.ready?.then(draw)
-
-  const texture = new THREE.CanvasTexture(canvas)
-  texture.colorSpace = THREE.SRGBColorSpace
   const mat = new THREE.SpriteMaterial({
-    map: texture,
     transparent: true,
     depthWrite: false,
     opacity: 1,
   })
   const sprite = new THREE.Sprite(mat)
-  sprite.scale.set(1.7, 0.85, 1)
+  applyBrandSpriteScale(sprite, width)
 
-  return { sprite, texture, mat, canvas, redraw: draw }
+  const texture = new THREE.TextureLoader().load(BRAND_IMAGE, (loaded) => {
+    const img = loaded.image
+    if (!img?.width || !img?.height) return
+    applyBrandSpriteScale(sprite, width, img.width / img.height)
+  })
+  texture.colorSpace = THREE.SRGBColorSpace
+  mat.map = texture
+
+  return { sprite, texture, mat }
 }
 
 export function initFlowScene(canvas, { isMobile = false } = {}) {
@@ -137,8 +117,7 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   flowGroup.add(brackets.mesh)
   disposables.push(brackets.geo, brackets.mat)
 
-  const label = createBrandLabel()
-  label.sprite.scale.set(isMobile ? 1.3 : 1.8, isMobile ? 0.65 : 0.9, 1)
+  const label = createBrandLabel(isMobile)
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
@@ -230,8 +209,6 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
     camera.aspect = width / height
     camera.updateProjectionMatrix()
     renderer.setSize(width, height)
-    label.redraw()
-    label.texture.needsUpdate = true
   }
   onResize()
   window.addEventListener('resize', onResize)
