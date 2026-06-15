@@ -207,20 +207,20 @@ h1, h2, h3, h4 {
 
 .scroll-flow-glow-wrap {
   position: absolute;
-  width: min(280px, 26vw);
-  height: min(280px, 26vw);
+  width: min(400px, 36vw);
+  height: min(400px, 36vw);
   left: 72%;
-  top: 40%;
+  top: 42%;
   transform: translate(-50%, -50%);
   will-change: left, top, transform, opacity;
 }
 
 .scroll-flow-tech-frame {
   position: absolute;
-  width: min(250px, 24vw);
-  height: min(250px, 24vw);
+  width: min(360px, 34vw);
+  height: min(360px, 34vw);
   left: 72%;
-  top: 40%;
+  top: 42%;
   transform: translate(-50%, -50%);
   will-change: left, top, transform;
   pointer-events: none;
@@ -491,13 +491,13 @@ h1, h2, h3, h4 {
 /* Mobile — centered flow, bottom-nav safe area */
 @media (max-width: 1023px) {
   .scroll-flow-layer--mobile .scroll-flow-glow-wrap {
-    width: min(260px, 72vw);
-    height: min(260px, 72vw);
+    width: min(340px, 82vw);
+    height: min(340px, 82vw);
   }
 
   .scroll-flow-layer--mobile .scroll-flow-tech-frame {
-    width: min(240px, 74vw);
-    height: min(240px, 74vw);
+    width: min(320px, 84vw);
+    height: min(320px, 84vw);
   }
 
   .flow-section-bg,

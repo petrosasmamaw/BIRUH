@@ -3,8 +3,9 @@ import * as THREE from 'three'
 const C = {
   gold: 0xe8c992,
   goldLight: 0xf5e0b8,
-  goldSoft: 0xfaf3e4,
+  goldSoft: 0xfaf0dc,
   goldMuted: 0xd4b896,
+  goldDeep: 0xc47a12,
   cream: 0xfffdf8,
 }
 
@@ -45,44 +46,41 @@ function createHudBrackets(size, arm, color) {
   ])
   const geo = new THREE.BufferGeometry()
   geo.setAttribute('position', new THREE.BufferAttribute(verts, 3))
-  const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.45 })
+  const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.52 })
   return { mesh: new THREE.LineSegments(geo, mat), geo, mat }
 }
 
 function createBiruhLabel() {
   const canvas = document.createElement('canvas')
-  canvas.width = 640
-  canvas.height = 320
+  canvas.width = 800
+  canvas.height = 400
   const ctx = canvas.getContext('2d')
 
   const draw = () => {
-    ctx.clearRect(0, 0, 640, 320)
+    ctx.clearRect(0, 0, 800, 400)
 
-    ctx.fillStyle = 'rgba(255, 253, 248, 0.72)'
-    ctx.fillRect(148, 58, 344, 204)
-
-    ctx.strokeStyle = 'rgba(212, 184, 150, 0.55)'
+    ctx.strokeStyle = 'rgba(245, 224, 184, 0.42)'
     ctx.lineWidth = 1.5
-    ctx.strokeRect(148, 58, 344, 204)
+    ctx.strokeRect(180, 72, 440, 256)
 
-    ctx.strokeStyle = 'rgba(245, 224, 184, 0.4)'
+    ctx.strokeStyle = 'rgba(232, 201, 146, 0.28)'
     ctx.lineWidth = 1
-    ctx.strokeRect(156, 66, 328, 188)
+    ctx.strokeRect(192, 84, 416, 232)
 
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
 
-    ctx.fillStyle = 'rgba(180, 148, 100, 0.85)'
+    ctx.fillStyle = '#F5E0B8'
     ctx.font = '700 52px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('ብሩህ', 320, 128)
+    ctx.fillText('ብሩህ', 400, 148)
 
-    ctx.fillStyle = 'rgba(196, 160, 110, 0.9)'
+    ctx.fillStyle = '#E8C992'
     ctx.font = '700 58px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('B I R U H', 320, 200)
+    ctx.fillText('B I R U H', 400, 218)
 
-    ctx.fillStyle = 'rgba(212, 184, 150, 0.75)'
-    ctx.font = '400 18px "Space Mono", ui-monospace, monospace'
-    ctx.fillText('SOFTWARE', 320, 238)
+    ctx.fillStyle = 'rgba(245, 224, 184, 0.88)'
+    ctx.font = '600 20px "Space Mono", ui-monospace, monospace'
+    ctx.fillText('SOFTWARE', 400, 278)
   }
 
   draw()
@@ -94,9 +92,10 @@ function createBiruhLabel() {
     map: texture,
     transparent: true,
     depthWrite: false,
+    opacity: 1,
   })
   const sprite = new THREE.Sprite(mat)
-  sprite.scale.set(2.6, 1.3, 1)
+  sprite.scale.set(1.7, 0.85, 1)
 
   return { sprite, texture, mat, canvas, redraw: draw }
 }
@@ -117,20 +116,20 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   const polyGroup = new THREE.Group()
   flowGroup.add(polyGroup)
 
-  const outer = createEdgePoly(new THREE.IcosahedronGeometry(1.85, 0), C.goldMuted, 0.5)
+  const outer = createEdgePoly(new THREE.IcosahedronGeometry(1.85, 0), C.goldMuted, 0.72)
   polyGroup.add(outer.mesh)
   disposables.push(outer.edges, outer.mat)
 
-  const mid = createEdgePoly(new THREE.IcosahedronGeometry(1.45, 0), C.gold, 0.38)
+  const mid = createEdgePoly(new THREE.IcosahedronGeometry(1.45, 0), C.gold, 0.68)
   polyGroup.add(mid.mesh)
   disposables.push(mid.edges, mid.mat)
 
-  const core = createEdgePoly(new THREE.OctahedronGeometry(0.95, 0), C.goldLight, 0.55)
+  const core = createEdgePoly(new THREE.OctahedronGeometry(0.95, 0), C.goldLight, 0.75)
   polyGroup.add(core.mesh)
   disposables.push(core.edges, core.mat)
 
-  const hexOuter = createHexRing(2.55, C.gold, 0.22)
-  const hexInner = createHexRing(2.15, C.goldLight, 0.16)
+  const hexOuter = createHexRing(2.55, C.gold, 0.32)
+  const hexInner = createHexRing(2.15, C.goldLight, 0.26)
   flowGroup.add(hexOuter.mesh, hexInner.mesh)
   disposables.push(hexOuter.geo, hexOuter.mat, hexInner.geo, hexInner.mat)
 
@@ -139,7 +138,7 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   disposables.push(brackets.geo, brackets.mat)
 
   const label = createBiruhLabel()
-  label.sprite.scale.set(isMobile ? 0.85 : 1.15, isMobile ? 0.42 : 0.58, 1)
+  label.sprite.scale.set(isMobile ? 1.3 : 1.8, isMobile ? 0.65 : 0.9, 1)
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
@@ -163,9 +162,9 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
   const particleMat = new THREE.PointsMaterial({
     color: C.goldLight,
-    size: isMobile ? 0.035 : 0.024,
+    size: isMobile ? 0.04 : 0.028,
     transparent: true,
-    opacity: isMobile ? 0.28 : 0.2,
+    opacity: isMobile ? 0.45 : 0.38,
     sizeAttenuation: true,
   })
   const particles = new THREE.Points(particleGeo, particleMat)
@@ -173,8 +172,8 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   disposables.push(particleGeo, particleMat)
 
   const mouseInfluence = isMobile ? 0.02 : 0.05
-  let target = { x: isMobile ? 0 : 2, y: 0.15, scale: isMobile ? 0.3 : 0.38 }
-  let current = { x: isMobile ? 0 : 2, y: 0.15, scale: isMobile ? 0.3 : 0.38 }
+  let target = { x: isMobile ? 0 : 2, y: 0.15, scale: isMobile ? 0.42 : 0.56 }
+  let current = { x: isMobile ? 0 : 2, y: 0.15, scale: isMobile ? 0.42 : 0.56 }
   let mouseX = 0
   let mouseY = 0
   let time = 0
@@ -196,11 +195,11 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
     animationId = requestAnimationFrame(animate)
     time += 0.01
 
-    current.x += (target.x - current.x) * 0.085
-    current.y += (target.y - current.y) * 0.085
-    current.scale += (target.scale - current.scale) * 0.085
+    current.x += (target.x - current.x) * 0.048
+    current.y += (target.y - current.y) * 0.048
+    current.scale += (target.scale - current.scale) * 0.048
 
-    const floatY = Math.sin(time * 0.5) * 0.18
+    const floatY = Math.sin(time * 0.45) * 0.1
     flowGroup.position.set(current.x, current.y + floatY, 0)
     flowGroup.scale.setScalar(current.scale)
 
@@ -215,7 +214,7 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
     hexOuter.mesh.rotation.z += 0.002
     hexInner.mesh.rotation.z -= 0.003
 
-    label.sprite.position.z = 0.3
+    label.sprite.position.z = 0.55
 
     particles.position.x = current.x * 0.12
     particles.position.y = current.y * 0.12
