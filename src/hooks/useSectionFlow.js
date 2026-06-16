@@ -22,9 +22,9 @@ export const FLOW_WAYPOINTS_DESKTOP = [
 ]
 
 export const FLOW_WAYPOINTS_MOBILE = [
-  { x: 0, y: 0.6, scale: 0.42, glowX: 50, glowY: 34, glowScale: 0.54 },
-  { x: 0.35, y: 0.4, scale: 0.4, glowX: 58, glowY: 38, glowScale: 0.52 },
-  { x: -0.3, y: 0.35, scale: 0.38, glowX: 42, glowY: 40, glowScale: 0.52 },
+  { x: 0, y: -1.15, scale: 0.42, glowX: 50, glowY: 78, glowScale: 0.54 },
+  { x: 0.25, y: -0.75, scale: 0.4, glowX: 56, glowY: 70, glowScale: 0.52 },
+  { x: -0.25, y: -0.45, scale: 0.38, glowX: 44, glowY: 62, glowScale: 0.52 },
   { x: 0.4, y: 0.2, scale: 0.4, glowX: 55, glowY: 42, glowScale: 0.53 },
   { x: -0.35, y: 0.15, scale: 0.36, glowX: 45, glowY: 44, glowScale: 0.5 },
   { x: 0, y: 0, scale: 0.36, glowX: 50, glowY: 46, glowScale: 0.5 },
@@ -32,6 +32,11 @@ export const FLOW_WAYPOINTS_MOBILE = [
   { x: 0, y: -0.1, scale: 0.33, glowX: 50, glowY: 48, glowScale: 0.52 },
   { x: 0, y: 0.5, scale: 0.3, glowX: 50, glowY: 55, glowScale: 0.46 },
 ]
+
+function getWaypointsByViewport() {
+  if (typeof window === 'undefined') return FLOW_WAYPOINTS_DESKTOP
+  return window.innerWidth < 1024 ? FLOW_WAYPOINTS_MOBILE : FLOW_WAYPOINTS_DESKTOP
+}
 
 export function interpolateFlow(phase, waypoints = FLOW_WAYPOINTS_DESKTOP) {
   const max = waypoints.length - 1
@@ -54,7 +59,7 @@ export function interpolateFlow(phase, waypoints = FLOW_WAYPOINTS_DESKTOP) {
 }
 
 export function useSectionFlow(sectionRefs) {
-  const [flow, setFlow] = useState(() => interpolateFlow(0, FLOW_WAYPOINTS_DESKTOP))
+  const [flow, setFlow] = useState(() => interpolateFlow(0, getWaypointsByViewport()))
 
   const computeFlow = useCallback(() => {
     const refs = sectionRefs.current.filter(Boolean)
@@ -79,7 +84,7 @@ export function useSectionFlow(sectionRefs) {
       }
     }
 
-    const waypoints = window.innerWidth < 1024 ? FLOW_WAYPOINTS_MOBILE : FLOW_WAYPOINTS_DESKTOP
+    const waypoints = getWaypointsByViewport()
     setFlow(interpolateFlow(phase, waypoints))
   }, [sectionRefs])
 
