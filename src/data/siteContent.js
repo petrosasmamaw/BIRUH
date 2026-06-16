@@ -32,18 +32,18 @@ export const techStack = [
 
 export const socialLinks = [
   {
-    name: 'WhatsApp',
-    href: 'https://wa.me/25189886956',
-    label: 'Chat on WhatsApp',
-  },
-  {
     name: 'Telegram',
-    href: 'https://t.me/ZihonTech',
+    href: 'https://t.me/Nehemiah00',
     label: 'Message on Telegram',
   },
   {
     name: 'Instagram',
-    href: 'https://instagram.com/zihon.tech',
-    label: 'Follow on Instagram',
+    href: 'https://www.instagram.com/piter._rock?igsh=MXJhbjJ5bnZwMWhoYg==',
+    label: 'Visit on Instagram',
+  },
+  {
+    name: 'WhatsApp',
+    href: 'https://wa.me/251989886956',
+    label: 'Chat on WhatsApp',
   },
 ]
