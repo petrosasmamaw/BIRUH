@@ -33,7 +33,7 @@ function App() {
         <div ref={setRef(1)} id="services" className="flow-section-bg">
           <Services />
         </div>
-        <div ref={setRef(2)} className="flow-section-bg-alt">
+        <div ref={setRef(2)} id="about" className="flow-section-bg-alt">
           <WhyZihon />
         </div>
         <div ref={setRef(3)} id="products" className="flow-section-bg">
