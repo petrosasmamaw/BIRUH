@@ -53,7 +53,7 @@ export default function Navbar() {
           }}
         >
           <img
-            src="/zihontech.png"
+            src="/zihontech-logo.svg"
             alt=""
             className="top-navbar__logo-mark"
             width={32}
