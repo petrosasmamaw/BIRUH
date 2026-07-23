@@ -11,7 +11,7 @@ const serviceLinks = [
 
 const productLinks = [
   { label: 'Qandil AI', href: null },
-  { label: 'Zihon LMS', href: 'https://lms-three-lake-48.vercel.app' },
+  { label: 'Hareg LMS', href: 'https://lms-three-lake-48.vercel.app' },
   { label: 'Electric ERP', href: null },
   { label: 'Hospital Hub', href: null },
   { label: 'Room Reservation', href: null },
@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="font-mono text-text-primary text-xl tracking-wide font-bold">Zihon Tech</span>
+              <span className="font-mono text-text-primary text-xl tracking-wide font-bold">Hareg Tech</span>
             </div>
             <p className="text-text-secondary text-sm mb-4 italic">
               &ldquo;Ethiopian technology, built with purpose.&rdquo;
@@ -115,7 +115,7 @@ export default function Footer() {
 
       <div className="border-t border-border py-5 text-center">
         <p className="font-mono text-gold text-xs">
-          © 2025 Zihon Tech · All rights reserved by Petros Asmamaw · Made in Ethiopia 🇪🇹
+          © 2025 Hareg Tech · All rights reserved by Petros Asmamaw · Made in Ethiopia 🇪🇹
         </p>
       </div>
     </footer>

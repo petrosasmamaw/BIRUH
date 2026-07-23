@@ -259,7 +259,7 @@ h1, h2, h3, h4 {
   50% { opacity: 0.75; transform: scale(1.03); }
 }
 
-/* Hanging tab navbar — Supaste-style dock with Zihon Tech colors */
+/* Hanging tab navbar — Supaste-style dock with Hareg Tech colors */
 .top-navbar {
   position: fixed;
   top: 0;
@@ -338,15 +338,15 @@ h1, h2, h3, h4 {
 }
 
 .top-navbar__logo-mark {
-  width: 2rem;
-  height: 1.7rem;
-  border-radius: 0.35rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.45rem;
   flex-shrink: 0;
   display: block;
   object-fit: contain;
   object-position: center;
-  background: transparent;
-  border: none;
+  background: #ffffff;
+  border: 1px solid rgba(62, 107, 21, 0.14);
   box-shadow: none;
 }
 
@@ -412,8 +412,8 @@ h1, h2, h3, h4 {
   }
 
   .top-navbar__logo-mark {
-    width: 2.35rem;
-    height: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 
   .top-navbar__cta {

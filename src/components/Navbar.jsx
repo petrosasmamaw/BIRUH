@@ -54,16 +54,16 @@ export default function Navbar() {
           }}
         >
           <img
-            src="/zihontech-logo.svg"
-            alt=""
+            src="/haregtech-mark.png?v=7"
+            alt="Hareg Tech"
             className="top-navbar__logo-mark"
-            width={32}
-            height={32}
+            width={40}
+            height={40}
             loading="eager"
             decoding="async"
           />
           <span className="font-mono text-text-primary text-base sm:text-lg tracking-wide font-bold">
-            Zihon Tech
+            Hareg Tech
           </span>
         </a>
 

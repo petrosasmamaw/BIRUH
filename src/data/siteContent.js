@@ -2,7 +2,7 @@ export const heroProofLine = '8 products shipped · LMS live · AI in production
 
 export const productMarqueeImages = [
   { src: '/qandliai1.png', alt: 'Qandil AI' },
-  { src: '/lms1.png', alt: 'Zihon LMS' },
+  { src: '/lms1.png', alt: 'Hareg LMS' },
   { src: '/electric%20erp.jpg', alt: 'Electric ERP' },
   { src: '/hospitalAdmin.png', alt: 'Hospital Hub' },
   { src: '/room.png', alt: 'Room Reservation' },

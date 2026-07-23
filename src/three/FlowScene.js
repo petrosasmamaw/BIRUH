@@ -50,16 +50,16 @@ function createHudBrackets(size, arm, color) {
   return { mesh: new THREE.LineSegments(geo, mat), geo, mat }
 }
 
-const BRAND_IMAGE = '/zihontechcenter.png'
-// Original asset: 1254 × 631 px (used until texture loads)
-const BRAND_ASPECT = 1254 / 631
+const BRAND_IMAGE = '/haregtechcenter.png'
+// Icon-only logo on white: 1200 × 700 (used until texture loads)
+const BRAND_ASPECT = 1200 / 700
 
 function applyBrandSpriteScale(sprite, width, aspect = BRAND_ASPECT) {
   sprite.scale.set(width, width / aspect, 1)
 }
 
 function createBrandLabel(isMobile) {
-  const width = isMobile ? 1.95 : 2.7
+  const width = isMobile ? 1.8 : 2.4
 
   const mat = new THREE.SpriteMaterial({
     transparent: true,
