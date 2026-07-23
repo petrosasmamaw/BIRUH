@@ -150,29 +150,54 @@ function buildRadialPoints(cfg, origin, radius, time) {
 }
 
 /**
- * Downward snake — stable sine path from seed to page bottom.
- * Ambient drift is tiny phase shift only (smooth, not random rebuild).
+ * Downward snake — grows with scroll, and always tree-sways (even when scroll stops).
  */
 function buildSnakePoints(cfg, origin, pageBottom, time) {
   const segs = 64
   const pts = []
   const travel = Math.max(120, pageBottom - origin.docY)
-  const drift = time * LAYER[cfg.layer].speed * 0.35
+  const layer = LAYER[cfg.layer]
+
+  // Continuous wind — always on, independent of scroll
+  const windA = Math.sin(time * layer.speed * 1.05 + cfg.phase) * layer.sway
+  const windB = Math.sin(time * layer.speed * 0.48 + cfg.phase * 1.6) * layer.sway * 0.55
+  const windC = Math.cos(time * layer.speed * 1.65 + cfg.phase * 0.7) * layer.sway * 0.3
 
   for (let i = 0; i <= segs; i++) {
     const t = i / segs
-    const docY = origin.docY + t * travel
-    // Envelope grows gently so early path stays near seed, then snakes wider
-    const envelope = Math.sin(t * Math.PI * 0.5) // 0→1 smooth
-    const wave =
-      Math.sin(t * Math.PI * 2 * cfg.freq + cfg.phase + drift) * cfg.amp * envelope
-    const secondary =
-      Math.sin(t * Math.PI * 2 * cfg.freq * 0.55 + cfg.phase * 1.3 + drift * 0.6) *
+    const tip = t * t // sway stronger farther from seed
+    const envelope = Math.sin(t * Math.PI * 0.5)
+
+    // Stable path shape (snake route down the page)
+    const baseWave =
+      Math.sin(t * Math.PI * 2 * cfg.freq + cfg.phase) * cfg.amp * envelope
+    const baseSecondary =
+      Math.sin(t * Math.PI * 2 * cfg.freq * 0.55 + cfg.phase * 1.3) *
       cfg.amp *
       0.28 *
       envelope
 
-    const docX = origin.docX + cfg.xBias * envelope + wave + secondary
+    // Tree-sway overlay — keeps moving when user stops scrolling
+    const swayX =
+      (windA * 22 + windB * 14 + windC * 9) * tip +
+      Math.sin(t * Math.PI * 2.4 + time * layer.speed * 1.2 + cfg.phase) *
+        (10 + cfg.amp * 0.12) *
+        tip
+    const swayY =
+      Math.sin(t * Math.PI * 1.6 + time * layer.speed * 0.9 + cfg.phase) * 6 * tip
+
+    // Soft tip curl at the end (like a tendril tip)
+    const curlT = Math.max(0, (t - 0.82) / 0.18)
+    const tipCurl =
+      Math.sin(time * layer.speed * 1.3 + cfg.phase + curlT * Math.PI * 2) *
+      12 *
+      curlT *
+      curlT
+
+    const docY = origin.docY + t * travel + swayY
+    const docX =
+      origin.docX + cfg.xBias * envelope + baseWave + baseSecondary + swayX + tipCurl
+
     pts.push({ x: docX, y: docY, docX, docY, t })
   }
   return pts
