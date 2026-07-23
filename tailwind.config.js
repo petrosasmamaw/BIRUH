@@ -4,14 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand tokens (named gold in components; values are Hareg forest green)
-        gold: {
+        // Primary — Hareg forest green (logo)
+        brand: {
           light: '#6FAF3C',
           DEFAULT: '#3E6B15',
           dark: '#25450C',
         },
-        accent: {
-          gold: '#C4A35A',
+        // Secondary — warm gold (borders, frames, soft accents)
+        gold: {
+          light: '#E8C992',
+          DEFAULT: '#C4A35A',
+          dark: '#8F7340',
         },
         surface: {
           DEFAULT: '#FFFFFF',
@@ -19,7 +22,7 @@ export default {
           muted: '#EEF2E8',
         },
         background: '#F6F5F0',
-        border: '#D5DDD0',
+        border: '#E2D9C8',
         'text-primary': '#152018',
         'text-secondary': '#4A5648',
         'text-muted': '#748074',
@@ -31,8 +34,8 @@ export default {
         mono: ['"Space Mono"', 'monospace'],
       },
       boxShadow: {
-        card: '0 4px 24px rgba(62, 107, 21, 0.08)',
-        'card-hover': '0 12px 40px rgba(62, 107, 21, 0.14)',
+        card: '0 4px 24px rgba(196, 163, 90, 0.12)',
+        'card-hover': '0 12px 40px rgba(62, 107, 21, 0.12)',
       },
     },
   },

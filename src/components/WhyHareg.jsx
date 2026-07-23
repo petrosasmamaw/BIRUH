@@ -18,7 +18,7 @@ function CountUp({ value, suffix = '' }) {
   }, [isInView, value])
 
   return (
-    <span ref={ref} className="font-display text-5xl sm:text-6xl font-bold text-gold">
+    <span ref={ref} className="font-display text-5xl sm:text-6xl font-bold text-brand">
       {count}{suffix}
     </span>
   )
@@ -58,7 +58,7 @@ export default function WhyHareg() {
               {stats.map((stat) => (
                 <div key={stat.context}>
                   <CountUp value={stat.value} suffix={stat.suffix} />
-                  <p className="font-mono text-xs uppercase tracking-widest text-gold mt-2">
+                  <p className="font-mono text-xs uppercase tracking-widest text-brand mt-2">
                     {stat.context}
                   </p>
                   <p className="text-text-secondary mt-1 text-sm sm:text-base">{stat.label}</p>

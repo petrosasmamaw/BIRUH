@@ -54,8 +54,8 @@ export default function WhoWeServe() {
                 variants={staggerItem}
                 className="glass-card border border-border rounded-xl p-6 sm:p-8 hover:border-gold/40 transition-all group"
               >
-                <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center mb-5 group-hover:bg-gold/20 transition-colors">
-                  <Icon className="text-gold" size={24} />
+                <div className="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center mb-5 group-hover:bg-brand/20 transition-colors">
+                  <Icon className="text-brand" size={24} />
                 </div>
                 <h3 className="font-display text-xl font-bold text-text-primary mb-3">
                   {segment.title}

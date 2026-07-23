@@ -88,12 +88,12 @@ export default function ScrollFlowLayer({ sectionRefs }) {
         <svg viewBox="0 0 200 200" className="w-full h-full" fill="none">
           <polygon
             points="100,6 186,54 186,146 100,194 14,146 14,54"
-            stroke="rgba(111, 175, 60, 0.42)"
+            stroke="rgba(196, 163, 90, 0.5)"
             strokeWidth="1.1"
           />
           <polygon
             points="100,22 168,58 168,142 100,178 32,142 32,58"
-            stroke="rgba(62, 107, 21, 0.28)"
+            stroke="rgba(62, 107, 21, 0.32)"
             strokeWidth="0.8"
             strokeDasharray="4 6"
           />

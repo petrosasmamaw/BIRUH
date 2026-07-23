@@ -95,7 +95,7 @@ const products = [
 
 const statusStyles = {
   Live: 'bg-success/15 text-success',
-  Beta: 'bg-gold/15 text-gold-dark',
+  Beta: 'bg-brand/15 text-brand-dark',
   Delivered: 'bg-text-secondary/15 text-text-secondary',
 }
 
@@ -133,7 +133,7 @@ function ProductPreview({ product }) {
   }
 
   return (
-    <div className="w-16 h-24 rounded-lg border border-gold/20 bg-gradient-to-b from-gold/10 to-white shadow-sm" />
+    <div className="w-16 h-24 rounded-lg border border-gold/20 bg-gradient-to-b from-brand/10 to-white shadow-sm" />
   )
 }
 
@@ -152,7 +152,7 @@ function ProductCard({ product }) {
       {...wrapperProps}
       className="block glass-card-light rounded-xl overflow-hidden cursor-pointer group border border-gold/15 h-full"
     >
-      <div className="h-1 bg-gold/35" />
+      <div className="h-1 bg-brand/35" />
       <div
         className={`h-32 sm:h-36 relative overflow-hidden ${
           product.images?.length ? '' : 'flex items-center justify-center bg-surface-elevated'
@@ -184,7 +184,7 @@ function ProductCard({ product }) {
             </span>
           ))}
         </div>
-        <span className="inline-flex items-center gap-1 text-gold text-sm font-medium">
+        <span className="inline-flex items-center gap-1 text-brand text-sm font-medium">
           {product.url ? (
             <>
               View Live <ExternalLink size={14} />
@@ -205,7 +205,7 @@ export default function Products() {
     <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
-          <p className="font-mono text-gold text-xs uppercase tracking-widest mb-3">Portfolio</p>
+          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Portfolio</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             Products We&apos;ve Built
           </h2>

@@ -52,10 +52,10 @@ export default function Process() {
                 className="relative"
               >
                 <div className="glass-card rounded-xl p-6 relative overflow-hidden border border-border hover:border-gold/35 transition-all">
-                  <span className="absolute -top-2 -right-1 font-mono text-6xl font-bold text-gold/10 select-none">
+                  <span className="absolute -top-2 -right-1 font-mono text-6xl font-bold text-brand/10 select-none">
                     {step.number}
                   </span>
-                  <span className="font-mono text-gold text-sm font-bold mb-3 block">
+                  <span className="font-mono text-brand text-sm font-bold mb-3 block">
                     {step.number}
                   </span>
                   <h3 className="font-display text-xl font-bold text-text-primary mb-3">

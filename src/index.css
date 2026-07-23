@@ -2,20 +2,22 @@
 @config "../tailwind.config.js";
 
 :root {
-  /* Hareg Tech — forest green + soft beige + crisp white */
-  --color-gold-light: #6FAF3C;
-  --color-gold: #3E6B15;
-  --color-gold-dark: #25450C;
+  /* Hareg Tech — green primary + gold secondary */
+  --color-brand-light: #6FAF3C;
+  --color-brand: #3E6B15;
+  --color-brand-dark: #25450C;
+  --color-gold-light: #E8C992;
+  --color-gold: #C4A35A;
+  --color-gold-dark: #8F7340;
   --color-bg: #F6F5F0;
   --color-bg-alt: #EEF2E8;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #FBFCFA;
-  --color-border: #D5DDD0;
+  --color-border: #E2D9C8;
   --color-text-primary: #152018;
   --color-text-secondary: #4A5648;
   --color-text-muted: #748074;
   --color-success: #3E6B15;
-  --color-accent-gold: #C4A35A;
 }
 
 * {
@@ -289,11 +291,11 @@ h1, h2, h3, h4 {
   background: var(--dock-bg);
   border-bottom-left-radius: 1.25rem;
   border-bottom-right-radius: 1.25rem;
-  border: 1px solid rgba(62, 107, 21, 0.28);
+  border: 1px solid rgba(196, 163, 90, 0.45);
   border-top: none;
   border-bottom-width: 1px;
-  border-bottom-color: rgba(62, 107, 21, 0.35);
-  box-shadow: 0 10px 28px rgba(62, 107, 21, 0.1);
+  border-bottom-color: rgba(196, 163, 90, 0.5);
+  box-shadow: 0 10px 28px rgba(196, 163, 90, 0.14);
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
@@ -324,9 +326,9 @@ h1, h2, h3, h4 {
 
 .top-navbar--scrolled .top-navbar__dock {
   --dock-bg: rgba(255, 255, 255, 0.98);
-  border-color: rgba(62, 107, 21, 0.38);
+  border-color: rgba(196, 163, 90, 0.55);
   border-top: none;
-  border-bottom-color: rgba(62, 107, 21, 0.45);
+  border-bottom-color: rgba(196, 163, 90, 0.6);
   box-shadow: 0 12px 32px rgba(26, 21, 16, 0.1);
 }
 
@@ -348,7 +350,7 @@ h1, h2, h3, h4 {
   object-fit: contain;
   object-position: center;
   background: #ffffff;
-  border: 1px solid rgba(62, 107, 21, 0.14);
+  border: 1px solid rgba(196, 163, 90, 0.28);
   box-shadow: none;
 }
 
@@ -376,7 +378,7 @@ h1, h2, h3, h4 {
 }
 
 .top-navbar__link:hover {
-  color: var(--color-gold);
+  color: var(--color-brand);
 }
 
 .top-navbar__cta {
@@ -390,17 +392,17 @@ h1, h2, h3, h4 {
   background: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
-  border: 1px solid rgba(62, 107, 21, 0.2);
+  border: 1px solid rgba(196, 163, 90, 0.35);
   box-shadow: 0 2px 10px rgba(26, 21, 16, 0.08);
   transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   white-space: nowrap;
 }
 
 .top-navbar__cta:hover {
-  color: var(--color-gold-dark);
+  color: var(--color-brand-dark);
   background: #fbfcfa;
-  border-color: rgba(62, 107, 21, 0.35);
-  box-shadow: 0 4px 14px rgba(62, 107, 21, 0.15);
+  border-color: rgba(196, 163, 90, 0.5);
+  box-shadow: 0 4px 14px rgba(196, 163, 90, 0.18);
 }
 
 @media (min-width: 1024px) {
@@ -482,7 +484,7 @@ h1, h2, h3, h4 {
   transform: translateX(-50%);
   width: 2rem;
   height: 2px;
-  background: var(--color-gold);
+  background: var(--color-brand);
   border-radius: 9999px;
 }
 
@@ -519,31 +521,31 @@ h1, h2, h3, h4 {
   background: rgba(255, 252, 247, 0.42);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(62, 107, 21, 0.22);
-  box-shadow: 0 8px 32px rgba(62, 107, 21, 0.08);
+  border: 1px solid rgba(196, 163, 90, 0.38);
+  box-shadow: 0 8px 32px rgba(196, 163, 90, 0.1);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.38);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(62, 107, 21, 0.2);
-  box-shadow: 0 4px 24px rgba(62, 107, 21, 0.06);
+  border: 1px solid rgba(196, 163, 90, 0.35);
+  box-shadow: 0 4px 24px rgba(196, 163, 90, 0.1);
 }
 
 .glass-tag {
   background: rgba(255, 252, 247, 0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(62, 107, 21, 0.15);
+  border: 1px solid rgba(196, 163, 90, 0.28);
 }
 
 .glass-card-light {
   background: rgba(255, 255, 255, 0.58);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(62, 107, 21, 0.12);
-  box-shadow: 0 2px 16px rgba(62, 107, 21, 0.05);
+  border: 1px solid rgba(196, 163, 90, 0.22);
+  box-shadow: 0 2px 16px rgba(196, 163, 90, 0.08);
 }
 
 .footer-minimal {
@@ -554,8 +556,8 @@ h1, h2, h3, h4 {
 .flow-section-bg,
 .flow-section-bg-alt {
   background: transparent;
-  border-top: 1px solid rgba(62, 107, 21, 0.1);
-  border-bottom: 1px solid rgba(62, 107, 21, 0.1);
+  border-top: 1px solid rgba(196, 163, 90, 0.18);
+  border-bottom: 1px solid rgba(196, 163, 90, 0.18);
 }
 
 .flow-section-bg-alt {
@@ -637,9 +639,9 @@ h1, h2, h3, h4 {
   height: 60px;
   border-radius: 0.5rem;
   overflow: hidden;
-  border: 1px solid rgba(62, 107, 21, 0.18);
+  border: 1px solid rgba(196, 163, 90, 0.32);
   background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 2px 10px rgba(62, 107, 21, 0.08);
+  box-shadow: 0 2px 10px rgba(196, 163, 90, 0.12);
 }
 
 .marquee-strip__row--products .marquee-strip__product img {
@@ -660,7 +662,7 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
   padding: 0.4rem 0.75rem;
   border-radius: 9999px;
-  border: 1px solid rgba(62, 107, 21, 0.14);
+  border: 1px solid rgba(196, 163, 90, 0.28);
   background: rgba(255, 255, 255, 0.55);
 }
 

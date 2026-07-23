@@ -40,7 +40,7 @@ export default function Services() {
     <div className="py-14 sm:py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
-          <p className="font-mono text-gold text-xs uppercase tracking-widest mb-3">Services</p>
+          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Services</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
             What We Build
           </h2>
@@ -60,7 +60,7 @@ export default function Services() {
                 key={service.title}
                 className="glass-card border-t-2 border-t-gold rounded-xl p-5 sm:p-6"
               >
-                <Icon className="text-gold mb-4" size={28} />
+                <Icon className="text-brand mb-4" size={28} />
                 <h3 className="text-text-primary font-semibold text-sm sm:text-base mb-2">
                   {service.title}
                 </h3>

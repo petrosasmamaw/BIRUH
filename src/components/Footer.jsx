@@ -35,11 +35,11 @@ export default function Footer() {
             <p className="text-text-secondary text-sm mb-1">Bahir Dar, Ethiopia</p>
             <a
               href="mailto:asmamawpetros@gmail.com"
-              className="text-gold text-sm hover:underline block mb-1"
+              className="text-brand text-sm hover:underline block mb-1"
             >
               asmamawpetros@gmail.com
             </a>
-            <a href="tel:+25189886956" className="text-text-secondary text-sm hover:text-gold transition-colors">
+            <a href="tel:+25189886956" className="text-text-secondary text-sm hover:text-brand transition-colors">
               +251 89886956
             </a>
             <div className="flex flex-wrap gap-3 mt-4">
@@ -49,7 +49,7 @@ export default function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-text-secondary hover:text-gold transition-colors"
+                  className="font-mono text-xs text-text-secondary hover:text-brand transition-colors"
                 >
                   {link.name}
                 </a>
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-brand text-xs uppercase tracking-widest mb-4">
               Services
             </h4>
             <ul className="space-y-2">
@@ -71,7 +71,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-brand text-xs uppercase tracking-widest mb-4">
               Products
             </h4>
             <ul className="space-y-2">
@@ -82,7 +82,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-text-secondary text-sm hover:text-gold transition-colors"
+                      className="text-text-secondary text-sm hover:text-brand transition-colors"
                     >
                       {link.label}
                     </a>
@@ -95,7 +95,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-mono text-gold text-xs uppercase tracking-widest mb-4">
+            <h4 className="font-mono text-brand text-xs uppercase tracking-widest mb-4">
               Contact
             </h4>
             <p className="text-text-secondary text-sm mb-3">
@@ -105,7 +105,7 @@ export default function Footer() {
               href={socialLinks[0].href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-gold text-white text-sm font-semibold hover:bg-gold-dark transition-colors"
+              className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brand-dark transition-colors"
             >
               Message on WhatsApp
             </a>
@@ -114,7 +114,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-border py-5 text-center">
-        <p className="font-mono text-gold text-xs">
+        <p className="font-mono text-brand text-xs">
           © 2025 Hareg Tech · All rights reserved by Petros Asmamaw · Made in Ethiopia 🇪🇹
         </p>
       </div>

@@ -25,7 +25,7 @@ export default function Hero() {
           <div className="order-1 w-full text-center lg:text-left lg:max-w-xl xl:max-w-2xl">
             <motion.p
               {...fadeUp(0.1)}
-              className="font-mono text-gold text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 font-medium"
+              className="font-mono text-brand text-xs sm:text-sm uppercase tracking-widest mb-3 sm:mb-4 font-medium"
             >
               Ethiopian Software · ETHIOPIA
             </motion.p>
@@ -35,7 +35,7 @@ export default function Hero() {
             >
               Software That
               <br />
-              <span className="text-gold">Innovates.</span>
+              <span className="text-brand">Innovates.</span>
             </motion.h1>
             <motion.p
               {...fadeUp(0.4)}
@@ -47,7 +47,7 @@ export default function Hero() {
             </motion.p>
             <motion.p
               {...fadeUp(0.48)}
-              className="font-mono text-[10px] sm:text-xs text-gold-dark/90 uppercase tracking-wider mb-5 sm:mb-6"
+              className="font-mono text-[10px] sm:text-xs text-brand-dark/90 uppercase tracking-wider mb-5 sm:mb-6"
             >
               {heroProofLine}
             </motion.p>
@@ -58,13 +58,13 @@ export default function Hero() {
             >
               <button
                 onClick={() => scrollTo('#products')}
-                className="w-full sm:w-auto bg-gold text-white font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-gold-dark transition-colors shadow-sm"
+                className="w-full sm:w-auto bg-brand text-white font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-brand-dark transition-colors shadow-sm"
               >
                 See Our Work
               </button>
               <button
                 onClick={() => scrollTo('#contact')}
-                className="w-full sm:w-auto border-2 border-gold text-gold-dark font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-gold/8 transition-colors"
+                className="w-full sm:w-auto border-2 border-gold text-brand-dark font-semibold px-6 py-2.5 rounded-full text-sm hover:bg-brand/8 transition-colors"
               >
                 Start a Project
               </button>
@@ -84,7 +84,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-gold/25 bg-white/50 text-text-secondary hover:text-gold hover:border-gold/45 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-gold/25 bg-white/50 text-text-secondary hover:text-brand hover:border-gold/45 transition-colors"
                 >
                   <img
                     src={socialIcons[link.name]}

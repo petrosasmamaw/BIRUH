@@ -42,7 +42,7 @@ export default function Testimonials() {
               variants={staggerItem}
               className="glass-card rounded-xl p-6 sm:p-8 border border-border relative"
             >
-              <span className="font-display text-6xl text-gold/30 leading-none absolute top-4 left-5 select-none">
+              <span className="font-display text-6xl text-brand/30 leading-none absolute top-4 left-5 select-none">
                 &ldquo;
               </span>
               <p className="text-text-primary leading-relaxed mb-6 pt-8 relative z-10">

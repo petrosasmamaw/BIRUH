@@ -60,12 +60,12 @@ export default function BottomNav() {
               )}
               <Icon
                 size={20}
-                className={isActive ? 'text-gold' : 'text-text-muted'}
+                className={isActive ? 'text-brand' : 'text-text-muted'}
                 strokeWidth={isActive ? 2.5 : 2}
               />
               <span
                 className={`font-mono text-[10px] tracking-wide ${
-                  isActive ? 'text-gold font-bold' : 'text-text-secondary'
+                  isActive ? 'text-brand font-bold' : 'text-text-secondary'
                 }`}
               >
                 {item.label}
