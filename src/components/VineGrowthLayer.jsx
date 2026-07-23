@@ -13,36 +13,37 @@ const COLORS = {
 const NODE_LABELS = ['Auth', 'API', 'Data', 'AI', 'LMS', 'ERP', 'Cloud', 'Pay']
 
 /**
- * Radial bloom — short curling tendrils in ALL directions from the seed.
- * Angles evenly cover a full circle (not only downward).
+ * Start-position bloom — larger visible curls in all directions around the seed.
+ * Fixed size (does NOT grow with scroll). Snakes handle downward growth.
  */
 const RADIAL = [
-  { id: 'r0', angle: -Math.PI / 2, len: 0.42, curls: 2.8, amp: 28, phase: 0.2, layer: 'front', width: 2.6 },
-  { id: 'r1', angle: -Math.PI / 2 + 0.7, len: 0.38, curls: 3.2, amp: 32, phase: 0.9, layer: 'mid', width: 2.0 },
-  { id: 'r2', angle: -Math.PI / 2 + 1.4, len: 0.4, curls: 2.4, amp: 26, phase: 1.5, layer: 'front', width: 2.4 },
-  { id: 'r3', angle: -Math.PI / 2 + 2.1, len: 0.36, curls: 3.5, amp: 30, phase: 2.1, layer: 'back', width: 1.4 },
-  { id: 'r4', angle: Math.PI / 2, len: 0.4, curls: 2.6, amp: 28, phase: 0.4, layer: 'mid', width: 1.9 },
-  { id: 'r5', angle: Math.PI / 2 + 0.75, len: 0.37, curls: 3.1, amp: 34, phase: 1.2, layer: 'front', width: 2.3 },
-  { id: 'r6', angle: Math.PI / 2 + 1.5, len: 0.39, curls: 2.9, amp: 27, phase: 2.6, layer: 'back', width: 1.35 },
-  { id: 'r7', angle: Math.PI / 2 + 2.2, len: 0.41, curls: 3.4, amp: 31, phase: 0.7, layer: 'mid', width: 1.85 },
+  { id: 'r0', angle: -Math.PI / 2, len: 0.78, curls: 3.4, amp: 22, coil: 2.4, coilR: 20, dir: 1, phase: 0.2, layer: 'front', width: 2.4 },
+  { id: 'r1', angle: -Math.PI / 2 + 0.72, len: 0.7, curls: 3.8, amp: 20, coil: 2.7, coilR: 18, dir: -1, phase: 0.9, layer: 'mid', width: 2.0 },
+  { id: 'r2', angle: -Math.PI / 2 + 1.45, len: 0.74, curls: 3.2, amp: 21, coil: 2.2, coilR: 19, dir: 1, phase: 1.5, layer: 'front', width: 2.25 },
+  { id: 'r3', angle: -Math.PI / 2 + 2.15, len: 0.66, curls: 4.0, amp: 18, coil: 2.9, coilR: 16, dir: -1, phase: 2.1, layer: 'back', width: 1.6 },
+  { id: 'r4', angle: Math.PI / 2, len: 0.72, curls: 3.5, amp: 21, coil: 2.5, coilR: 18, dir: 1, phase: 0.4, layer: 'mid', width: 1.95 },
+  { id: 'r5', angle: Math.PI / 2 + 0.78, len: 0.7, curls: 3.7, amp: 20, coil: 2.6, coilR: 18, dir: -1, phase: 1.2, layer: 'front', width: 2.15 },
+  { id: 'r6', angle: Math.PI / 2 + 1.52, len: 0.68, curls: 3.3, amp: 19, coil: 2.3, coilR: 17, dir: 1, phase: 2.6, layer: 'back', width: 1.55 },
+  { id: 'r7', angle: Math.PI / 2 + 2.25, len: 0.72, curls: 3.9, amp: 20, coil: 2.7, coilR: 18, dir: -1, phase: 0.7, layer: 'mid', width: 1.9 },
+  { id: 'r8', angle: 0.2, len: 0.64, curls: 3.6, amp: 18, coil: 2.5, coilR: 16, dir: 1, phase: 1.8, layer: 'back', width: 1.5 },
+  { id: 'r9', angle: Math.PI - 0.25, len: 0.64, curls: 3.5, amp: 18, coil: 2.4, coilR: 16, dir: -1, phase: 2.3, layer: 'mid', width: 1.55 },
 ]
 
 /**
- * Downward snake trunks — long stable paths that grow to page end on scroll.
- * Each has a fixed wave recipe so motion is smooth, not random.
+ * Downward snake trunks — only these grow with scroll to page end.
  */
 const SNAKES = [
-  { id: 's0', xBias: 0, amp: 70, freq: 1.15, phase: 0.0, layer: 'front', width: 3.4, nodes: 4 },
-  { id: 's1', xBias: -90, amp: 55, freq: 1.55, phase: 1.4, layer: 'mid', width: 2.3, nodes: 3 },
-  { id: 's2', xBias: 95, amp: 60, freq: 1.35, phase: 2.5, layer: 'mid', width: 2.1, nodes: 3 },
-  { id: 's3', xBias: -45, amp: 42, freq: 1.9, phase: 0.8, layer: 'back', width: 1.5, nodes: 2 },
-  { id: 's4', xBias: 50, amp: 48, freq: 1.7, phase: 3.1, layer: 'back', width: 1.45, nodes: 2 },
+  { id: 's0', xBias: 0, amp: 58, freq: 1.15, phase: 0.0, layer: 'front', width: 2.4, nodes: 4 },
+  { id: 's1', xBias: -80, amp: 46, freq: 1.55, phase: 1.4, layer: 'mid', width: 1.7, nodes: 3 },
+  { id: 's2', xBias: 85, amp: 50, freq: 1.35, phase: 2.5, layer: 'mid', width: 1.6, nodes: 3 },
+  { id: 's3', xBias: -40, amp: 36, freq: 1.9, phase: 0.8, layer: 'back', width: 1.15, nodes: 2 },
+  { id: 's4', xBias: 45, amp: 40, freq: 1.7, phase: 3.1, layer: 'back', width: 1.1, nodes: 2 },
 ]
 
 const LAYER = {
-  back: { opacity: 0.4, speed: 0.22 },
-  mid: { opacity: 0.78, speed: 0.38 },
-  front: { opacity: 1, speed: 0.52 },
+  back: { opacity: 0.55, speed: 0.55, sway: 0.7 },
+  mid: { opacity: 0.85, speed: 0.72, sway: 0.9 },
+  front: { opacity: 1, speed: 0.9, sway: 1.1 },
 }
 
 function prefersReducedMotion() {
@@ -76,32 +77,73 @@ function pointsToPath(pts) {
   return d
 }
 
-/** Radial bloom points — grow outward in the tendril's angle */
+/**
+ * Start tendrils — always sway like a tree in light wind (even when not scrolling).
+ * Soft stem bend + tip coil breathing; fixed length (no scroll growth).
+ */
 function buildRadialPoints(cfg, origin, radius, time) {
-  const segs = 28
+  const segs = 40
   const pts = []
-  const drift = time * LAYER[cfg.layer].speed
+  const layer = LAYER[cfg.layer]
   const cosA = Math.cos(cfg.angle)
   const sinA = Math.sin(cfg.angle)
   const perpX = -sinA
   const perpY = cosA
 
+  // Tree-sway: slow primary + softer secondary (always on)
+  const wind1 = Math.sin(time * layer.speed * 1.15 + cfg.phase) * layer.sway
+  const wind2 = Math.sin(time * layer.speed * 0.55 + cfg.phase * 1.7) * layer.sway * 0.45
+  const wind3 = Math.cos(time * layer.speed * 1.8 + cfg.phase * 0.6) * layer.sway * 0.25
+
   for (let i = 0; i <= segs; i++) {
     const t = i / segs
+    const tip = t * t // sway stronger toward tip (like real branches)
     const along = t * cfg.len * radius
-    const curl =
-      Math.sin(t * Math.PI * cfg.curls + cfg.phase + drift) *
+
+    // Base organic curl of the tendril shape
+    const shapeCurl =
+      Math.sin(t * Math.PI * cfg.curls * 0.5 + cfg.phase) *
       cfg.amp *
       Math.sin(t * Math.PI) *
-      (0.45 + t)
-    const tipSpiral =
-      Math.sin(t * Math.PI * cfg.curls * 1.6 + cfg.phase + drift * 0.8) *
-      (cfg.amp * 0.45) *
-      t *
-      t
+      (0.25 + t * 0.4)
 
-    const docX = origin.docX + cosA * along + perpX * (curl + tipSpiral)
-    const docY = origin.docY + sinA * along + perpY * (curl * 0.85 + tipSpiral * 0.5)
+    // Continuous wind sway — whole strand bends
+    const sway =
+      (wind1 * 16 + wind2 * 10 + wind3 * 7) * tip +
+      Math.sin(t * Math.PI * 2.2 + time * layer.speed + cfg.phase) * cfg.amp * 0.35 * tip
+
+    // Tip coil + slow breathing rotation
+    const coilStart = 0.38
+    const coilT = t <= coilStart ? 0 : (t - coilStart) / (1 - coilStart)
+    const coilEase = coilT * coilT * (3 - 2 * coilT)
+    const breathe = 1 + Math.sin(time * layer.speed * 1.4 + cfg.phase) * 0.12
+    const turns = cfg.coil * coilEase * coilEase
+    const spiralAng =
+      turns * Math.PI * 2 * cfg.dir + cfg.phase * 0.25 + time * layer.speed * 0.65 * cfg.dir
+    const spiralR =
+      cfg.coilR *
+      breathe *
+      Math.sin(coilEase * Math.PI) *
+      (0.3 + 0.7 * (1 - coilEase * 0.7))
+
+    const spiralX = Math.cos(spiralAng) * spiralR
+    const spiralY = Math.sin(spiralAng) * spiralR
+
+    const bend = shapeCurl + sway
+
+    const docX =
+      origin.docX +
+      cosA * along +
+      perpX * bend +
+      cosA * spiralX * 0.28 +
+      perpX * spiralY
+    const docY =
+      origin.docY +
+      sinA * along +
+      perpY * bend +
+      sinA * spiralX * 0.28 +
+      perpY * spiralY
+
     pts.push({ x: docX, y: docY, docX, docY, t })
   }
   return pts
@@ -233,18 +275,19 @@ export default function VineGrowthLayer() {
       if (leaves) leaves.setAttribute('transform', `translate(${seedX}, ${seedY})`)
 
       const pageBottom = pageH - 24
-      const radialRadius = Math.min(size.w, size.h) * 0.42
+      // Larger bloom around seed — fixed size, not scroll-grown
+      const radialRadius = Math.min(420, Math.min(size.w, size.h) * 0.48)
 
-      // --- Radial bloom (all directions) ---
       for (const cfg of RADIAL) {
         const el = getEl(`[data-tendril="${cfg.id}"]`)
         if (!el) continue
         const pts = toView(buildRadialPoints(cfg, origin, radialRadius, s.time), scrollY)
         el.setAttribute('d', pointsToPath(pts))
         const len = ensureLength(el, cfg.id)
-        // Radial fully drawn after brief intro; use growth of first 18% for draw-in
-        const radialDraw = reduced ? 1 : clamp(s.growth / 0.12 + (now > 1600 ? 1 : now / 1600), 0, 1)
+        // Draw-in once by time only (never grows with scroll)
+        const radialDraw = reduced ? 1 : clamp(now / 1200, 0, 1)
         if (len) el.style.strokeDashoffset = String(len * (1 - radialDraw))
+        el.style.opacity = '1'
       }
 
       // --- Downward snakes ---
@@ -453,9 +496,9 @@ export default function VineGrowthLayer() {
         </g>
 
         <g data-leaves transform={`translate(${origin.docX}, ${origin.docY})`}>
-          <ellipse cx="18" cy="-14" rx="5" ry="2.4" fill={COLORS.mid} transform="rotate(-35 18 -14)" opacity="0.85" />
-          <ellipse cx="-16" cy="10" rx="4.5" ry="2.1" fill={COLORS.front} transform="rotate(40 -16 10)" opacity="0.8" />
-          <ellipse cx="12" cy="22" rx="4" ry="1.8" fill={COLORS.tip} transform="rotate(-20 12 22)" opacity="0.75" />
+          <ellipse cx="14" cy="-11" rx="4" ry="1.7" fill={COLORS.mid} transform="rotate(-35 14 -11)" opacity="0.85" />
+          <ellipse cx="-12" cy="8" rx="3.5" ry="1.5" fill={COLORS.front} transform="rotate(40 -12 8)" opacity="0.8" />
+          <ellipse cx="10" cy="16" rx="3.2" ry="1.35" fill={COLORS.tip} transform="rotate(-20 10 16)" opacity="0.75" />
         </g>
 
         <circle

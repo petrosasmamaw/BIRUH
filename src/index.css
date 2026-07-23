@@ -210,6 +210,9 @@ h1, h2, h3, h4 {
 .vine-seed-logo {
   opacity: 0.95;
   filter: drop-shadow(0 2px 10px rgba(62, 107, 21, 0.18));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: vine-seed-breathe 4.5s ease-in-out infinite;
 }
 
 .vine-node-label {
@@ -231,8 +234,14 @@ h1, h2, h3, h4 {
   50% { opacity: 1; transform: scale(1.18); }
 }
 
+@keyframes vine-seed-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .vine-node-pulse {
+  .vine-node-pulse,
+  .vine-seed-logo {
     animation: none;
   }
 }
