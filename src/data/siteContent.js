@@ -18,7 +18,7 @@ export const techStack = [
   { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
   { name: 'Neon', label: true },
   { name: 'React', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
-  { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/1A1510' },
+  { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs/152018' },
   { name: 'Cloudinary', icon: 'https://cdn.simpleicons.org/cloudinary/3448C5' },
   { name: 'Redux', icon: 'https://cdn.simpleicons.org/redux/764ABC' },
   { name: 'Tailwind', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },

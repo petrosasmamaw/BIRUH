@@ -1,12 +1,12 @@
 import * as THREE from 'three'
 
 const C = {
-  gold: 0xe8c992,
-  goldLight: 0xf5e0b8,
-  goldSoft: 0xfaf0dc,
-  goldMuted: 0xd4b896,
-  goldDeep: 0xc47a12,
-  cream: 0xfffdf8,
+  gold: 0x7cb342,
+  goldLight: 0xa8c97a,
+  goldSoft: 0xd4e8b8,
+  goldMuted: 0x5a8a2e,
+  goldDeep: 0x3e6b15,
+  cream: 0xfbfcfa,
 }
 
 function createEdgePoly(geometry, color, opacity = 1) {
@@ -121,11 +121,11 @@ export function initFlowScene(canvas, { isMobile = false } = {}) {
   flowGroup.add(label.sprite)
   disposables.push(label.texture, label.mat)
 
-  scene.add(new THREE.AmbientLight(0xfffdf8, 1))
-  const keyLight = new THREE.PointLight(0xf5e8d0, 1.1, 18)
+  scene.add(new THREE.AmbientLight(0xfbfcfa, 1))
+  const keyLight = new THREE.PointLight(0xd4e8b8, 1.1, 18)
   keyLight.position.set(1, 2, 5)
   scene.add(keyLight)
-  const fillLight = new THREE.PointLight(0xfff8ee, 0.6, 14)
+  const fillLight = new THREE.PointLight(0xf5faf0, 0.6, 14)
   fillLight.position.set(-2, -1, 4)
   scene.add(fillLight)
 

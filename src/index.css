@@ -2,18 +2,20 @@
 @config "../tailwind.config.js";
 
 :root {
-  --color-gold-light: #F0A830;
-  --color-gold: #C47A12;
-  --color-gold-dark: #8F5509;
-  --color-bg: #FAF6F0;
-  --color-bg-alt: #F3EDE4;
+  /* Hareg Tech — forest green + soft beige + crisp white */
+  --color-gold-light: #6FAF3C;
+  --color-gold: #3E6B15;
+  --color-gold-dark: #25450C;
+  --color-bg: #F6F5F0;
+  --color-bg-alt: #EEF2E8;
   --color-surface: #FFFFFF;
-  --color-surface-elevated: #FFFCF7;
-  --color-border: #E5DDD0;
-  --color-text-primary: #1A1510;
-  --color-text-secondary: #5C5248;
-  --color-text-muted: #8A7E72;
-  --color-success: #1E9B57;
+  --color-surface-elevated: #FBFCFA;
+  --color-border: #D5DDD0;
+  --color-text-primary: #152018;
+  --color-text-secondary: #4A5648;
+  --color-text-muted: #748074;
+  --color-success: #3E6B15;
+  --color-accent-gold: #C4A35A;
 }
 
 * {
@@ -48,7 +50,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0.04em;
 }
 
-/* Golden light-ray bloom — sunrise on light sky */
+/* Green light-ray bloom — growth on soft light */
 .light-ray-bloom {
   position: absolute;
   inset: 0;
@@ -68,25 +70,25 @@ h1, h2, h3, h4 {
     conic-gradient(
       from 0deg at 50% 50%,
       transparent 0deg,
-      rgba(240, 168, 48, 0.14) 10deg,
+      rgba(111, 175, 60, 0.14) 10deg,
       transparent 20deg,
-      rgba(196, 122, 18, 0.18) 40deg,
+      rgba(62, 107, 21, 0.18) 40deg,
       transparent 50deg,
-      rgba(240, 168, 48, 0.12) 70deg,
+      rgba(111, 175, 60, 0.12) 70deg,
       transparent 80deg,
-      rgba(196, 122, 18, 0.16) 100deg,
+      rgba(62, 107, 21, 0.16) 100deg,
       transparent 110deg,
-      rgba(240, 168, 48, 0.13) 140deg,
+      rgba(111, 175, 60, 0.13) 140deg,
       transparent 150deg,
-      rgba(196, 122, 18, 0.15) 180deg,
+      rgba(62, 107, 21, 0.15) 180deg,
       transparent 190deg,
-      rgba(240, 168, 48, 0.14) 220deg,
+      rgba(111, 175, 60, 0.14) 220deg,
       transparent 230deg,
-      rgba(196, 122, 18, 0.17) 260deg,
+      rgba(62, 107, 21, 0.17) 260deg,
       transparent 270deg,
-      rgba(240, 168, 48, 0.11) 300deg,
+      rgba(111, 175, 60, 0.11) 300deg,
       transparent 310deg,
-      rgba(196, 122, 18, 0.14) 340deg,
+      rgba(62, 107, 21, 0.14) 340deg,
       transparent 360deg
     );
   mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, black 0%, transparent 70%);
@@ -101,11 +103,11 @@ h1, h2, h3, h4 {
   width: 60%;
   height: 60%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(240, 168, 48, 0.35) 0%, rgba(196, 122, 18, 0.12) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(111, 175, 60, 0.35) 0%, rgba(62, 107, 21, 0.12) 40%, transparent 70%);
   filter: blur(24px);
 }
 
-/* Hero only — golden bloom anchored right, fades to white toward left */
+/* Hero only — green bloom anchored right, fades to white toward left */
 .hero-light-bloom {
   position: absolute;
   top: 0;
@@ -128,19 +130,19 @@ h1, h2, h3, h4 {
     conic-gradient(
       from 200deg at 65% 50%,
       transparent 0deg,
-      rgba(240, 168, 48, 0.1) 15deg,
+      rgba(111, 175, 60, 0.1) 15deg,
       transparent 30deg,
-      rgba(196, 122, 18, 0.14) 50deg,
+      rgba(62, 107, 21, 0.14) 50deg,
       transparent 65deg,
-      rgba(240, 168, 48, 0.09) 85deg,
+      rgba(111, 175, 60, 0.09) 85deg,
       transparent 100deg,
-      rgba(196, 122, 18, 0.11) 130deg,
+      rgba(62, 107, 21, 0.11) 130deg,
       transparent 150deg,
-      rgba(240, 168, 48, 0.08) 180deg,
+      rgba(111, 175, 60, 0.08) 180deg,
       transparent 210deg,
-      rgba(196, 122, 18, 0.1) 250deg,
+      rgba(62, 107, 21, 0.1) 250deg,
       transparent 280deg,
-      rgba(240, 168, 48, 0.07) 310deg,
+      rgba(111, 175, 60, 0.07) 310deg,
       transparent 340deg
     );
   mask-image: radial-gradient(ellipse 48% 52% at 72% 50%, black 0%, transparent 72%);
@@ -158,8 +160,8 @@ h1, h2, h3, h4 {
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.95) 0%,
-    rgba(255, 248, 235, 0.6) 30%,
-    rgba(240, 168, 48, 0.14) 55%,
+    rgba(245, 250, 240, 0.6) 30%,
+    rgba(111, 175, 60, 0.14) 55%,
     transparent 75%
   );
   filter: blur(28px);
@@ -232,9 +234,9 @@ h1, h2, h3, h4 {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255, 253, 248, 0.55) 0%,
-    rgba(245, 232, 210, 0.18) 35%,
-    rgba(232, 201, 146, 0.08) 55%,
+    rgba(252, 253, 250, 0.55) 0%,
+    rgba(220, 232, 205, 0.18) 35%,
+    rgba(143, 184, 98, 0.08) 55%,
     transparent 72%
   );
   filter: blur(24px);
@@ -247,7 +249,7 @@ h1, h2, h3, h4 {
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.7) 0%,
-    rgba(255, 248, 235, 0.35) 45%,
+    rgba(245, 250, 240, 0.35) 45%,
     transparent 75%
   );
   filter: blur(14px);
@@ -287,11 +289,11 @@ h1, h2, h3, h4 {
   background: var(--dock-bg);
   border-bottom-left-radius: 1.25rem;
   border-bottom-right-radius: 1.25rem;
-  border: 1px solid rgba(196, 122, 18, 0.28);
+  border: 1px solid rgba(62, 107, 21, 0.28);
   border-top: none;
   border-bottom-width: 1px;
-  border-bottom-color: rgba(196, 122, 18, 0.35);
-  box-shadow: 0 10px 28px rgba(196, 122, 18, 0.1);
+  border-bottom-color: rgba(62, 107, 21, 0.35);
+  box-shadow: 0 10px 28px rgba(62, 107, 21, 0.1);
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
@@ -322,9 +324,9 @@ h1, h2, h3, h4 {
 
 .top-navbar--scrolled .top-navbar__dock {
   --dock-bg: rgba(255, 255, 255, 0.98);
-  border-color: rgba(196, 122, 18, 0.38);
+  border-color: rgba(62, 107, 21, 0.38);
   border-top: none;
-  border-bottom-color: rgba(196, 122, 18, 0.45);
+  border-bottom-color: rgba(62, 107, 21, 0.45);
   box-shadow: 0 12px 32px rgba(26, 21, 16, 0.1);
 }
 
@@ -388,7 +390,7 @@ h1, h2, h3, h4 {
   background: #ffffff;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
-  border: 1px solid rgba(196, 122, 18, 0.2);
+  border: 1px solid rgba(62, 107, 21, 0.2);
   box-shadow: 0 2px 10px rgba(26, 21, 16, 0.08);
   transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   white-space: nowrap;
@@ -396,9 +398,9 @@ h1, h2, h3, h4 {
 
 .top-navbar__cta:hover {
   color: var(--color-gold-dark);
-  background: #fffdf8;
-  border-color: rgba(196, 122, 18, 0.35);
-  box-shadow: 0 4px 14px rgba(196, 122, 18, 0.15);
+  background: #fbfcfa;
+  border-color: rgba(62, 107, 21, 0.35);
+  box-shadow: 0 4px 14px rgba(62, 107, 21, 0.15);
 }
 
 @media (min-width: 1024px) {
@@ -517,31 +519,31 @@ h1, h2, h3, h4 {
   background: rgba(255, 252, 247, 0.42);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(196, 122, 18, 0.22);
-  box-shadow: 0 8px 32px rgba(196, 122, 18, 0.08);
+  border: 1px solid rgba(62, 107, 21, 0.22);
+  box-shadow: 0 8px 32px rgba(62, 107, 21, 0.08);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.38);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(196, 122, 18, 0.2);
-  box-shadow: 0 4px 24px rgba(196, 122, 18, 0.06);
+  border: 1px solid rgba(62, 107, 21, 0.2);
+  box-shadow: 0 4px 24px rgba(62, 107, 21, 0.06);
 }
 
 .glass-tag {
   background: rgba(255, 252, 247, 0.35);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(196, 122, 18, 0.15);
+  border: 1px solid rgba(62, 107, 21, 0.15);
 }
 
 .glass-card-light {
   background: rgba(255, 255, 255, 0.58);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(196, 122, 18, 0.12);
-  box-shadow: 0 2px 16px rgba(196, 122, 18, 0.05);
+  border: 1px solid rgba(62, 107, 21, 0.12);
+  box-shadow: 0 2px 16px rgba(62, 107, 21, 0.05);
 }
 
 .footer-minimal {
@@ -552,8 +554,8 @@ h1, h2, h3, h4 {
 .flow-section-bg,
 .flow-section-bg-alt {
   background: transparent;
-  border-top: 1px solid rgba(196, 122, 18, 0.1);
-  border-bottom: 1px solid rgba(196, 122, 18, 0.1);
+  border-top: 1px solid rgba(62, 107, 21, 0.1);
+  border-bottom: 1px solid rgba(62, 107, 21, 0.1);
 }
 
 .flow-section-bg-alt {
@@ -635,9 +637,9 @@ h1, h2, h3, h4 {
   height: 60px;
   border-radius: 0.5rem;
   overflow: hidden;
-  border: 1px solid rgba(196, 122, 18, 0.18);
+  border: 1px solid rgba(62, 107, 21, 0.18);
   background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 2px 10px rgba(196, 122, 18, 0.08);
+  box-shadow: 0 2px 10px rgba(62, 107, 21, 0.08);
 }
 
 .marquee-strip__row--products .marquee-strip__product img {
@@ -658,7 +660,7 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
   padding: 0.4rem 0.75rem;
   border-radius: 9999px;
-  border: 1px solid rgba(196, 122, 18, 0.14);
+  border: 1px solid rgba(62, 107, 21, 0.14);
   background: rgba(255, 255, 255, 0.55);
 }
 
@@ -673,7 +675,7 @@ h1, h2, h3, h4 {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(196, 122, 18, 0.45);
+  background: rgba(62, 107, 21, 0.45);
   flex-shrink: 0;
 }
 
@@ -691,7 +693,7 @@ h1, h2, h3, h4 {
 
 /* Ethiopian cross watermark */
 .ethiopian-cross-bg {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23C47A12' stroke-width='1' opacity='0.08'%3E%3Crect x='35' y='10' width='10' height='60' rx='1'/%3E%3Crect x='10' y='35' width='60' height='10' rx='1'/%3E%3Crect x='22' y='22' width='36' height='36' rx='1' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%233E6B15' stroke-width='1' opacity='0.08'%3E%3Crect x='35' y='10' width='10' height='60' rx='1'/%3E%3Crect x='10' y='35' width='60' height='10' rx='1'/%3E%3Crect x='22' y='22' width='36' height='36' rx='1' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 80px 80px;
 }
 

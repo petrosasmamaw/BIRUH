@@ -10,7 +10,7 @@ const fadeUp = (delay = 0) => ({
 const socialIcons = {
   WhatsApp: 'https://cdn.simpleicons.org/whatsapp/25D366',
   Telegram: 'https://cdn.simpleicons.org/telegram/26A5E4',
-  Instagram: 'https://cdn.simpleicons.org/instagram/C47A12',
+  Instagram: 'https://cdn.simpleicons.org/instagram/3E6B15',
 }
 
 export default function Hero() {
