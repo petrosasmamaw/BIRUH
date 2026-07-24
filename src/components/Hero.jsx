@@ -35,7 +35,7 @@ export default function Hero() {
               {...fadeUp(0.08)}
               className="font-mono type-caption text-brand uppercase tracking-widest mb-3 sm:mb-4 font-medium"
             >
-              Ethiopian Software · ሐረግ
+              Ethiopian Software · ሐረግ ቴክ
             </motion.p>
             <motion.h1
               {...fadeUp(0.2)}

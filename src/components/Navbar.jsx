@@ -53,8 +53,8 @@ export default function Navbar() {
           }}
         >
           <img
-            src="/haregtech-mark.png?v=7"
-            alt="Hareg Tech"
+            src="/haregtech-mark.png?v=8"
+            alt="Hareg Tech · ሐረግ ቴክ logo"
             className="top-navbar__logo-mark"
             width={40}
             height={40}
@@ -63,6 +63,9 @@ export default function Navbar() {
           />
           <span className="font-mono text-text-primary text-base sm:text-lg tracking-wide font-bold">
             Hareg Tech
+            <span className="hidden sm:inline text-text-muted font-normal text-xs ml-1.5" lang="am">
+              ሐረግ ቴክ
+            </span>
           </span>
         </a>
 

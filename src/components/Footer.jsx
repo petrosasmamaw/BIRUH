@@ -31,8 +31,14 @@ export default function Footer() {
                 Hareg Tech
               </span>
             </div>
+            <p className="font-mono type-caption text-brand mb-2" lang="am">
+              ሐረግ ቴክ · Ethiopian Software
+            </p>
             <p className="type-body-sm text-text-secondary mb-4 italic">
               &ldquo;Ethiopian technology, built with purpose.&rdquo;
+            </p>
+            <p className="type-caption text-text-muted mb-4">
+              Also known as Hareg, HaregTech, Ehareg — software solutions from Bahir Dar, Ethiopia.
             </p>
             <p className="type-body-sm text-text-secondary mb-1">Bahir Dar, Ethiopia</p>
             <a
@@ -120,7 +126,7 @@ export default function Footer() {
 
       <div className="border-t border-border py-5 px-4 text-center">
         <p className="font-mono type-caption text-brand leading-relaxed">
-          © 2025 Hareg Tech · All rights reserved by Petros Asmamaw · Made in Ethiopia 🇪🇹
+          © 2026 Hareg Tech (ሐረግ ቴክ) · All rights reserved by Petros Asmamaw · Made in Ethiopia
         </p>
       </div>
     </footer>
