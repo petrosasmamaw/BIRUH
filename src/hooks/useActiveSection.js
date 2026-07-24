@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 const SECTIONS = [
   { id: 'home', el: () => document.querySelector('[data-section="home"]') },
   { id: 'services', el: () => document.getElementById('services') },
-  { id: 'products', el: () => document.getElementById('products') },
-  { id: 'process', el: () => document.getElementById('process') },
+  { id: 'growth', el: () => document.getElementById('growth') },
+  { id: 'approach', el: () => document.getElementById('approach') },
   { id: 'contact', el: () => document.getElementById('contact') },
 ]
 

@@ -9,8 +9,8 @@ const MOBILE_BREAKPOINT = 1024
 const navItems = [
   { id: 'home', label: 'Home', href: '#', icon: Home },
   { id: 'services', label: 'Services', href: '#services', icon: Layers },
-  { id: 'products', label: 'Products', href: '#products', icon: Package },
-  { id: 'process', label: 'Process', href: '#process', icon: GitBranch },
+  { id: 'growth', label: 'Growth', href: '#growth', icon: Package },
+  { id: 'approach', label: 'Approach', href: '#approach', icon: GitBranch },
   { id: 'contact', label: 'Contact', href: '#contact', icon: Mail },
 ]
 

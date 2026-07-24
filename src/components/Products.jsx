@@ -1,94 +1,67 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { scrollAnimationProps } from '../hooks/useScrollAnimation'
+import MarqueeStrip from './MarqueeStrip'
+
+const FILTERS = ['All', 'Live', 'Beta', 'Delivered']
 
 const products = [
   {
     name: 'Qandil AI',
-    description:
-      'LLM-powered personalized learning platform with adaptive study paths, AI tutoring, and generative content for Ethiopian students.',
-    tags: [
-      'React',
-      'Express',
-      'Node.js',
-      'MongoDB',
-      'AI Integration',
-      'Generative AI',
-      'Redux Toolkit',
-      'Tailwind',
-    ],
-    images: ['/qandliai1.png'],
+    description: 'LLM tutoring and adaptive study paths for Ethiopian students.',
+    tags: ['React', 'Node.js', 'MongoDB', 'AI'],
+    image: '/qandliai1.png',
     status: 'Beta',
   },
   {
     name: 'Hareg LMS',
-    description:
-      'Full learning platform for Ethiopian schools — courses, exams, video lessons, Chapa payments, AI-generated content, QR attendance, and Cloudinary media hosting.',
-    tags: [
-      'React',
-      'Express',
-      'Node.js',
-      'PostgreSQL',
-      'Neon',
-      'Chapa Payments',
-      'AI Generative',
-      'ML',
-      'Cloudinary',
-      'QR Parser',
-      'Redux Toolkit',
-      'Tailwind',
-    ],
-    images: ['/lms1.png', '/lms2.png', '/lms3.png', '/lms4.png'],
+    description: 'Courses, exams, Chapa payments, and QR attendance for schools.',
+    tags: ['React', 'PostgreSQL', 'Chapa', 'AI'],
+    image: '/lms1.png',
     url: 'https://lms-three-lake-48.vercel.app',
     status: 'Live',
   },
   {
     name: 'Electric ERP',
-    description:
-      'Enterprise resource planning for Ethiopian electric utilities — billing, inventory, HR, and operations in one system.',
-    tags: ['React', 'Express', 'Node.js', 'PostgreSQL', 'Redux Toolkit', 'Tailwind'],
-    images: ['/electric%20erp.jpg'],
+    description: 'Billing, inventory, and HR for Ethiopian electric utilities.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
+    image: '/electric%20erp.jpg',
     status: 'Delivered',
   },
   {
     name: 'Hospital Hub',
-    description:
-      'Hospital management ecosystem — admin, staff, and patient portals with records, scheduling, and media uploads.',
-    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
-    images: ['/hospitalAdmin.png'],
+    description: 'Admin, staff, and patient portals for hospital operations.',
+    tags: ['React', 'MongoDB', 'Cloudinary', 'Tailwind'],
+    image: '/hospitalAdmin.png',
     status: 'Delivered',
   },
   {
     name: 'Room Reservation',
-    description:
-      'Smart room and venue booking system — availability, scheduling, payments, and admin dashboard for hotels and offices.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind', 'Redux Toolkit'],
-    images: ['/room.png'],
+    description: 'Venue booking with availability, payments, and admin tools.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
+    image: '/room.png',
     status: 'Live',
   },
   {
     name: 'Café Menu & Management',
-    description:
-      'Digital QR menus, order tracking, and café management built for Ethiopian restaurants and coffee shops.',
+    description: 'QR menus and order tracking for cafés and coffee shops.',
     tags: ['React', 'Supabase', 'QR Code', 'Tailwind'],
-    images: ['/cafe%20menu.png'],
+    image: '/cafe%20menu.png',
     status: 'Live',
   },
   {
     name: 'Perfume Shop',
-    description:
-      'Online perfume store with product catalog, cart, checkout, and admin inventory — built for Ethiopian retail.',
-    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Cloudinary'],
-    images: ['/perfume%20shop.jpg'],
+    description: 'Catalog, cart, and inventory for Ethiopian perfume retail.',
+    tags: ['React', 'Node.js', 'MongoDB', 'Cloudinary'],
+    image: '/perfume%20shop.jpg',
     status: 'Live',
   },
   {
     name: 'Food Delivery',
-    description:
-      'Food ordering and delivery platform — browse restaurants, place orders, track delivery, and manage vendors.',
-    tags: ['React', 'Express', 'Node.js', 'MongoDB', 'Redux Toolkit', 'Tailwind', 'Chapa Payments'],
-    images: ['/food%20delivery.jpg'],
+    description: 'Order, track, and vendor tools for food delivery platforms.',
+    tags: ['React', 'Node.js', 'MongoDB', 'Chapa'],
+    image: '/food%20delivery.jpg',
     status: 'Live',
   },
 ]
@@ -99,134 +72,123 @@ const statusStyles = {
   Delivered: 'bg-text-secondary/15 text-text-secondary',
 }
 
-function ProductPreview({ product }) {
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  if (product.images?.length) {
-    return (
-      <div className="relative h-full w-full">
-        <img
-          src={product.images[activeIndex]}
-          alt={`${product.name} screenshot ${activeIndex + 1}`}
-          className="absolute inset-0 w-full h-full object-cover object-top"
-        />
-        <div className="absolute inset-x-0 bottom-0 flex gap-1 p-2 bg-gradient-to-t from-black/40 to-transparent">
-          {product.images.length > 1 &&
-            product.images.map((src, idx) => (
-              <button
-                key={src}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  setActiveIndex(idx)
-                }}
-                className={`flex-1 h-1 rounded-full transition-colors ${
-                  idx === activeIndex ? 'bg-white' : 'bg-white/40'
-                }`}
-                aria-label={`Show screenshot ${idx + 1}`}
-              />
-            ))}
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <div className="w-16 h-24 rounded-lg border border-gold/20 bg-gradient-to-b from-brand/10 to-white shadow-sm" />
-  )
-}
-
-function ProductCard({ product }) {
+function GrowthCard({ product }) {
   const Wrapper = product.url ? 'a' : 'div'
   const wrapperProps = product.url
-    ? {
-        href: product.url,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      }
+    ? { href: product.url, target: '_blank', rel: 'noopener noreferrer' }
     : {}
 
   return (
     <Wrapper
       {...wrapperProps}
-      className="block glass-card-light rounded-xl overflow-hidden cursor-pointer group border border-gold/15 h-full"
+      className="block glass-card-light rounded-xl overflow-hidden group border border-gold/15 h-full relative"
     >
-      <div className="h-1 bg-brand/35" />
-      <div
-        className={`h-32 sm:h-36 relative overflow-hidden ${
-          product.images?.length ? '' : 'flex items-center justify-center bg-surface-elevated'
-        }`}
+      {/* Static leaf-accent — decorative only; not part of scroll vine */}
+      <svg
+        className="absolute -left-1 top-8 w-3 h-8 text-brand/25 pointer-events-none"
+        viewBox="0 0 12 32"
+        fill="none"
+        aria-hidden="true"
       >
-        <ProductPreview product={product} />
+        <path
+          d="M2 2 C2 14 10 12 10 22 C6 20 2 24 2 30"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        />
+      </svg>
+      <div className="h-1 bg-brand/35" />
+      <div className="h-28 sm:h-32 relative overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          loading="lazy"
+        />
       </div>
-      <div className="p-5">
+      <div className="p-4 sm:p-5">
         <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-semibold text-text-primary text-lg">{product.name}</h3>
+          <h3 className="font-semibold text-text-primary text-base sm:text-lg">{product.name}</h3>
           <span
             className={`font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap ${
-              statusStyles[product.status] || statusStyles.Delivered
+              statusStyles[product.status]
             }`}
           >
             {product.status}
           </span>
         </div>
-        <p className="text-text-secondary text-sm mb-4 leading-relaxed">
-          {product.description}
-        </p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <p className="text-text-secondary text-sm mb-3 leading-relaxed">{product.description}</p>
+        <div className="flex flex-wrap gap-1.5 mb-3">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] sm:text-xs text-text-secondary glass-tag px-2 py-1 rounded"
+              className="font-mono text-[10px] text-text-secondary glass-tag px-2 py-1 rounded"
             >
               {tag}
             </span>
           ))}
         </div>
-        <span className="inline-flex items-center gap-1 text-brand text-sm font-medium">
-          {product.url ? (
-            <>
-              View Live <ExternalLink size={14} />
-            </>
-          ) : (
-            <>
-              View Project <ArrowRight size={14} />
-            </>
-          )}
-        </span>
+        {product.url && (
+          <span className="inline-flex items-center gap-1 text-brand text-sm font-medium">
+            View Live <ExternalLink size={14} />
+          </span>
+        )}
       </div>
     </Wrapper>
   )
 }
 
 export default function Products() {
+  const [filter, setFilter] = useState('All')
+
+  const visible = useMemo(() => {
+    if (filter === 'All') return products
+    return products.filter((p) => p.status === filter)
+  }, [filter])
+
   return (
-    <div className="py-14 sm:py-20 lg:py-28">
+    <div className="py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-14 glass-panel rounded-2xl p-8 sm:p-10">
-          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Portfolio</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
-            Products We&apos;ve Built
+        <motion.div {...scrollAnimationProps} className="text-center mb-8 sm:mb-10 glass-panel rounded-2xl p-6 sm:p-8">
+          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Our Growth</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-3">
+            What We&apos;ve Grown
           </h2>
-          <p className="text-text-secondary text-lg">
-            Real software, running in Ethiopia today.
+          <p className="text-text-secondary text-sm sm:text-base">
+            Real software running in Ethiopia today.
           </p>
         </motion.div>
 
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setFilter(f)}
+              className={`font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full border transition-colors ${
+                filter === f
+                  ? 'bg-brand text-white border-brand'
+                  : 'border-gold/30 text-text-secondary hover:border-gold/50 hover:text-brand'
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+
         <motion.div
           {...scrollAnimationProps}
-          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
         >
-          {products.map((product) => (
-            <div
-              key={product.name}
-              className="flex-shrink-0 w-[min(85vw,300px)] sm:w-[300px] md:w-auto snap-center snap-always snap-start"
-            >
-              <ProductCard product={product} />
-            </div>
+          {visible.map((product) => (
+            <GrowthCard key={product.name} product={product} />
           ))}
         </motion.div>
+
+        {/* Our Roots — compact strip inside Growth (not a standalone section) */}
+        <div className="mt-10 sm:mt-12">
+          <MarqueeStrip />
+        </div>
       </div>
     </div>
   )

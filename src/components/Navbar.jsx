@@ -5,10 +5,9 @@ import { motion } from 'framer-motion'
 const MOBILE_BREAKPOINT = 1024
 
 const navLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Products', href: '#products' },
-  { label: 'Process', href: '#process' },
+  { label: 'Growth', href: '#growth' },
+  { label: 'Approach', href: '#approach' },
   { label: 'Contact', href: '#contact' },
 ]
 

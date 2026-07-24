@@ -1,4 +1,4 @@
-export const heroProofLine = '8 products shipped · LMS live · AI in production'
+export const heroProofLine = '8 products shipped · LMS live · websites & apps in production'
 
 export const productMarqueeImages = [
   { src: '/qandliai1.png', alt: 'Qandil AI' },

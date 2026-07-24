@@ -81,7 +81,7 @@ function pointsToPath(pts) {
  * Start tendrils — always sway like a tree in light wind (even when not scrolling).
  * Soft stem bend + tip coil breathing; fixed length (no scroll growth).
  */
-function buildRadialPoints(cfg, origin, radius, time) {
+function buildRadialPoints(cfg, origin, radius, time, ampScale = 1) {
   const segs = 40
   const pts = []
   const layer = LAYER[cfg.layer]
@@ -89,6 +89,8 @@ function buildRadialPoints(cfg, origin, radius, time) {
   const sinA = Math.sin(cfg.angle)
   const perpX = -sinA
   const perpY = cosA
+  const amp = cfg.amp * ampScale
+  const coilR = cfg.coilR * ampScale
 
   // Tree-sway: slow primary + softer secondary (always on)
   const wind1 = Math.sin(time * layer.speed * 1.15 + cfg.phase) * layer.sway
@@ -103,14 +105,14 @@ function buildRadialPoints(cfg, origin, radius, time) {
     // Base organic curl of the tendril shape
     const shapeCurl =
       Math.sin(t * Math.PI * cfg.curls * 0.5 + cfg.phase) *
-      cfg.amp *
+      amp *
       Math.sin(t * Math.PI) *
       (0.25 + t * 0.4)
 
     // Continuous wind sway — whole strand bends
     const sway =
-      (wind1 * 16 + wind2 * 10 + wind3 * 7) * tip +
-      Math.sin(t * Math.PI * 2.2 + time * layer.speed + cfg.phase) * cfg.amp * 0.35 * tip
+      (wind1 * 16 + wind2 * 10 + wind3 * 7) * tip * ampScale +
+      Math.sin(t * Math.PI * 2.2 + time * layer.speed + cfg.phase) * amp * 0.35 * tip
 
     // Tip coil + slow breathing rotation
     const coilStart = 0.38
@@ -121,7 +123,7 @@ function buildRadialPoints(cfg, origin, radius, time) {
     const spiralAng =
       turns * Math.PI * 2 * cfg.dir + cfg.phase * 0.25 + time * layer.speed * 0.65 * cfg.dir
     const spiralR =
-      cfg.coilR *
+      coilR *
       breathe *
       Math.sin(coilEase * Math.PI) *
       (0.3 + 0.7 * (1 - coilEase * 0.7))
@@ -223,13 +225,24 @@ export default function VineGrowthLayer() {
   })
   const pathMeta = useRef(new Map()) // id → { len }
 
+  const isMobile = size.w < 1024
+  // Mobile: small seed bloom tucked top-right so hero copy stays readable.
+  // Desktop: seed sits in the right visual column. Scroll-snakes keep full scale either way.
   const origin = useMemo(() => {
-    const mobile = size.w < 1024
-    return {
-      docX: mobile ? size.w * 0.5 : size.w * 0.72,
-      docY: mobile ? size.h * 0.38 : size.h * 0.42,
+    if (isMobile) {
+      return {
+        docX: Math.max(size.w * 0.78, size.w - 52),
+        docY: Math.min(96, size.h * 0.13),
+      }
     }
-  }, [size])
+    return {
+      docX: size.w * 0.72,
+      docY: size.h * 0.42,
+    }
+  }, [size.w, size.h, isMobile])
+
+  const seedSize = isMobile ? 30 : 56
+  const leafScale = isMobile ? 0.55 : 1
 
   useEffect(() => {
     reducedRef.current = prefersReducedMotion()
@@ -291,28 +304,44 @@ export default function VineGrowthLayer() {
       const seedX = origin.docX
       const seedY = origin.docY - scrollY
 
+      const halfSeed = seedSize / 2
       const seed = getEl('[data-seed]')
       if (seed) {
-        seed.setAttribute('x', String(seedX - 28))
-        seed.setAttribute('y', String(seedY - 28))
+        seed.setAttribute('x', String(seedX - halfSeed))
+        seed.setAttribute('y', String(seedY - halfSeed))
+        seed.setAttribute('width', String(seedSize))
+        seed.setAttribute('height', String(seedSize))
       }
       const leaves = getEl('[data-leaves]')
-      if (leaves) leaves.setAttribute('transform', `translate(${seedX}, ${seedY})`)
+      if (leaves) {
+        leaves.setAttribute(
+          'transform',
+          `translate(${seedX}, ${seedY}) scale(${leafScale})`,
+        )
+      }
 
       const pageBottom = pageH - 24
-      // Larger bloom around seed — fixed size, not scroll-grown
-      const radialRadius = Math.min(420, Math.min(size.w, size.h) * 0.48)
+      // Hero bloom only: compact on mobile (corner accent). Snakes below stay full-size.
+      const radialRadius = isMobile
+        ? Math.min(88, size.w * 0.24)
+        : Math.min(420, Math.min(size.w, size.h) * 0.48)
+      const radialAmpScale = isMobile ? 0.42 : 1
 
       for (const cfg of RADIAL) {
         const el = getEl(`[data-tendril="${cfg.id}"]`)
         if (!el) continue
-        const pts = toView(buildRadialPoints(cfg, origin, radialRadius, s.time), scrollY)
+        const pts = toView(
+          buildRadialPoints(cfg, origin, radialRadius, s.time, radialAmpScale),
+          scrollY,
+        )
         el.setAttribute('d', pointsToPath(pts))
         const len = ensureLength(el, cfg.id)
         // Draw-in once by time only (never grows with scroll)
         const radialDraw = reduced ? 1 : clamp(now / 1200, 0, 1)
         if (len) el.style.strokeDashoffset = String(len * (1 - radialDraw))
-        el.style.opacity = '1'
+        el.style.opacity = isMobile ? '0.85' : '1'
+        if (isMobile) el.setAttribute('stroke-width', String(cfg.width * 0.72))
+        else el.setAttribute('stroke-width', String(cfg.width))
       }
 
       // --- Downward snakes ---
@@ -398,13 +427,16 @@ export default function VineGrowthLayer() {
       running = false
       cancelAnimationFrame(raf)
     }
-  }, [origin, size.w, size.h])
+  }, [origin, size.w, size.h, isMobile, seedSize, leafScale])
 
   const nodeSlots = useMemo(() => Array.from({ length: 16 }, (_, i) => i), [])
   const linkSlots = useMemo(() => Array.from({ length: 14 }, (_, i) => i), [])
 
   return (
-    <div className="vine-growth-layer" aria-hidden="true">
+    <div
+      className={`vine-growth-layer${isMobile ? ' vine-growth-layer--mobile' : ''}`}
+      aria-hidden="true"
+    >
       <svg
         ref={svgRef}
         className="vine-growth-svg"
@@ -520,7 +552,10 @@ export default function VineGrowthLayer() {
           ))}
         </g>
 
-        <g data-leaves transform={`translate(${origin.docX}, ${origin.docY})`}>
+        <g
+          data-leaves
+          transform={`translate(${origin.docX}, ${origin.docY}) scale(${leafScale})`}
+        >
           <ellipse cx="14" cy="-11" rx="4" ry="1.7" fill={COLORS.mid} transform="rotate(-35 14 -11)" opacity="0.85" />
           <ellipse cx="-12" cy="8" rx="3.5" ry="1.5" fill={COLORS.front} transform="rotate(40 -12 8)" opacity="0.8" />
           <ellipse cx="10" cy="16" rx="3.2" ry="1.35" fill={COLORS.tip} transform="rotate(-20 10 16)" opacity="0.75" />
@@ -528,7 +563,7 @@ export default function VineGrowthLayer() {
 
         <circle
           data-growth-tip
-          r="7"
+          r={isMobile ? 5.5 : 7}
           fill={COLORS.tip}
           filter="url(#tipGlow)"
           cx={origin.docX}
@@ -539,10 +574,10 @@ export default function VineGrowthLayer() {
         <image
           data-seed
           href="/haregtech-mark.png"
-          x={origin.docX - 28}
-          y={origin.docY - 28}
-          width="56"
-          height="56"
+          x={origin.docX - seedSize / 2}
+          y={origin.docY - seedSize / 2}
+          width={seedSize}
+          height={seedSize}
           className="vine-seed-logo"
         />
       </svg>

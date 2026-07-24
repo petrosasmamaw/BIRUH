@@ -1,12 +1,12 @@
 import { socialLinks } from '../data/siteContent'
 
 const serviceLinks = [
+  'Websites & Apps',
   'Custom Software',
-  'AI Solutions',
-  'LMS / EdTech',
   'ERP & Automation',
-  'Landing Pages',
+  'LMS / EdTech',
   'Café Menu Systems',
+  'AI Solutions',
 ]
 
 const productLinks = [
@@ -72,7 +72,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-mono text-brand text-xs uppercase tracking-widest mb-4">
-              Products
+              Growth
             </h4>
             <ul className="space-y-2">
               {productLinks.map((link) => (
