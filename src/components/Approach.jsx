@@ -48,37 +48,42 @@ const steps = [
 
 export default function Approach() {
   return (
-    <div className="py-12 sm:py-16 lg:py-20">
+    <div className="section-pad">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-10 sm:mb-12 glass-panel rounded-2xl p-6 sm:p-8">
-          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Approach</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-3">
+        <motion.div
+          {...scrollAnimationProps}
+          className="text-center mb-8 sm:mb-10 glass-panel rounded-2xl p-5 sm:p-8"
+        >
+          <p className="font-mono type-caption text-brand uppercase tracking-widest mb-3">
+            Approach
+          </p>
+          <h2 className="font-display type-title font-bold text-text-primary mb-3">
             Why Hareg · How We Work
           </h2>
-          <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto">
+          <p className="type-body text-text-secondary max-w-xl mx-auto">
             The roots behind every project — and the growth cycle we follow.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           <motion.div {...scrollAnimationProps}>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-brand mb-4">Why us</h3>
+            <h3 className="font-mono type-caption uppercase tracking-widest text-brand mb-4">
+              Why us
+            </h3>
             <div className="space-y-3">
               {pillars.map((pillar) => {
                 const Icon = pillar.icon
                 return (
                   <div
                     key={pillar.title}
-                    className="glass-card border-l-2 border-l-gold rounded-xl p-4 sm:p-5 flex gap-3"
+                    className="glass-card border-l-2 border-l-gold rounded-xl p-[var(--space-card)] flex gap-3"
                   >
-                    <Icon className="text-brand shrink-0 mt-0.5" size={20} />
+                    <Icon className="text-brand shrink-0 mt-0.5" size={22} aria-hidden="true" />
                     <div>
-                      <h4 className="text-text-primary font-semibold text-sm sm:text-base mb-1">
+                      <h4 className="text-text-primary font-semibold text-base mb-1.5">
                         {pillar.title}
                       </h4>
-                      <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                        {pillar.description}
-                      </p>
+                      <p className="type-body-sm text-text-secondary">{pillar.description}</p>
                     </div>
                   </div>
                 )
@@ -87,7 +92,7 @@ export default function Approach() {
           </motion.div>
 
           <motion.div {...scrollAnimationProps}>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-brand mb-4">
+            <h3 className="font-mono type-caption uppercase tracking-widest text-brand mb-4">
               Growth cycle
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -96,16 +101,16 @@ export default function Approach() {
                 return (
                   <div
                     key={step.title}
-                    className="glass-card-light rounded-xl p-4 border border-gold/15"
+                    className="glass-card-light rounded-xl p-[var(--space-card)] border border-gold/15"
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-mono text-[10px] text-gold">
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <span className="font-mono type-caption text-gold">
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <Icon className="text-brand" size={18} />
-                      <h4 className="text-text-primary font-semibold text-sm">{step.title}</h4>
+                      <Icon className="text-brand" size={18} aria-hidden="true" />
+                      <h4 className="text-text-primary font-semibold text-base">{step.title}</h4>
                     </div>
-                    <p className="text-text-secondary text-xs leading-relaxed">{step.description}</p>
+                    <p className="type-body-sm text-text-secondary">{step.description}</p>
                   </div>
                 )
               })}

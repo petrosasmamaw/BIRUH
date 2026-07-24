@@ -81,9 +81,10 @@ function GrowthCard({ product }) {
   return (
     <Wrapper
       {...wrapperProps}
-      className="block glass-card-light rounded-xl overflow-hidden group border border-gold/15 h-full relative"
+      className={`block glass-card-light rounded-xl overflow-hidden group border border-gold/15 h-full relative ${
+        product.url ? 'cursor-pointer' : ''
+      }`}
     >
-      {/* Static leaf-accent — decorative only; not part of scroll vine */}
       <svg
         className="absolute -left-1 top-8 w-3 h-8 text-brand/25 pointer-events-none"
         viewBox="0 0 12 32"
@@ -98,7 +99,7 @@ function GrowthCard({ product }) {
         />
       </svg>
       <div className="h-1 bg-brand/35" />
-      <div className="h-28 sm:h-32 relative overflow-hidden">
+      <div className="h-32 sm:h-36 relative overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
@@ -106,31 +107,33 @@ function GrowthCard({ product }) {
           loading="lazy"
         />
       </div>
-      <div className="p-4 sm:p-5">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="font-semibold text-text-primary text-base sm:text-lg">{product.name}</h3>
+      <div className="p-[var(--space-card)]">
+        <div className="flex items-start justify-between gap-3 mb-2.5">
+          <h3 className="font-semibold text-text-primary text-base sm:text-lg leading-snug">
+            {product.name}
+          </h3>
           <span
-            className={`font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full whitespace-nowrap ${
+            className={`font-mono type-caption uppercase tracking-wider px-2.5 py-1 rounded-full whitespace-nowrap shrink-0 ${
               statusStyles[product.status]
             }`}
           >
             {product.status}
           </span>
         </div>
-        <p className="text-text-secondary text-sm mb-3 leading-relaxed">{product.description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        <p className="type-body-sm text-text-secondary mb-3">{product.description}</p>
+        <div className="flex flex-wrap gap-2 mb-3">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] text-text-secondary glass-tag px-2 py-1 rounded"
+              className="font-mono type-caption text-text-secondary glass-tag px-2.5 py-1 rounded"
             >
               {tag}
             </span>
           ))}
         </div>
         {product.url && (
-          <span className="inline-flex items-center gap-1 text-brand text-sm font-medium">
-            View Live <ExternalLink size={14} />
+          <span className="inline-flex items-center gap-1.5 text-brand type-label font-semibold min-h-10">
+            View Live <ExternalLink size={16} aria-hidden="true" />
           </span>
         )}
       </div>
@@ -147,25 +150,36 @@ export default function Products() {
   }, [filter])
 
   return (
-    <div className="py-12 sm:py-16 lg:py-20">
+    <div className="section-pad">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-8 sm:mb-10 glass-panel rounded-2xl p-6 sm:p-8">
-          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Our Growth</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-3">
+        <motion.div
+          {...scrollAnimationProps}
+          className="text-center mb-7 sm:mb-10 glass-panel rounded-2xl p-5 sm:p-8"
+        >
+          <p className="font-mono type-caption text-brand uppercase tracking-widest mb-3">
+            Our Growth
+          </p>
+          <h2 className="font-display type-title font-bold text-text-primary mb-3">
             What We&apos;ve Grown
           </h2>
-          <p className="text-text-secondary text-sm sm:text-base">
+          <p className="type-body text-text-secondary">
             Real software running in Ethiopia today.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div
+          className="flex flex-wrap justify-center tap-gap mb-7 sm:mb-8"
+          role="tablist"
+          aria-label="Filter growth by status"
+        >
           {FILTERS.map((f) => (
             <button
               key={f}
               type="button"
+              role="tab"
+              aria-selected={filter === f}
               onClick={() => setFilter(f)}
-              className={`font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full border transition-colors ${
+              className={`btn-touch font-mono type-caption uppercase tracking-wider px-4 rounded-full border transition-colors duration-200 cursor-pointer ${
                 filter === f
                   ? 'bg-brand text-white border-brand'
                   : 'border-gold/30 text-text-secondary hover:border-gold/50 hover:text-brand'
@@ -178,14 +192,13 @@ export default function Products() {
 
         <motion.div
           {...scrollAnimationProps}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5"
         >
           {visible.map((product) => (
             <GrowthCard key={product.name} product={product} />
           ))}
         </motion.div>
 
-        {/* Our Roots — compact strip inside Growth (not a standalone section) */}
         <div className="mt-10 sm:mt-12">
           <MarqueeStrip />
         </div>

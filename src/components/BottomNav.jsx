@@ -64,7 +64,7 @@ export default function BottomNav() {
                 strokeWidth={isActive ? 2.5 : 2}
               />
               <span
-                className={`font-mono text-[10px] tracking-wide ${
+                className={`font-mono type-caption tracking-wide leading-none ${
                   isActive ? 'text-brand font-bold' : 'text-text-secondary'
                 }`}
               >

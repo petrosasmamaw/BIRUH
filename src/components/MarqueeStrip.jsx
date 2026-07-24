@@ -11,7 +11,7 @@ function TechMarquee() {
           ) : (
             <span className="marquee-strip__tech-dot" aria-hidden="true" />
           )}
-          <span className="font-mono text-[11px] sm:text-xs text-text-secondary whitespace-nowrap">
+          <span className="font-mono type-caption text-text-secondary whitespace-nowrap">
             {tech.name}
           </span>
         </div>
@@ -22,9 +22,12 @@ function TechMarquee() {
 
 export default function MarqueeStrip() {
   return (
-    <section className="marquee-strip relative z-10 pt-2 pb-1" aria-label="Our Roots — technology we use">
+    <section
+      className="marquee-strip relative z-10 pt-2 pb-1"
+      aria-label="Our Roots — technology we use"
+    >
       <div className="marquee-strip__inner">
-        <p className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-text-muted mb-3 text-center">
+        <p className="font-mono type-caption uppercase tracking-widest text-text-muted mb-3 text-center">
           Our Roots
         </p>
         <TechMarquee />

@@ -37,36 +37,39 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="py-12 sm:py-16 lg:py-20">
+    <div className="section-pad">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-10 sm:mb-12 glass-panel rounded-2xl p-6 sm:p-8">
-          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Services</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-3">
+        <motion.div
+          {...scrollAnimationProps}
+          className="text-center mb-8 sm:mb-10 glass-panel rounded-2xl p-5 sm:p-8"
+        >
+          <p className="font-mono type-caption text-brand uppercase tracking-widest mb-3">
+            Services
+          </p>
+          <h2 className="font-display type-title font-bold text-text-primary mb-3">
             What We Build
           </h2>
-          <p className="text-text-secondary text-sm sm:text-base max-w-xl mx-auto">
+          <p className="type-body text-text-secondary max-w-xl mx-auto">
             Every project starts as a shoot — here&apos;s what we grow it into.
           </p>
         </motion.div>
 
         <motion.div
           {...scrollAnimationProps}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5"
         >
           {services.map((service) => {
             const Icon = service.icon
             return (
               <div
                 key={service.title}
-                className="glass-card border-t-2 border-t-gold rounded-xl p-5"
+                className="glass-card border-t-2 border-t-gold rounded-xl p-[var(--space-card)]"
               >
-                <Icon className="text-brand mb-3" size={24} />
-                <h3 className="text-text-primary font-semibold text-sm sm:text-base mb-1.5">
+                <Icon className="text-brand mb-3" size={24} aria-hidden="true" />
+                <h3 className="text-text-primary font-semibold text-base mb-2">
                   {service.title}
                 </h3>
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  {service.description}
-                </p>
+                <p className="type-body-sm text-text-secondary">{service.description}</p>
               </div>
             )
           })}

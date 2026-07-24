@@ -33,6 +33,17 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['"Space Mono"', 'monospace'],
       },
+      fontSize: {
+        // Mobile-first readable floors (body never below 16 via base)
+        caption: ['0.75rem', { lineHeight: '1.4' }],
+        label: ['0.8125rem', { lineHeight: '1.4' }],
+      },
+      minHeight: {
+        touch: '2.75rem',
+      },
+      spacing: {
+        section: 'clamp(2.75rem, 6vw, 5rem)',
+      },
       boxShadow: {
         card: '0 4px 24px rgba(196, 163, 90, 0.12)',
         'card-hover': '0 12px 40px rgba(62, 107, 21, 0.12)',

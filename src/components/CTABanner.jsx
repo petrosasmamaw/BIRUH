@@ -32,54 +32,59 @@ export default function CTABanner() {
   }
 
   return (
-    <div id="trusted" className="relative py-14 sm:py-20 lg:py-24 overflow-hidden">
+    <div id="trusted" className="relative section-pad overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div {...scrollAnimationProps} className="text-center mb-8">
-          <p className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-text-muted mb-3">
+        <motion.div {...scrollAnimationProps} className="text-center mb-7 sm:mb-8">
+          <p className="font-mono type-caption uppercase tracking-widest text-text-muted mb-2.5">
             Trusted across
           </p>
-          <p className="font-mono text-[11px] sm:text-xs text-text-secondary tracking-wide">
+          <p className="font-mono type-label text-text-secondary tracking-wide leading-relaxed px-1">
             {segments.join(' · ')}
           </p>
         </motion.div>
 
         <motion.div
           {...scrollAnimationProps}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 sm:mb-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 mb-9 sm:mb-12"
         >
           {testimonials.map((t) => (
             <blockquote
               key={t.author}
-              className="glass-card-light rounded-xl p-4 sm:p-5 border border-gold/15 text-left"
+              className="glass-card-light rounded-xl p-[var(--space-card)] border border-gold/15 text-left"
             >
-              <p className="text-text-secondary text-sm leading-relaxed mb-3">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <footer className="font-mono text-[10px] text-text-muted">— {t.author}</footer>
+              <p className="type-body-sm text-text-secondary mb-3">&ldquo;{t.quote}&rdquo;</p>
+              <footer className="font-mono type-caption text-text-muted">— {t.author}</footer>
             </blockquote>
           ))}
         </motion.div>
 
-        <motion.div {...scrollAnimationProps} className="glass-panel rounded-2xl p-8 sm:p-12 text-center">
-          <p className="font-mono text-brand text-xs uppercase tracking-widest mb-3">Get Started</p>
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-text-primary mb-4 leading-tight">
+        <motion.div
+          {...scrollAnimationProps}
+          className="glass-panel rounded-2xl p-6 sm:p-12 text-center"
+        >
+          <p className="font-mono type-caption text-brand uppercase tracking-widest mb-3">
+            Get Started
+          </p>
+          <h2 className="font-display type-title font-bold text-text-primary mb-4">
             Ready to grow
             <br />
             your business?
           </h2>
-          <p className="text-text-secondary text-base sm:text-lg mb-8 sm:mb-10">
+          <p className="type-body text-text-secondary mb-8 sm:mb-10 max-w-md mx-auto">
             Let&apos;s build something that lasts — together.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center tap-gap">
             <button
+              type="button"
               onClick={() => scrollTo('#contact')}
-              className="w-full sm:w-auto bg-brand text-white font-semibold px-6 py-3.5 sm:py-3 rounded-full text-sm hover:bg-brand-dark transition-colors shadow-sm inline-flex items-center justify-center gap-2"
+              className="btn-touch w-full sm:w-auto bg-brand text-white font-semibold px-6 rounded-full type-label hover:bg-brand-dark transition-colors duration-200 shadow-sm cursor-pointer"
             >
               Start a Project →
             </button>
             <button
+              type="button"
               onClick={() => scrollTo('#growth')}
-              className="w-full sm:w-auto border-2 border-gold text-brand-dark font-semibold px-6 py-3.5 sm:py-3 rounded-full text-sm hover:bg-brand/8 transition-colors"
+              className="btn-touch w-full sm:w-auto border-2 border-gold text-brand-dark font-semibold px-6 rounded-full type-label hover:bg-brand/8 transition-colors duration-200 cursor-pointer"
             >
               See Our Growth
             </button>
