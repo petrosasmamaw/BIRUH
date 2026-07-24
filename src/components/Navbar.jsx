@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
+import { openProjectModal } from '../api'
 
 const MOBILE_BREAKPOINT = 1024
 
@@ -86,7 +87,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          onClick={() => handleNavClick('#contact')}
+          onClick={openProjectModal}
           className="top-navbar__cta shrink-0"
         >
           {isDesktop ? 'Start a Project' : 'Start Project'}

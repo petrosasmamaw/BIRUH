@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { socialLinks } from '../data/siteContent'
+import { openProjectModal } from '../api'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -66,7 +67,7 @@ export default function Hero() {
               </button>
               <button
                 type="button"
-                onClick={() => scrollTo('#contact')}
+                onClick={openProjectModal}
                 className="btn-touch w-full sm:w-auto border-2 border-gold text-brand-dark font-semibold px-6 rounded-full type-label sm:text-sm hover:bg-brand/8 transition-colors duration-200 cursor-pointer"
               >
                 Start a Project

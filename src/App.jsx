@@ -8,6 +8,7 @@ import CTABanner from './components/CTABanner'
 import Faq from './components/Faq'
 import Footer from './components/Footer'
 import VineGrowthLayer from './components/VineGrowthLayer'
+import ProjectOrderModal from './components/ProjectOrderModal'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <VineGrowthLayer />
       <Navbar />
       <BottomNav />
+      <ProjectOrderModal />
       <main className="relative z-10 pt-[4rem] lg:pt-[4.5rem] max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))]">
         <div data-section="home" className="flow-section-bg">
           <Hero />
@@ -40,7 +42,6 @@ function App() {
           <CTABanner />
         </div>
 
-        {/* Visible FAQ matches FAQPage schema (required for Google rich results) */}
         <div className="flow-section-bg">
           <Faq />
         </div>

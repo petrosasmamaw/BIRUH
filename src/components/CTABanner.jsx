@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { scrollAnimationProps } from '../hooks/useScrollAnimation'
+import { openProjectModal } from '../api'
 
 const segments = [
   'SMBs',
@@ -76,7 +77,7 @@ export default function CTABanner() {
           <div className="flex flex-col sm:flex-row flex-wrap justify-center tap-gap">
             <button
               type="button"
-              onClick={() => scrollTo('#contact')}
+              onClick={openProjectModal}
               className="btn-touch w-full sm:w-auto bg-brand text-white font-semibold px-6 rounded-full type-label hover:bg-brand-dark transition-colors duration-200 shadow-sm cursor-pointer"
             >
               Start a Project →
