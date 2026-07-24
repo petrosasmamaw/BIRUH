@@ -1,4 +1,4 @@
-# Hareg Tech — https://petrosasmamaw.me
+# Hareg Tech — https://haregtech.online
 User-agent: *
 Allow: /
 
@@ -14,6 +14,6 @@ Allow: /apple-touch-icon.png
 Allow: /og-image.png
 Allow: /site.webmanifest
 
-Sitemap: https://petrosasmamaw.me/sitemap.xml
+Sitemap: https://haregtech.online/sitemap.xml
 
-Host: https://petrosasmamaw.me
+Host: https://haregtech.online
