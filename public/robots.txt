@@ -15,5 +15,3 @@ Allow: /og-image.png
 Allow: /site.webmanifest
 
 Sitemap: https://haregtech.online/sitemap.xml
-
-Host: https://haregtech.online
