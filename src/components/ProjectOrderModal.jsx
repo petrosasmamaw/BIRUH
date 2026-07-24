@@ -152,10 +152,11 @@ export default function ProjectOrderModal() {
           <div className="project-modal__success">
             <CheckCircle2 className="text-brand mx-auto mb-3" size={40} />
             <h2 id={titleId} className="font-display text-2xl font-bold text-text-primary mb-2">
-              Order confirmed
+              Order complete
             </h2>
             <p className="type-body-sm text-text-secondary mb-6">
-              Thanks — your project request is planted. We&apos;ll reach out on WhatsApp or phone soon.
+              Your project request was received successfully. Our company will contact you
+              soon for the next process — usually on the phone number you provided.
             </p>
             <button
               type="button"
