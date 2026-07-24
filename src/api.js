@@ -71,6 +71,11 @@ export const api = {
       auth: true,
       body: JSON.stringify({ status }),
     }),
+  chat: (message, history = []) =>
+    request('/api/chat', {
+      method: 'POST',
+      body: JSON.stringify({ message, history }),
+    }),
 }
 
 export function openProjectModal() {

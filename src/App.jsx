@@ -9,6 +9,7 @@ import Faq from './components/Faq'
 import Footer from './components/Footer'
 import VineGrowthLayer from './components/VineGrowthLayer'
 import ProjectOrderModal from './components/ProjectOrderModal'
+import SupportChat from './components/SupportChat'
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
       <Navbar />
       <BottomNav />
       <ProjectOrderModal />
+      {/* Independent floating support widget — not part of vine animation */}
+      <SupportChat />
       <main className="relative z-10 pt-[4rem] lg:pt-[4.5rem] max-lg:pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))]">
         <div data-section="home" className="flow-section-bg">
           <Hero />

@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.js'
 import orderRoutes from './routes/orders.js'
+import chatRoutes from './routes/chat.js'
 
 dotenv.config()
 
@@ -38,6 +39,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/auth', authRoutes)
 app.use('/api/orders', orderRoutes)
+app.use('/api/chat', chatRoutes)
 
 app.use((err, _req, res, _next) => {
   if (err?.message?.startsWith('Origin not allowed')) {
