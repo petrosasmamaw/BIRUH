@@ -10,13 +10,14 @@ const serviceLinks = [
 ]
 
 const productLinks = [
+  { label: 'Ecommerce site for Addis Electric', href: 'https://addiselectricshop.online/' },
+  { label: 'Tamagn Check', href: 'https://tamagncheck.online/' },
   { label: 'Qandil AI', href: null },
   { label: 'Hareg LMS', href: 'https://lms-three-lake-48.vercel.app' },
   { label: 'Electric ERP', href: null },
   { label: 'Hospital Hub', href: null },
   { label: 'Room Reservation', href: null },
   { label: 'Café Menu & Management', href: null },
-  { label: 'Perfume Shop', href: null },
   { label: 'Food Delivery', href: null },
 ]
 

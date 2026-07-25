@@ -8,15 +8,46 @@ const FILTERS = ['All', 'Live', 'Beta', 'Delivered']
 
 const products = [
   {
+    name: 'Ecommerce site for Addis Electric',
+    description:
+      'Online marketplace for an Ethiopian electrical supplier — browse boards, breakers, cables, contactors, and more by name or category, with search, admin tools, and phone ordering for industrial and home use.',
+    tags: ['React', 'Tailwind', 'Node.js', 'Express', 'JWT', 'PostgreSQL', 'Neon'],
+    image: '/addis-electric.png',
+    url: 'https://addiselectricshop.online/',
+    status: 'Live',
+  },
+  {
+    name: 'Tamagn Check',
+    description:
+      'Verifies Ethiopian payment receipts (Telebirr, CBE, Dashen, Bank of Abyssinia) using screenshots, QR codes, payment IDs, or SMS — with a free tier and a paid Verify API for developers.',
+    tags: [
+      'React',
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Cloudinary',
+      'Gemini',
+      'OCR',
+      'QR Code',
+      'Better Auth',
+      'Tailwind',
+    ],
+    image: '/tamagn-check.png',
+    url: 'https://tamagncheck.online/',
+    status: 'Live',
+  },
+  {
     name: 'Qandil AI',
-    description: 'LLM tutoring and adaptive study paths for Ethiopian students.',
+    description:
+      'Personalized AI learning for Ethiopian high school students — adapts to learning level, study style, and goals with quizzes, smart tutoring, and local-context guidance across dashboard and AI tools.',
     tags: ['React', 'Node.js', 'MongoDB', 'AI'],
     image: '/qandliai1.png',
     status: 'Beta',
   },
   {
     name: 'Hareg LMS',
-    description: 'Courses, exams, Chapa payments, and QR attendance for schools.',
+    description:
+      'School learning platform with admin tools to manage departments by academic year, courses, and students — plus exams, Chapa payments, and QR attendance for Ethiopian institutions.',
     tags: ['React', 'PostgreSQL', 'Chapa', 'AI'],
     image: '/lms1.png',
     url: 'https://lms-three-lake-48.vercel.app',
@@ -24,42 +55,40 @@ const products = [
   },
   {
     name: 'Electric ERP',
-    description: 'Billing, inventory, and HR for Ethiopian electric utilities.',
+    description:
+      'ERP panel for electrical businesses to track store inventory, buy and sell transactions, balances, and detailed electrical reports — with receipt status and batch/item history for smart operations.',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
     image: '/electric%20erp.jpg',
     status: 'Delivered',
   },
   {
     name: 'Hospital Hub',
-    description: 'Admin, staff, and patient portals for hospital operations.',
+    description:
+      'Hospital admin dashboard with fast insights across bookings, doctors, patients, and medical reports — a central hub for staff, patient records, and clinical operations in one place.',
     tags: ['React', 'MongoDB', 'Cloudinary', 'Tailwind'],
     image: '/hospitalAdmin.png',
     status: 'Delivered',
   },
   {
     name: 'Room Reservation',
-    description: 'Venue booking with availability, payments, and admin tools.',
+    description:
+      'Hotel room booking for Bahir Dar venues — browse hotels and rooms with Birr pricing, availability badges, ratings, and reserve flows, plus profile and reservation management for guests.',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Tailwind'],
     image: '/room.png',
     status: 'Live',
   },
   {
     name: 'Café Menu & Management',
-    description: 'QR menus and order tracking for cafés and coffee shops.',
+    description:
+      'Mobile-first café menu and ordering experience with categorized dishes, photos, prices, ratings, and quick add-to-cart — built for cafés and coffee shops to serve customers via QR and digital menus.',
     tags: ['React', 'Supabase', 'QR Code', 'Tailwind'],
     image: '/cafe%20menu.png',
     status: 'Live',
   },
   {
-    name: 'Perfume Shop',
-    description: 'Catalog, cart, and inventory for Ethiopian perfume retail.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Cloudinary'],
-    image: '/perfume%20shop.jpg',
-    status: 'Live',
-  },
-  {
     name: 'Food Delivery',
-    description: 'Order, track, and vendor tools for food delivery platforms.',
+    description:
+      'Food ordering platform where customers browse a diverse menu, add dishes to cart, and place delivery orders — with login/register, search, and a mobile-friendly flow for local restaurants and Ethiopian cuisine.',
     tags: ['React', 'Node.js', 'MongoDB', 'Chapa'],
     image: '/food%20delivery.jpg',
     status: 'Live',
@@ -81,12 +110,12 @@ function GrowthCard({ product }) {
   return (
     <Wrapper
       {...wrapperProps}
-      className={`block glass-card-light rounded-xl overflow-hidden group border border-gold/15 h-full relative ${
+      className={`block glass-card-light rounded-lg sm:rounded-xl overflow-hidden group border border-gold/15 h-full relative ${
         product.url ? 'cursor-pointer' : ''
       }`}
     >
       <svg
-        className="absolute -left-1 top-8 w-3 h-8 text-brand/25 pointer-events-none"
+        className="absolute -left-1 top-6 sm:top-8 w-2.5 h-6 sm:w-3 sm:h-8 text-brand/25 pointer-events-none"
         viewBox="0 0 12 32"
         fill="none"
         aria-hidden="true"
@@ -98,8 +127,8 @@ function GrowthCard({ product }) {
           strokeLinecap="round"
         />
       </svg>
-      <div className="h-1 bg-brand/35" />
-      <div className="h-32 sm:h-36 relative overflow-hidden">
+      <div className="h-0.5 sm:h-1 bg-brand/35" />
+      <div className="h-24 sm:h-36 relative overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
@@ -107,33 +136,36 @@ function GrowthCard({ product }) {
           loading="lazy"
         />
       </div>
-      <div className="p-[var(--space-card)]">
-        <div className="flex items-start justify-between gap-3 mb-2.5">
-          <h3 className="font-semibold text-text-primary text-base sm:text-lg leading-snug">
+      <div className="p-2.5 sm:p-[var(--space-card)]">
+        <div className="flex items-start justify-between gap-1.5 sm:gap-3 mb-1.5 sm:mb-2.5">
+          <h3 className="font-semibold text-text-primary text-xs sm:text-lg leading-snug">
             {product.name}
           </h3>
           <span
-            className={`font-mono type-caption uppercase tracking-wider px-2.5 py-1 rounded-full whitespace-nowrap shrink-0 ${
+            className={`font-mono text-[10px] sm:type-caption uppercase tracking-wider px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-full whitespace-nowrap shrink-0 ${
               statusStyles[product.status]
             }`}
           >
             {product.status}
           </span>
         </div>
-        <p className="type-body-sm text-text-secondary mb-3">{product.description}</p>
-        <div className="flex flex-wrap gap-2 mb-3">
+        <p className="text-[11px] leading-snug sm:type-body-sm text-text-secondary mb-2 sm:mb-3 line-clamp-4 sm:line-clamp-none">
+          {product.description}
+        </p>
+        <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
           {product.tags.map((tag) => (
             <span
               key={tag}
-              className="font-mono type-caption text-text-secondary glass-tag px-2.5 py-1 rounded"
+              className="font-mono text-[9px] sm:type-caption text-text-secondary glass-tag px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded"
             >
               {tag}
             </span>
           ))}
         </div>
         {product.url && (
-          <span className="inline-flex items-center gap-1.5 text-brand type-label font-semibold min-h-10">
-            View Live <ExternalLink size={16} aria-hidden="true" />
+          <span className="inline-flex items-center gap-1 sm:gap-1.5 text-brand text-[11px] sm:type-label font-semibold min-h-8 sm:min-h-10">
+            View Live{' '}
+            <ExternalLink className="size-3 sm:size-4" aria-hidden="true" />
           </span>
         )}
       </div>
@@ -192,7 +224,7 @@ export default function Products() {
 
         <motion.div
           {...scrollAnimationProps}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-5"
         >
           {visible.map((product) => (
             <GrowthCard key={product.name} product={product} />
