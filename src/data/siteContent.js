@@ -1,4 +1,4 @@
-export const heroProofLine = '9 products shipped · LMS live · websites & apps in production'
+export const heroProofLine = '8 products shipped · LMS live · websites & apps in production'
 
 export const productMarqueeImages = [
   { src: '/addis-electric.png', alt: 'Ecommerce site for Addis Electric' },
@@ -9,7 +9,6 @@ export const productMarqueeImages = [
   { src: '/hospitalAdmin.png', alt: 'Hospital Hub' },
   { src: '/room.png', alt: 'Room Reservation' },
   { src: '/cafe%20menu.png', alt: 'Café Menu' },
-  { src: '/food%20delivery.jpg', alt: 'Food Delivery' },
 ]
 
 export const techStack = [

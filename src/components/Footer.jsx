@@ -18,7 +18,6 @@ const productLinks = [
   { label: 'Hospital Hub', href: null },
   { label: 'Room Reservation', href: null },
   { label: 'Café Menu & Management', href: null },
-  { label: 'Food Delivery', href: null },
 ]
 
 export default function Footer() {

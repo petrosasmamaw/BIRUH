@@ -85,14 +85,6 @@ const products = [
     image: '/cafe%20menu.png',
     status: 'Live',
   },
-  {
-    name: 'Food Delivery',
-    description:
-      'Food ordering platform where customers browse a diverse menu, add dishes to cart, and place delivery orders — with login/register, search, and a mobile-friendly flow for local restaurants and Ethiopian cuisine.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Chapa'],
-    image: '/food%20delivery.jpg',
-    status: 'Live',
-  },
 ]
 
 const statusStyles = {

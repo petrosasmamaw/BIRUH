@@ -26,7 +26,7 @@ function CountUp({ value, suffix = '' }) {
 
 const stats = [
   { value: 5, suffix: '+', context: 'Years', label: 'building in Ethiopia' },
-  { value: 9, suffix: '', context: 'Products', label: 'in our portfolio' },
+  { value: 8, suffix: '', context: 'Products', label: 'in our portfolio' },
   { value: 3, suffix: '', context: 'Sectors', label: 'education · health · enterprise' },
 ]
 

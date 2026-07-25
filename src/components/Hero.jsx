@@ -16,7 +16,7 @@ const socialIcons = {
 
 const heroStats = [
   { value: '5+', label: 'Years' },
-  { value: '9', label: 'Products' },
+  { value: '8', label: 'Products' },
   { value: '3', label: 'Sectors' },
 ]
 
